@@ -6,37 +6,58 @@
     <title>@ViewData["Title"] - fun2travel</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.css" />
+        <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css" />
     </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">fun2travel</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
+    <div class="container">
+        <div class="bs-component">
+            <div class="container-fluid">
+                <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarColor02">
+                         <img src="~/images/Logo.png" style="height:30%; width:30%;padding-bottom:15px" />
+                        
+                        <ul class="navbar-nav mr-auto navbar-left">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><img src="~/images/Hotel.png" style="height:30px; width:30px" /> Hotels</a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a class="nav-link" href="#"><img src="~/images/Activity.png" style="height:30px; width:30px" /> Adventures</a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a class="nav-link" href="#"><img src="~/images/Package.png" style="height:30px; width:30px" /> Packages</a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a class="nav-link" href="#"><img src="~/images/Gallery.png" style="height:30px; width:30px" /> Inspiration</a>
+                                </li>
+
+                            </ul>
+
+                        <div class="bs-component">
+
+                            <ul class="navbar-nav mr-auto navbar-right pull-right">
+                                <li class="nav-item pull-right">
+
+                                    <button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>
-    </nav>
+    </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
