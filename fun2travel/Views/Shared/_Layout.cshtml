@@ -23,28 +23,33 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarColor02">
-                        <img src="~/images/Logo.png" style="height:30%; width:30%;padding-bottom:15px" />
+                    <div class="navbar-collapse" id="navbarColor02">
+                        <div class="col-lg-4">
 
-                        <ul class="navbar-nav mr-auto navbar-left">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-action="Hotel"><img src="~/images/Hotel.png" style="height:30px; width:30px" /> Hotels</a>
-                            </li>
-                            <li class="nav-item">
+                            <a asp-action="Index"><img src="~/images/Logo.png" style="height:100%; width:100%;padding-bottom:15px" /></a>
+                        </div>
+                        <div class="col-lg-6">
 
-                                <a class="nav-link" asp-action="Adventures"><img src="~/images/Activity.png" style="height:30px; width:30px" /> Adventures</a>
-                            </li>
-                            <li class="nav-item">
+                            <ul class="navbar-nav mr-auto navbar-left">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Hotel"><img src="~/images/Hotel.png" style="height:30px; width:30px" /> Hotels</a>
+                                </li>
+                                <li class="nav-item">
 
-                                <a class="nav-link" asp-action="Packages"><img src="~/images/Package.png" style="height:30px; width:30px" /> Packages</a>
-                            </li>
-                            <li class="nav-item">
+                                    <a class="nav-link" asp-action="Adventures"><img src="~/images/Activity.png" style="height:30px; width:30px" /> Adventures</a>
+                                </li>
+                                <li class="nav-item">
 
-                                <a class="nav-link" href="#"><img src="~/images/Gallery.png" style="height:30px; width:30px" /> Inspiration</a>
-                            </li>
+                                    <a class="nav-link" asp-action="Packages"><img src="~/images/Package.png" style="height:30px; width:30px" /> Packages</a>
+                                </li>
+                                <li class="nav-item">
 
-                        </ul>
+                                    <a class="nav-link" href="#"><img src="~/images/Gallery.png" style="height:30px; width:30px" /> Inspiration</a>
+                                </li>
 
+                            </ul>
+
+                        </div>
                         <div class="bs-component">
 
                             <ul class="navbar-nav mr-auto navbar-right pull-right">
@@ -55,7 +60,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </div>
