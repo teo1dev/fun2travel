@@ -50,7 +50,7 @@
                             <ul class="navbar-nav mr-auto navbar-right pull-right">
                                 <li class="nav-item pull-right">
 
-                                    <button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+                                    <a asp-action="Login" class="btn btn-primary btn-lg btn-block">Login</a>
                                 </li>
                             </ul>
                         </div>
@@ -68,18 +68,19 @@
         <br />
 
         @{
-        Html.RenderPartial("_ResultBox");
+            Html.RenderPartial("_ResultBox");
         }
 
 
         @*<footer>
-            <p>&copy; 2018 - fun2travel</p>
-        </footer>*@
+                <p>&copy; 2018 - fun2travel</p>
+            </footer>*@
     </div>
 
     <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
     <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
     <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     @*<script src="https://bootswatch.com/_assets/js/custom.js"></script>*@
 
     @*<environment include="Development">
@@ -102,7 +103,21 @@
             </script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>*@
-
+    <script type="text/javascript">
+        $('.form_date').datetimepicker({
+            language: 'fr',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+    </script>
+    @*<script type="text/javascript">
+        document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+    </script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
