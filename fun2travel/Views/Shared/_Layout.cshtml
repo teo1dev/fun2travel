@@ -8,6 +8,8 @@
     <environment include="Development">
         <link rel="stylesheet" href="https://bootswatch.com/4/solar/bootstrap.css" />
         <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css" />
+        <link href="~/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
     </environment>
 
 </head>
@@ -61,9 +63,12 @@
     <div class="container body-content">
         @RenderBody()
         @*<hr />*@
+        <br />
+        <br />
+        <br />
 
         @{
-            Html.RenderPartial("_ResultBox");
+        Html.RenderPartial("_ResultBox");
         }
 
 
