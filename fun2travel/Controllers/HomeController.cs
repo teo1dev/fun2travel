@@ -40,5 +40,15 @@ namespace fun2travel.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Hotel()
+        {
+            return View();
+        }
+
+        public IActionResult HotelDetail()
+        {
+            return View();
+        }
     }
 }
