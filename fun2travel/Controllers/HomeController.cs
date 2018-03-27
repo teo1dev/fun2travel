@@ -60,17 +60,7 @@ namespace fun2travel.Controllers
             return View();
         }
 
-        public IActionResult HotelDetail()
-        {
-            return View();
-        }
-
         public IActionResult Adventures()
-        {
-            return View();
-        }
-
-        public IActionResult AdventureDetails()
         {
             return View();
         }
@@ -80,9 +70,6 @@ namespace fun2travel.Controllers
             return View();
         }
 
-        public IActionResult PackageDetails()
-        {
-            return View();
-        }
+      
     }
 }
