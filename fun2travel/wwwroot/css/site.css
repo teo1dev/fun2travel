@@ -51,3 +51,40 @@
         z-index: -1;
     }
 
+    .jumbotron .hotels {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: cover;
+        min-height: 300px;
+        width: 100%;
+        opacity: 0.15;
+        background-image: url("../images/bg.jpg");
+        z-index: -1;
+    }
+
+    .jumbotron .hotelsdetail {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: cover;
+        min-height: 100%;
+        width: 100%;
+        opacity: 0.9;
+        background-color: #11627F;
+        z-index: -1;
+    }
+
+.card-body {
+    position:relative;
+    /*background-color: transparent !important;*/
+}
+
+    .card-body .card-image {
+        left: 0;
+        top: 0;
+        /*max-width: 20rem;*/
+        max-width:100%;
+        opacity: 0.9;
+        z-index: -1;
+    }
