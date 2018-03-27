@@ -22,26 +22,26 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarColor02">
-                         <img src="~/images/Logo.png" style="height:30%; width:30%;padding-bottom:15px" />
-                        
+                        <img src="~/images/Logo.png" style="height:30%; width:30%;padding-bottom:15px" />
+
                         <ul class="navbar-nav mr-auto navbar-left">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><img src="~/images/Hotel.png" style="height:30px; width:30px" /> Hotels</a>
-                                </li>
-                                <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="~/images/Hotel.png" style="height:30px; width:30px" /> Hotels</a>
+                            </li>
+                            <li class="nav-item">
 
-                                    <a class="nav-link" href="#"><img src="~/images/Activity.png" style="height:30px; width:30px" /> Adventures</a>
-                                </li>
-                                <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="~/images/Activity.png" style="height:30px; width:30px" /> Adventures</a>
+                            </li>
+                            <li class="nav-item">
 
-                                    <a class="nav-link" href="#"><img src="~/images/Package.png" style="height:30px; width:30px" /> Packages</a>
-                                </li>
-                                <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="~/images/Package.png" style="height:30px; width:30px" /> Packages</a>
+                            </li>
+                            <li class="nav-item">
 
-                                    <a class="nav-link" href="#"><img src="~/images/Gallery.png" style="height:30px; width:30px" /> Inspiration</a>
-                                </li>
+                                <a class="nav-link" href="#"><img src="~/images/Gallery.png" style="height:30px; width:30px" /> Inspiration</a>
+                            </li>
 
-                            </ul>
+                        </ul>
 
                         <div class="bs-component">
 
@@ -53,39 +53,50 @@
                             </ul>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
+        @*<hr />*@
+
+        @{
+            Html.RenderPartial("_ResultBox");
+        }
+
+
+        @*<footer>
             <p>&copy; 2018 - fun2travel</p>
-        </footer>
+        </footer>*@
     </div>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    @*<script src="https://bootswatch.com/_assets/js/custom.js"></script>*@
+
+    @*<environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>*@
 
     @RenderSection("Scripts", required: false)
 </body>
