@@ -88,3 +88,9 @@
         opacity: 0.9;
         z-index: -1;
     }
+
+.detailsimage{
+    max-width:30rem !important;
+    max-height:20rem;
+
+}

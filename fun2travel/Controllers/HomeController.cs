@@ -50,5 +50,25 @@ namespace fun2travel.Controllers
         {
             return View();
         }
+
+        public IActionResult Adventures()
+        {
+            return View();
+        }
+
+        public IActionResult AdventureDetails()
+        {
+            return View();
+        }
+
+        public IActionResult Packages()
+        {
+            return View();
+        }
+
+        public IActionResult PackageDetails()
+        {
+            return View();
+        }
     }
 }
