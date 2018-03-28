@@ -24,17 +24,14 @@ namespace fun2travel
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //var mySecretConnString = @"Data Source=fun2travel.database.windows.net;Initial Catalog=fun2travel;Integrated Security=False;User ID=jerryteodor;Password=P@ssw0rd;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<FunToTravelContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
             services.AddTransient<Repository>();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env/*, IConfiguration conf*/)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //var mySettings = conf["mySettings"];
-            //var mySecretConnString = conf.GetConnectionString("myConnString");
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
