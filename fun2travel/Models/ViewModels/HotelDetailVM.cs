@@ -14,6 +14,5 @@ namespace fun2travel.Models.ViewModels
         public decimal BedPricePerNight { get; set; }
         public string HotelDescription { get; set; }
         public decimal PriceForTransport { get; set; }
-
     }
 }
