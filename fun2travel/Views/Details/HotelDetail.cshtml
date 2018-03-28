@@ -1,11 +1,13 @@
-﻿<div class="bs-component">
+﻿@model Hotel
+<div class="bs-component">
     <div class="jumbotron">
         <div class="hotelsdetail"></div>
-        <h2 class="display-3">Hotel Alpha</h2>
+        <h2 class="display-3">@Model.Name</h2>
         <div class="d-flex justify-content-center">
-            <p>Hotel Alpha lays in the mountains and is surrounded by a almost surreal scenery of beauty!</p>
+            <p>@Model.Location</p>
+            <p>@Model.Description</p>
             <img src="~/images/hotelalpha.jpg" />
-        </div>
+        </div>        
         <br />
         <br />
         <div class="d-flex justify-content-around">
