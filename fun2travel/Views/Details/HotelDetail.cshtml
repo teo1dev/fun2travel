@@ -4,28 +4,31 @@
         <div class="hotelsdetail"></div>
         <h2 class="display-3">@Model.HotelName</h2>
         <div class="d-flex justify-content-center">
-            <p>@Model.HotelLocation</p>
-            <p>@Model.HotelDescription</p>
-            <p>@Model.BedPricePerNight</p>
-            <p>@Model.PriceForTransport</p>
-            <p>@Model.TotalNrOfBeds</p>
-            <p>@Model.BedPricePerNight</p>
-            <img src="~/images/hotelalpha.jpg" />
+            <div>
+                <p>Location: @Model.HotelLocation</p> @*Lägg in liten googlemaps??*@
+                <p>@Model.HotelDescription</p>
+                <p>Price per night €: @Model.BedPricePerNight</p>
+                <p>Price for transport €: @Model.PriceForTransport</p>
+                <p>Total number of beds: @Model.TotalNrOfBeds</p>
+            </div>
+            <img class="detailsimage" src="~/images/hotelalpha.jpg" />
         </div>        
         <br />
         <br />
         <div class="d-flex justify-content-around">
             <img src="~/images/hotelalpha.jpg" />
-            <p>Many activities both summer and winter, inkluding:</p>
+            <div>
+                <p>Many activities both summer and winter, inkluding:</p>
 
-            <ul>
-                <li>Skiing</li>
-                <li>Snowboard</li>
-                <li>Cykling</li>
-                <li>Hiking</li>
-                <li>Camping</li>
-                <li>basejumping</li>
-            </ul>
+                <ul>
+                    <li>Skiing</li>
+                    <li>Snowboard</li>
+                    <li>Cykling</li>
+                    <li>Hiking</li>
+                    <li>Camping</li>
+                    <li>basejumping</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

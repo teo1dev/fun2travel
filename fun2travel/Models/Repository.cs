@@ -25,6 +25,17 @@ namespace fun2travel.Models
             this.context = context;
         }
 
+        public HotelsVM[] GetAllHotelNames() // för att lägga in hotellnamnen i korten automagiskt
+        {
+            var q= context.Hotel
+                 .Where(e => e.HotelName !="")
+                 .Select(c => new HotelsVM
+                 {
+                     HotelName = c.HotelName
+                 }).ToArray();
+            return q;
+        }
+
         public Hotel GetHotelById(int id)
         {
             return context.Hotel

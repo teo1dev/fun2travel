@@ -1,4 +1,5 @@
-﻿<div class="bs-component">
+﻿@model HotelsVM[]
+<div class="bs-component">
     <div class="jumbotron">
         <div class="hotels"></div>
         <h1 class="display-3">Our Activty Hotels</h1>
@@ -11,7 +12,8 @@
             <div class="row">
                 <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
                     <a class="navbar-link" asp-controller="Details" asp-action="HotelDetail" asp-route-id="1">
-                        <div class="card-header"><h4 class="card-title">Hotel Alpha</h4></div>
+                  
+                        <div class="card-header"><h4 class="card-title">Hotel A</h4></div>
                         <div class="card-body">
                             <img src="~/images/hotelalpha.jpg" class="card-image" /> 
                         </div>

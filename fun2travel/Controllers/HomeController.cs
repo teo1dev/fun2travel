@@ -10,6 +10,12 @@ namespace fun2travel.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly Repository repository;
+
+        public HomeController(Repository repository)
+        {
+            this.repository = repository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -55,9 +61,12 @@ namespace fun2travel.Controllers
             return base.View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Hotel()
+    
+
+        [HttpGet]
+        public IActionResult Hotels()
         {
-            return View();
+            return View(repository.GetAllHotelNames());
         }
 
         public IActionResult Adventures()
