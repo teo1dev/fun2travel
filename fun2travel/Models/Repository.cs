@@ -46,27 +46,20 @@ namespace fun2travel.Models
 
         private List<string> GetactivitiesbyHotelId(int id)
         {
-            var temp = from h in context.Hotel
-                       join m in context.ActToHot
-                       on id equals m.HotelFk
-                       join a in context.Activity
-                       on m.ActivityFk equals a.Id
-                       select new
-                       {
-                           a.ActivityName
-                       };
-            var list = temp.Select(s => new { s.ActivityName }).ToList();
+            var query = from h in context.Hotel
+                        join m in context.ActToHot
+                        on id equals m.HotelFk
+                        join a in context.Activity
+                        on m.ActivityFk equals a.Id
+                        select new { a };
+
+            var list = new List<string>();
+            foreach (var item in query)
+            {
+                list.Add(item.a.ActivityName);
+            }
             return list;
-            //var activityList = context.Hotel.Join(context.ActToHot,
-            //    h => h.Id, m => m.HotelFk, (h, m) => new
-            //    {
-            //        hj = m.
-
-            //    }
-                
-
-
-            //return activityList;
+            
         }
     }
 }
