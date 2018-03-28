@@ -28,7 +28,7 @@ namespace fun2travel.Models
             Hotel hotel = new Hotel();
             hotel = GetHotelById(id);
             var ActivityList = GetactivitiesbyHotelId(id);
-            
+
             HotelDetailVM hotelVm = new HotelDetailVM
             {
                 Id = hotel.Id,
@@ -37,14 +37,16 @@ namespace fun2travel.Models
                 BedPricePerNight = hotel.BedPricePerNight,
                 HotelDescription = hotel.HotelDescription,
                 PriceForTransport = hotel.PriceForTransport,
-                TotalNrOfBeds = hotel.TotalNrOfBeds                
+                TotalNrOfBeds = hotel.TotalNrOfBeds,
+                ActivityList = ActivityList
+
             };
             return hotelVm;
         }
 
         /// Fix return type or something
 
-        private List<string> GetactivitiesbyHotelId(int id)
+        private List<Activity> GetactivitiesbyHotelId(int id)
         {
             var query = from h in context.Hotel
                         join m in context.ActToHot
@@ -53,13 +55,21 @@ namespace fun2travel.Models
                         on m.ActivityFk equals a.Id
                         select new { a };
 
-            var list = new List<string>();
+            var list = new List<Activity>();
             foreach (var item in query)
             {
-                list.Add(item.a.ActivityName);
+                list.Add(new Activity
+                {
+                    ActivityName = item.a.ActivityName,
+                    ActivityDescription = item.a.ActivityDescription,
+                    ActivityPrice = item.a.ActivityPrice,
+                    ActivityRentalPrice = item.a.ActivityRentalPrice,
+                    EquipmentCanBeRented = item.a.EquipmentCanBeRented
+
+                });
             }
             return list;
-            
+
         }
     }
 }

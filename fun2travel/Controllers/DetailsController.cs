@@ -29,7 +29,6 @@ namespace fun2travel.Controllers
         [HttpGet]
         public IActionResult HotelDetail(int id)
         {
-            //var hotel = repository.GetHotelByIdToVM(id);
             return View(repository.GetHotelByIdToVM(id));
         }
     }
