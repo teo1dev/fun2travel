@@ -9,9 +9,13 @@ namespace fun2travel.Controllers
 {
     public class DetailsController : Controller
     {
-        private Repository repository = new Repository();
+        private readonly Repository repository;
 
-        
+        public DetailsController(Repository repository)
+        {
+            this.repository = repository;
+        }
+
         public IActionResult PackageDetails(int id)
         {
             return View(id);
@@ -25,7 +29,8 @@ namespace fun2travel.Controllers
         [HttpGet]
         public IActionResult HotelDetail(int id)
         {
-            return View(repository.GetHotelById(id));
+            //var hotel = repository.GetHotelByIdToVM(id);
+            return View(repository.GetHotelByIdToVM(id));
         }
     }
 }

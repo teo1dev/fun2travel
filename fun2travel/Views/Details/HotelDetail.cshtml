@@ -1,11 +1,15 @@
-﻿@model Hotel
+﻿@model HotelDetailVM
 <div class="bs-component">
     <div class="jumbotron">
         <div class="hotelsdetail"></div>
-        <h2 class="display-3">@Model.Name</h2>
+        <h2 class="display-3">@Model.HotelName</h2>
         <div class="d-flex justify-content-center">
-            <p>@Model.Location</p>
-            <p>@Model.Description</p>
+            <p>@Model.HotelLocation</p>
+            <p>@Model.HotelDescription</p>
+            <p>@Model.BedPricePerNight</p>
+            <p>@Model.PriceForTransport</p>
+            <p>@Model.TotalNrOfBeds</p>
+            <p>@Model.BedPricePerNight</p>
             <img src="~/images/hotelalpha.jpg" />
         </div>        
         <br />
