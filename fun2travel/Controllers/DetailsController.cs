@@ -17,12 +17,12 @@ namespace fun2travel.Controllers
         }
         public IActionResult PackageDetails()
         {
-            return View();
+            return View(id);
         }
 
-        public IActionResult AdventureDetails()
+        public IActionResult AdventureDetails(int id)
         {
-            return View();
+            return View(id);
         }
 
         public IActionResult HotelDetail(int id)
