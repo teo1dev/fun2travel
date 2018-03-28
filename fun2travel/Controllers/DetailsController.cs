@@ -8,19 +8,19 @@ namespace fun2travel.Controllers
 {
     public class DetailsController : Controller
     {
-        public IActionResult PackageDetails()
+        public IActionResult PackageDetails(int id)
         {
-            return View();
+            return View(id);
         }
 
-        public IActionResult AdventureDetails()
+        public IActionResult AdventureDetails(int id)
         {
-            return View();
+            return View(id);
         }
 
-        public IActionResult HotelDetail()
+        public IActionResult HotelDetail(int id)
         {
-            return View();
+            return View(id);
         }
     }
 }
