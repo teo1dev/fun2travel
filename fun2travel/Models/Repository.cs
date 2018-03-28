@@ -10,14 +10,6 @@ namespace fun2travel.Models
     public class Repository
     {
 
-        //public List<Hotel> hotelList = new List<Hotel>
-        //{
-        //    new Hotel{Id=1,Name="Hotel1",Location="Bern",Description="Description for hotel 1",HotelActivityList=new List<Activity>() },
-        //    new Hotel{Id=2,Name="Hotel2",Location="Paris",Description="Description for hotel 2",HotelActivityList=new List<Activity>() },
-        //    new Hotel{Id=3,Name="Hotel3",Location="Stockholm",Description="Description for hotel 3",HotelActivityList=new List<Activity>() },
-        //    new Hotel{Id=4,Name="Hotel4",Location="Gdansk",Description="Description for hotel 4",HotelActivityList=new List<Activity>() }
-        //};
-
         private readonly FunToTravelContext context;
 
         public Repository(FunToTravelContext context)
@@ -46,6 +38,8 @@ namespace fun2travel.Models
         {
             Hotel hotel = new Hotel();
             hotel = GetHotelById(id);
+            var ActivityList = GetactivitiesbyHotelId(id);
+
             HotelDetailVM hotelVm = new HotelDetailVM
             {
                 Id = hotel.Id,
@@ -54,10 +48,39 @@ namespace fun2travel.Models
                 BedPricePerNight = hotel.BedPricePerNight,
                 HotelDescription = hotel.HotelDescription,
                 PriceForTransport = hotel.PriceForTransport,
-                TotalNrOfBeds = hotel.TotalNrOfBeds
+                TotalNrOfBeds = hotel.TotalNrOfBeds,
+                ActivityList = ActivityList
 
             };
             return hotelVm;
+        }
+
+        /// Fix return type or something
+
+        private List<Activity> GetactivitiesbyHotelId(int id)
+        {
+            var query = from h in context.Hotel
+                        join m in context.ActToHot
+                        on id equals m.HotelFk
+                        join a in context.Activity
+                        on m.ActivityFk equals a.Id
+                        select new { a };
+
+            var list = new List<Activity>();
+            foreach (var item in query)
+            {
+                list.Add(new Activity
+                {
+                    ActivityName = item.a.ActivityName,
+                    ActivityDescription = item.a.ActivityDescription,
+                    ActivityPrice = item.a.ActivityPrice,
+                    ActivityRentalPrice = item.a.ActivityRentalPrice,
+                    EquipmentCanBeRented = item.a.EquipmentCanBeRented
+
+                });
+            }
+            return list;
+
         }
     }
 }
