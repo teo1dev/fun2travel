@@ -24,9 +24,10 @@ namespace fun2travel.Controllers
 
         public IActionResult SelectHotelandActivity(string locationName, string activityName)
         {
-            var partialView = new ResultVM();
-            partialView = repository.FilterHotelandActivityPartialView(locationName, activityName);
-            return View();
+            //var partialView = new ResultVM();
+            //partialView = repository.FilterHotelandActivityPartialView(locationName, activityName);
+            //return View(repository.FilterHotelandActivityPartialView(locationName, activityName));
+            return PartialView("_ResultBox", repository.FilterHotelandActivityPartialView(locationName, activityName));
         }
 
         public IActionResult Contact()
