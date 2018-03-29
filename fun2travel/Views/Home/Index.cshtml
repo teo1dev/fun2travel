@@ -22,7 +22,7 @@
                                     {
                                         @if (item.HotelLocation != null)
                                         {
-                                            <a class="dropdown-item" href="#">@item.HotelLocation</a>
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.HotelLocation</a>
                                         }
                                     }
                                 </div>
@@ -37,7 +37,7 @@
                                     {
                                         @if (item.ActivityName != null)
                                         {
-                                            <a class="dropdown-item" onclick="DropDownAjaxCall(@item.HotelLocation,@item.ActivityName)">@item.ActivityName</a>
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.ActivityName</a>
                                         }
                                     }
                                 </div>
@@ -50,14 +50,5 @@
     </div>
 </div>
 <script>
-    function DropDownAjaxCall(LocationName, ActivityName) {
-        $.ajax({            
-            url: "/Home/SelectHotelandActivity",
-            type: "GET",
-            data: { "LocationName": LocationName, "ActivityName": ActivityName },
-            success: function (result) {
-                $("#partialResultView").html(result);
-            }
-        });
-    }
+    
 </script>

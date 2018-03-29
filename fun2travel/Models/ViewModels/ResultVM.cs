@@ -12,6 +12,6 @@ namespace fun2travel.Models.ViewModels
 
         public int ActivityId { get; set; }
         public string ActivityName { get; set; }
-        
+
     }
 }
