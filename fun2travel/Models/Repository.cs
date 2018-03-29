@@ -33,6 +33,19 @@ namespace fun2travel.Models
             return q;
         }
 
+        public AdventuresVM[] GetAllAdventures()
+        {
+            var a = context.Activity
+                .Where(b => b.ActivityName != "")
+                .Select(c => new AdventuresVM
+                {
+                    ActivityName = c.ActivityName,
+                    Id = c.Id
+
+                }).ToArray();
+            return a;
+        }
+
         internal List<IndexVM> AllHotelandActivitytoVM()
         {
 
