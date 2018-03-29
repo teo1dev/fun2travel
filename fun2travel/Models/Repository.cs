@@ -23,7 +23,9 @@ namespace fun2travel.Models
                  .Where(e => e.HotelName != "")
                  .Select(c => new HotelsVM
                  {
-                     HotelName = c.HotelName
+                     HotelName = c.HotelName,
+                     Id=c.Id,
+                 
                  }).ToArray();
             return q;
         }
