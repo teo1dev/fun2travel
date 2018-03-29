@@ -30,12 +30,7 @@ namespace fun2travel.Models
 
         internal List<IndexVM> AllHotelandActivitytoVM()
         {
-            var query = from h in context.Hotel
-                        join m in context.ActToHot
-                        on h.Id equals m.HotelFk
-                        join a in context.Activity
-                        on "Mounatinbiking" equals a.ActivityName
-                        select new { h.HotelName };
+
 
             var queryh = (from h in context.Hotel
                           select new
@@ -70,7 +65,7 @@ namespace fun2travel.Models
 
         }
 
-        internal ResultVM FilterHotelandActivityPartialView(string locationName, string activityName)
+        internal List<ResultVM> FilterHotelandActivityPartialView(string locationName, string activityName)
         {
             List<ResultVM> resultList = new List<ResultVM>();
 
@@ -98,17 +93,45 @@ namespace fun2travel.Models
             // if only activity are selected:
             if (activityName != null && locationName == null)
             {
-                var query = from m in context.ActToHot
-                            join a in context.Activity
-                            on locationName equals a.ActivityName
+                var q = from a in context.Activity
+                            join m in context.ActToHot
+                            on a.Id equals m.ActivityFk
                             join h in context.Hotel
-                            on m.ActivityFk equals h.Id
-                            select new { h };
+                            on m.HotelFk equals h.Id
+                            where a.ActivityName == activityName
+                            select new { h.HotelName, h.Id };
+                foreach (var item in q)
+                {
+                    resultList.Add(new ResultVM
+                    {
+                        HotelId = item.Id,
+                        HotelName = item.HotelName
+                    });
 
-                
-                
+                }
             }
-            return null;
+            // if both location and activity are selected
+            if (activityName != null && locationName != null)
+            {
+                var q = from a in context.Activity
+                        join m in context.ActToHot
+                        on a.Id equals m.ActivityFk
+                        join h in context.Hotel
+                        on m.HotelFk equals h.Id
+                        where a.ActivityName == activityName && h.HotelLocation == locationName
+                        select new { h.HotelName, h.Id };
+                foreach (var item in q)
+                {
+                    resultList.Add(new ResultVM
+                    {
+                        HotelId = item.Id,
+                        HotelName = item.HotelName
+                    });
+
+                }
+            }
+
+            return resultList;
         }
 
         public Hotel GetHotelById(int id)

@@ -37,7 +37,7 @@
                                     {
                                         @if (item.ActivityName != null)
                                         {
-                                            <a class="dropdown-item" href="#">@item.ActivityName</a>
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall(@item.HotelLocation,@item.ActivityName)">@item.ActivityName</a>
                                         }
                                     }
                                 </div>
@@ -51,7 +51,7 @@
 </div>
 <script>
     function DropDownAjaxCall(LocationName, ActivityName) {
-        $.ajax({
+        $.ajax({            
             url: "/Home/SelectHotelandActivity",
             type: "GET",
             data: { "LocationName": LocationName, "ActivityName": ActivityName },
