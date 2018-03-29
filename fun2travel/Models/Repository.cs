@@ -168,7 +168,6 @@ namespace fun2travel.Models
                 PriceForTransport = Math.Round(hotel.PriceForTransport,0),
                 TotalNrOfBeds = hotel.TotalNrOfBeds,
                 ActivityList = ActivityList,
-                //ActivityOptionsItems = ActivityOptionsList,
                 HotelPic1 = hotel.HotelPic1,
                 HotelPic2 = hotel.HotelPic2,
                 HotelPic3 = hotel.HotelPic3
