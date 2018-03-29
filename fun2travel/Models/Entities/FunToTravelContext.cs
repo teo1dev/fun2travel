@@ -15,7 +15,7 @@ namespace fun2travel.Models.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("fun2travel");
+                optionsBuilder.UseSqlServer(@"Data Source=fun2travel.database.windows.net;Initial Catalog=fun2travel;Integrated Security=False;User ID=jerryteodor;Password=P@ssw0rd;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
@@ -52,6 +52,8 @@ namespace fun2travel.Models.Entities
             {
                 entity.Property(e => e.BedPricePerNight).HasColumnType("money");
 
+                entity.Property(e => e.HotelAdress).IsRequired();
+
                 entity.Property(e => e.HotelDescription).IsRequired();
 
                 entity.Property(e => e.HotelLocation)
@@ -62,6 +64,12 @@ namespace fun2travel.Models.Entities
                 entity.Property(e => e.HotelName)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.Property(e => e.HotelPic1).IsRequired();
+
+                entity.Property(e => e.HotelPic2).IsRequired();
+
+                entity.Property(e => e.HotelPic3).IsRequired();
 
                 entity.Property(e => e.PriceForTransport).HasColumnType("money");
             });

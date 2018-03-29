@@ -17,6 +17,10 @@ namespace fun2travel.Models.Entities
         public decimal BedPricePerNight { get; set; }
         public string HotelDescription { get; set; }
         public decimal PriceForTransport { get; set; }
+        public string HotelAdress { get; set; }
+        public string HotelPic1 { get; set; }
+        public string HotelPic2 { get; set; }
+        public string HotelPic3 { get; set; }
 
         public ICollection<ActToHot> ActToHot { get; set; }
     }

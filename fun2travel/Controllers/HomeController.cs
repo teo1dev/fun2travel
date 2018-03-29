@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using fun2travel.Models;
+using fun2travel.Models.ViewModels;
 
 namespace fun2travel.Controllers
 {
@@ -18,13 +19,13 @@ namespace fun2travel.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View(repository.AllHotelandActivitytoVM());
         }
 
-        public IActionResult About()
+        public IActionResult SelectHotelandActivity(string locationName, string activityName)
         {
-            ViewData["Message"] = "Your application description page.";
-
+            var partialView = new ResultVM();
+            partialView = repository.FilterHotelandActivityPartialView(locationName, activityName);
             return View();
         }
 
@@ -61,7 +62,7 @@ namespace fun2travel.Controllers
             return base.View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-    
+
 
         [HttpGet]
         public IActionResult Hotels()
@@ -79,6 +80,6 @@ namespace fun2travel.Controllers
             return View();
         }
 
-      
+
     }
 }
