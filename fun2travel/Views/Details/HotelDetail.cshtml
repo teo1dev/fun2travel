@@ -11,12 +11,12 @@
                 <p>Price for transport €: @Model.PriceForTransport</p>
                 <p>Total number of beds: @Model.TotalNrOfBeds</p>
             </div>
-            <img class="detailsimage" src="~/images/hotelalpha.jpg" />
+            <img src="@Model.HotelPic2" class="detailsimage" />
         </div>        
         <br />
         <br />
         <div class="d-flex justify-content-around">
-            <img src="~/images/hotelalpha.jpg" />
+            <img src="@Model.HotelPic3" />
             <p>Many activities both summer and winter, inkluding:</p>
             <ul>
             @foreach (var item in Model.ActivityList)
