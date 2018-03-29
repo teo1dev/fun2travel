@@ -10,6 +10,8 @@ namespace fun2travel.Models.ViewModels
         public int Id { get; set; }
         public string HotelName { get; set; }
         public string HotelPic1 { get; set; }
+        public string HotelPic2 { get; set; }
+        public string HotelPic3 { get; set; }
 
     }
 }

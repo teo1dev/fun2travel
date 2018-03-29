@@ -25,7 +25,10 @@ namespace fun2travel.Models
                  {
                      HotelName = c.HotelName,
                      Id=c.Id,
-                 
+                     HotelPic1=c.HotelPic1,
+                     HotelPic2=c.HotelPic2,
+                     HotelPic3=c.HotelPic3
+
                  }).ToArray();
             return q;
         }
@@ -157,7 +160,10 @@ namespace fun2travel.Models
                 HotelDescription = hotel.HotelDescription,
                 PriceForTransport = hotel.PriceForTransport,
                 TotalNrOfBeds = hotel.TotalNrOfBeds,
-                ActivityList = ActivityList
+                ActivityList = ActivityList,
+                HotelPic1 = hotel.HotelPic1,
+                HotelPic2 = hotel.HotelPic2,
+                HotelPic3 = hotel.HotelPic3
 
             };
             return hotelVm;
