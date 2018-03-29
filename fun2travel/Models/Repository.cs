@@ -19,8 +19,8 @@ namespace fun2travel.Models
 
         public HotelsVM[] GetAllHotelNames() // för att lägga in hotellnamnen i korten automagiskt
         {
-            var q= context.Hotel
-                 .Where(e => e.HotelName !="")
+            var q = context.Hotel
+                 .Where(e => e.HotelName != "")
                  .Select(c => new HotelsVM
                  {
                      HotelName = c.HotelName,
@@ -28,6 +28,89 @@ namespace fun2travel.Models
                  
                  }).ToArray();
             return q;
+        }
+
+        internal List<IndexVM> AllHotelandActivitytoVM()
+        {
+            var query = from h in context.Hotel
+                        join m in context.ActToHot
+                        on h.Id equals m.HotelFk
+                        join a in context.Activity
+                        on "Mounatinbiking" equals a.ActivityName
+                        select new { h.HotelName };
+
+            var queryh = (from h in context.Hotel
+                          select new
+                          {
+                              HotelLocation = h.HotelLocation
+                          }).Distinct();
+
+            var querya = (from a in context.Activity
+                          select new
+                          {
+                              ActivityName = a.ActivityName
+                          }).Distinct();
+
+            var list = new List<IndexVM>();
+            foreach (var item in queryh)
+            {
+                list.Add(new IndexVM
+                {
+                    HotelLocation = item.HotelLocation
+
+                });
+            }
+            foreach (var act in querya)
+            {
+                list.Add(new IndexVM
+                {
+                    ActivityName = act.ActivityName
+
+                });
+            }
+            return list;
+
+        }
+
+        internal ResultVM FilterHotelandActivityPartialView(string locationName, string activityName)
+        {
+            List<ResultVM> resultList = new List<ResultVM>();
+
+            // if only location are selected:
+            if (activityName == null && locationName != null)
+            {
+                var q = context.Hotel
+                     .Where(h => h.HotelLocation == locationName)
+                     .Select(c => new ResultVM
+                     {
+                         HotelId = c.Id,
+                         HotelName = c.HotelName
+                     }).ToList();
+                foreach (var item in q)
+                {
+                    resultList.Add(new ResultVM
+                    {
+                        HotelId = item.HotelId,
+                        HotelName = item.HotelName
+                    });
+
+                }
+            }
+
+            // if only activity are selected:
+            if (activityName != null && locationName == null)
+            {
+                var query = from m in context.ActToHot
+                            join a in context.Activity
+                            on locationName equals a.ActivityName
+                            join h in context.Hotel
+                            on m.ActivityFk equals h.Id
+                            select new { h };
+
+                
+                
+            }
+            return null;
         }
 
         public Hotel GetHotelById(int id)
