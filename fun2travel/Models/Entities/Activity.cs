@@ -16,6 +16,8 @@ namespace fun2travel.Models.Entities
         public decimal? ActivityRentalPrice { get; set; }
         public bool? EquipmentCanBeRented { get; set; }
         public string ActivityDescription { get; set; }
+        public string ActivityPic1 { get; set; }
+        public string ActivityPic2 { get; set; }
 
         public ICollection<ActToHot> ActToHot { get; set; }
     }

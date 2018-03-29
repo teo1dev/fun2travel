@@ -11,24 +11,24 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col"></th>
                     <th scope="col">Hotel Name</th>
-                    <th scope="col">Activity</th>
+                    <th scope="col">Price</th>
                     <th scope="col" class="text-right"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr class="table-sm table-active">
-                        <td>@item.HotelName</td>
-                        <td class="text-right">
-                            <div class="">
-                                <a class="btn btn-primary" asp-action="Booking" role="button" style="margin-right:50px;width:50%">Book</a>
+                <tr class="table-sm table-active">
+                    <td>@item.HotelName</td>
+                    <td><small>Price per night:</small>@item.BedPricePerNight &euro;</td>
+                    <td class="text-right">
+                        <div class="">
+                            <a class="btn btn-primary" asp-action="Booking" asp-route-id="@item.HotelId" role="button" style="margin-right:50px;width:50%">Book</a>
 
-                            </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
+                </tr>
                 }
 
                 @*<tr class="table-sm table-active">

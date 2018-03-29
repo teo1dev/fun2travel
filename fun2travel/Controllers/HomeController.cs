@@ -37,11 +37,10 @@ namespace fun2travel.Controllers
             return View();
         }
 
-        public IActionResult Booking()
+        public IActionResult Booking(int id)
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            
+            return View(repository.GetHotelByIdToVM(id));
         }
 
         public IActionResult Registration()

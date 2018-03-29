@@ -29,6 +29,14 @@ namespace fun2travel.Models.Entities
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.ActivityPic1)
+                    .IsRequired()
+                    .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.ActivityPic2)
+                    .IsRequired()
+                    .HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.ActivityPrice).HasColumnType("money");
 
                 entity.Property(e => e.ActivityRentalPrice).HasColumnType("money");
