@@ -73,7 +73,7 @@ namespace fun2travel.Controllers
         [HttpGet]
         public IActionResult Adventures()
         {
-            return View();
+            return View(repository.GetAllAdventures());
         }
 
         public IActionResult Packages()

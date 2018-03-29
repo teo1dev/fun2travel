@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fun2travel.Models;
+using fun2travel.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fun2travel.Controllers
@@ -23,7 +24,17 @@ namespace fun2travel.Controllers
 
         public IActionResult AdventureDetails(int id)
         {
-            return View(id);
+            AdventuresVM adventureDetailVM = new AdventuresVM
+            {
+                Id = repository.GetAdventureById(id).Id,
+
+            };
+            return View(repository.GetAdventureById(id));
+        }
+
+        private IActionResult View(Func<int, AdventuresVM> getAdventureById)
+        {
+            throw new NotImplementedException();
         }
 
         [HttpGet]

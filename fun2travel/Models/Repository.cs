@@ -32,6 +32,16 @@ namespace fun2travel.Models
                  }).ToArray();
             return q;
         }
+        public Activity GetAdventureById(int id) //TODO: fix this!!
+        {
+            var temp = context.Activity
+                .Find(id);
+            Activity temp2 = new Activity()
+            {
+                Id = temp.Id
+            };
+            return temp2;
+        }
 
         public AdventuresVM[] GetAllAdventures()
         {
@@ -40,7 +50,9 @@ namespace fun2travel.Models
                 .Select(c => new AdventuresVM
                 {
                     ActivityName = c.ActivityName,
-                    Id = c.Id
+                    Id = c.Id,
+                    ActivityPic1=c.ActivityPic1,
+                    ActivityPic2=c.ActivityPic2
 
                 }).ToArray();
             return a;
