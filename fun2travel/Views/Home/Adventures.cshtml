@@ -11,72 +11,66 @@
         <div class="d-flex justify-content-center">
             <div class="row">
                 @for (int i = 0; i < 3; i++)
-            {
-                <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-                    <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
+                {
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                        <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
 
-                        <div class="card-header"><h4 class="card-title">@Model[i].ActivityName</h4></div>
-                        <div class="card-body">
-                            <img src="@Model[i].ActivityPic1" class="card-image" />
-                        </div>
-                    </a>
-                </div>
-        }
+                            <div class="card-header"><h4 class="card-title">@Model[i].ActivityName</h4></div>
+                            <div class="card-body">
+                                <img src="@Model[i].ActivityPic1" class="card-image" />
+                            </div>
+                        </a>
+                    </div>
+                }
             </div>
-
         </div>
         <div class="d-flex justify-content-center">
             <div class="row">
                 @for (int i = 3; i < 6; i++)
-            {
-                <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-                    <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
+                {
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                        <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
 
                             <div class="card-header"><h4 class="card-title">@Model[i].ActivityName</h4></div>
                             <div class="card-body">
                                 <img src="@Model[i].ActivityPic1" class="card-image" />
                             </div>
                         </a>
-                </div>
-        }
+                    </div>
+                }
             </div>
-
         </div>
         <div class="d-flex justify-content-center">
             <div class="row">
                 @for (int i = 6; i < 10; i++)
-            {
-                <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-                    <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
+                {
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                        <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
 
                             <div class="card-header"><h4 class="card-title">@Model[i].ActivityName</h4></div>
                             <div class="card-body">
                                 <img src="@Model[i].ActivityPic1" class="card-image" />
                             </div>
                         </a>
-                </div>
-        }
+                    </div>
+                }
             </div>
-
         </div>
         <div class="d-flex justify-content-center">
             <div class="row">
-                @for (int i = 10; i < 13; i++)
-            {
-                <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-                    <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id">
+                @for (int i = 10; i < 12; i++)
+                {
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                        <a class="navbar-link" asp-controller="Details" asp-action="AdventureDetails" asp-route-id="@Model[i].Id ">
 
                             <div class="card-header"><h4 class="card-title">@Model[i].ActivityName</h4></div>
                             <div class="card-body">
                                 <img src="@Model[i].ActivityPic1" class="card-image" />
                             </div>
                         </a>
-                </div>
-        }
+                    </div>
+                }
             </div>
-
         </div>
- 
-   
     </div>
 </div>

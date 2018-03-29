@@ -40,7 +40,9 @@ namespace fun2travel.Models
                 .Select(c => new AdventuresVM
                 {
                     ActivityName = c.ActivityName,
-                    Id = c.Id
+                    Id = c.Id,
+                    ActivityPic1=c.ActivityPic1,
+                    ActivityPic2=c.ActivityPic2
 
                 }).ToArray();
             return a;
