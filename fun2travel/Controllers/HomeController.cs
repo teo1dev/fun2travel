@@ -70,6 +70,7 @@ namespace fun2travel.Controllers
             return View(repository.GetAllHotelNames());
         }
 
+        [HttpGet]
         public IActionResult Adventures()
         {
             return View();
