@@ -167,12 +167,12 @@ namespace fun2travel.Models
 
         private List<Activity> GetactivitiesbyHotelId(int id)
         {
-            var query = from h in context.Hotel
+            var query = (from h in context.Hotel
                         join m in context.ActToHot
                         on id equals m.HotelFk
                         join a in context.Activity
                         on m.ActivityFk equals a.Id
-                        select new { a };
+                        select new { a }).Distinct();
 
             var list = new List<Activity>();
             foreach (var item in query)
