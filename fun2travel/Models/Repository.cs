@@ -95,14 +95,17 @@ namespace fun2travel.Models
                      .Select(c => new ResultVM
                      {
                          HotelId = c.Id,
-                         HotelName = c.HotelName
+                         HotelName = c.HotelName,
+                         BedPricePerNight = c.BedPricePerNight
                      }).ToList();
                 foreach (var item in q)
                 {
                     resultList.Add(new ResultVM
                     {
                         HotelId = item.HotelId,
-                        HotelName = item.HotelName
+                        HotelName = item.HotelName,
+                        BedPricePerNight = Math.Round(item.BedPricePerNight,0)
+
                     });
 
                 }
@@ -117,13 +120,15 @@ namespace fun2travel.Models
                             join h in context.Hotel
                             on m.HotelFk equals h.Id
                             where a.ActivityName == activityName
-                            select new { h.HotelName, h.Id };
+                            select new { h.HotelName, h.Id, h.BedPricePerNight};
                 foreach (var item in q)
                 {
                     resultList.Add(new ResultVM
                     {
                         HotelId = item.Id,
-                        HotelName = item.HotelName
+                        HotelName = item.HotelName,
+                        BedPricePerNight = Math.Round(item.BedPricePerNight,0)
+
                     });
 
                 }
@@ -137,13 +142,15 @@ namespace fun2travel.Models
                         join h in context.Hotel
                         on m.HotelFk equals h.Id
                         where a.ActivityName == activityName && h.HotelLocation == locationName
-                        select new { h.HotelName, h.Id };
+                        select new { h.HotelName, h.Id, h.BedPricePerNight};
                 foreach (var item in q)
                 {
                     resultList.Add(new ResultVM
                     {
                         HotelId = item.Id,
-                        HotelName = item.HotelName
+                        HotelName = item.HotelName,
+                        BedPricePerNight = Math.Round(item.BedPricePerNight,0)
+
                     });
 
                 }
@@ -163,17 +170,18 @@ namespace fun2travel.Models
             Hotel hotel = new Hotel();
             hotel = GetHotelById(id);
             var ActivityList = GetactivitiesbyHotelId(id);
-
+            //var ActivityOptionsList = GetActivitiesSelectListItem(id);
             HotelDetailVM hotelVm = new HotelDetailVM
             {
                 Id = hotel.Id,
                 HotelName = hotel.HotelName,
                 HotelLocation = hotel.HotelLocation,
-                BedPricePerNight = hotel.BedPricePerNight,
+                BedPricePerNight = Math.Round(hotel.BedPricePerNight,0),
                 HotelDescription = hotel.HotelDescription,
-                PriceForTransport = hotel.PriceForTransport,
+                PriceForTransport = Math.Round(hotel.PriceForTransport,0),
                 TotalNrOfBeds = hotel.TotalNrOfBeds,
                 ActivityList = ActivityList,
+                //ActivityOptionsItems = ActivityOptionsList,
                 HotelPic1 = hotel.HotelPic1,
                 HotelPic2 = hotel.HotelPic2,
                 HotelPic3 = hotel.HotelPic3
@@ -200,7 +208,7 @@ namespace fun2travel.Models
                 {
                     ActivityName = item.a.ActivityName,
                     ActivityDescription = item.a.ActivityDescription,
-                    ActivityPrice = item.a.ActivityPrice,
+                    ActivityPrice = Math.Round(item.a.ActivityPrice,0),
                     ActivityRentalPrice = item.a.ActivityRentalPrice,
                     EquipmentCanBeRented = item.a.EquipmentCanBeRented
 

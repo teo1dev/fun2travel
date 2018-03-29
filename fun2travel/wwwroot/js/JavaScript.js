@@ -10,3 +10,8 @@
         }
     });
 }
+$('input[name="customCheck1"]').change(function () {
+    if (this.checked) {
+        alert("Checked Equipment.");
+    }
+});

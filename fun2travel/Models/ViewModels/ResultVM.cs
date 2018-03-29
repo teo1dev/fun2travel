@@ -9,6 +9,7 @@ namespace fun2travel.Models.ViewModels
     {
         public int HotelId { get; set; }
         public string HotelName { get; set; }
+        public decimal BedPricePerNight { get; set; }
 
         public int ActivityId { get; set; }
         public string ActivityName { get; set; }
