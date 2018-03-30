@@ -25,8 +25,12 @@ namespace fun2travel.Models.ViewModels
 
         /// Variables from Form
 
-        public DateTime SelectedDateFrom { get; set; }
-        public DateTime SelectedDateTo { get; set; }
+        [Required(ErrorMessage = "Please choose a date.")]
+        public DateTime? SelectedDateFrom { get; set; } // Datetime set as null in bookingform for validation
+
+        [Required(ErrorMessage = "Please choose a date.")]
+        public DateTime? SelectedDateTo { get; set; }  // Datetime set as null in bookingform for validation
+
         public int NoPplForHotel { get; set; }
 
         public string ActivitySelected { get; set; }

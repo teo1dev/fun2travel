@@ -41,16 +41,7 @@ $('#customCheck3').click(function () {
         $('#staticPriceTransport').val("");
     }
 })
-//$('.form_date').datetimepicker({
-//    language: 'swe',
-//    weekStart: 1,
-//    todayBtn: 1,
-//    autoclose: 1,
-//    todayHighlight: 1,
-//    startView: 2,
-//    minView: 2,
-//    forceParse: 0
-//});
+
 $('#NumberofPeopleRoom').on('change', function () {
     var hotelCost = $('#HotelPrice').html();
     var noPpl = $('#NumberofPeopleRoom').val();
@@ -58,22 +49,10 @@ $('#NumberofPeopleRoom').on('change', function () {
 
     $('#TotalHotelAmount').html(totalHotelCost);
 })
-$("#datetime1").on("change", function () {
-    var myDate = new Date($(this).val());
-    console.log(myDate, myDate.getDate());
-    var StartDay = myDate.getDate();
-    var StartMonth = myDate.getMonth();
-    var StartYear = myDate.getFullYear();
-    console.log("Starting date " + myDate, myDate.getTime());
-});
-$("#datetime2").on("change", function () {
-    var myDate = new Date($(this).val());
-    console.log(myDate, myDate.getDate());
-    var StartDay = myDate.getDate();
-    var StartMonth = myDate.getMonth();
-    var StartYear = myDate.getFullYear();
-    console.log("Ending date" + myDate, myDate.getTime());
-});
-$(function () {
-    $(".datepicker").datepicker();
-});
+function validate() {
+    var startDate = document.getElementById('date1').value;
+    if (!isValidDate(birthday)) {
+        alert("you did not enter a valid startdate");
+        return false;
+    }
+}

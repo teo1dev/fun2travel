@@ -48,13 +48,17 @@
 
 
                                         <label for="SelectedDateFrom" class="col-md-2 control-label">Starting</label>
-                                        <input type="date" name="SelectedDateFrom" value="" />
+                                        <input type="date" name="SelectedDateFrom" id="date1" value="" />
+                                        <span asp-validation-for="SelectedDateFrom" class="text-danger"></span>
+
                                     </div>
 
                                     <div class="col">
 
                                         <label for="SelectedDateTo" class="col-md-2 control-label">Ending</label>
                                         <input type="date" name="SelectedDateTo" value="" />
+                                        <span asp-validation-for="SelectedDateTo" class="text-danger"></span>
+
                                     </div>
 
 
