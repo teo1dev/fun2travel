@@ -64,16 +64,19 @@ namespace fun2travel.Models
         internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
         {
             var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
-            BookingDetailVM temp = new BookingDetailVM
-            {
-                ActivitySelected = context.Activity
-                .Where(a => a.Id == activityId)
-                .Select(c => new BookingDetailVM
-                {
-                    ActivitySelected = c.ActivityName
 
-                }).ToString()
-            };
+            var querya = (from a in context.Activity
+                          where a.Id == activityId
+
+                          select new
+                          {
+                              activityName = a.ActivityName
+                          });
+            foreach (var item in querya)
+            {
+                bookingDetails.ActivitySelected = item.activityName;
+            }
+            
             var q = context.Activity
                 .Where(a => a.Id == activityId)
                 .Select(c => new BookingDetailVM
