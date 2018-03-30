@@ -32,7 +32,7 @@ namespace fun2travel.Models
                  }).ToArray();
             return q;
         }
-        public Activity GetAdventureById(int id) //TODO: fix this!!
+        public Activity GetAdventureById(int id) 
         {
             return context.Activity
                 .Find(id);
@@ -43,13 +43,15 @@ namespace fun2travel.Models
         public AdventuresVM GetAdventureByIdToVM(int id)
         {
             Activity adventure = new Activity();
-            //adventure = GetAdventureById(id);
+          
             adventure = GetAdventureById(id);
-            //var ActivityOptionsList = GetActivitiesSelectListItem(id);
             AdventuresVM adventureVm = new AdventuresVM
             {
                 Id = adventure.Id,
                 ActivityName=adventure.ActivityName,
+                ActivityPrice=Math.Round(adventure.ActivityPrice,0),
+                ActivityRentalPrice=Math.Round(adventure.ActivityRentalPrice,0),
+
                 ActivityPic1=adventure.ActivityPic1
 
             };
@@ -74,8 +76,6 @@ namespace fun2travel.Models
 
         internal List<IndexVM> AllHotelandActivitytoVM()
         {
-
-
             var queryh = (from h in context.Hotel
                           select new
                           {
@@ -133,7 +133,6 @@ namespace fun2travel.Models
                         BedPricePerNight = Math.Round(item.BedPricePerNight,0)
 
                     });
-
                 }
             }
 
@@ -181,7 +180,6 @@ namespace fun2travel.Models
 
                 }
             }
-
             return resultList;
         }
 

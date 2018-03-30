@@ -3,11 +3,10 @@
     <div class="jumbotron">
         <div class="hotelsdetail"></div>
         <h2 class="display-3">@Model.ActivityName</h2>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-around">
             <div>
-                <p>Locations: lista på hotell/platser</p> @*Lista på hotell som erbjuder aktiviteten??*@
                 <p>@Model.ActivityDescription</p>
-                <p>Price €: @Model.ActivityPrice</p>
+                <p>@Model.ActivityPrice</p>
                 <p>Price for renting equipment €: @Model.ActivityRentalPrice</p>
             </div>
             <img src="@Model.ActivityPic1" class="detailsimage" />
@@ -16,7 +15,7 @@
         <br />
         <div class="d-flex justify-content-around">
             <img src="@Model.ActivityPic2" class="detailsimage" />
-            <p>Many activities both summer and winter, inkluding:</p>
+         
         
         </div>
     </div>
