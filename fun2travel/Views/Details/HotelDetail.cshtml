@@ -3,27 +3,39 @@
     <div class="jumbotron">
         <div class="hotelsdetail"></div>
         <h2 class="display-3">@Model.HotelName</h2>
-        <div class="d-flex justify-content-center">
-            <div>
-                <p>Location: @Model.HotelLocation</p> @*Lägg in liten googlemaps??*@
-                <p>@Model.HotelDescription</p>
-                <p>Price per night €: @Model.BedPricePerNight</p>
-                <p>Price for transport €: @Model.PriceForTransport</p>
-                <p>Total number of beds: @Model.TotalNrOfBeds</p>
+        <div class="d-flex justify-content-around">
+            <div class="card border-warning mb-3" style="max-width: 35rem;">
+                <div class="card-body">
+                    <p>Location: @Model.HotelLocation</p> @*Lägg in liten googlemaps??*@
+                    <p>@Model.HotelDescription</p>
+                    <p>Price per night €: @Model.BedPricePerNight</p>
+                    <p>Price for transport €: @Model.PriceForTransport</p>
+                    <p>Total number of beds: @Model.TotalNrOfBeds</p>
+                </div>
             </div>
-            <img src="@Model.HotelPic2" class="detailsimage" />
-        </div>        
+            <div class="d-flex flex-column justify-content-around">
+                <img src="@Model.HotelPic2" class="detailsimage" />
+                
+                <a class="btn btn-primary" asp-action="Booking" asp-route-id="@Model.Id" role="button" style="margin-right:50px;width:50%">Book</a>
+            </div>
+        </div>
         <br />
         <br />
         <div class="d-flex justify-content-around">
-            <img src="@Model.HotelPic3" class="detailsimage"  />
-            <p>Many activities both summer and winter, inkluding:</p>
-            <ul>
-            @foreach (var item in Model.ActivityList)
-            {
-            <li>@item.ActivityName</li>
-            }            
-            </ul>
+            <img src="@Model.HotelPic3" class="detailsimage" />
+
+            <div class="card border-warning mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">The following activities are offered at @Model.HotelName</h4>
+                    <ul>
+                        @foreach (var item in Model.ActivityList)
+                        {
+                            <li>@item.ActivityName</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

@@ -50,9 +50,10 @@ namespace fun2travel.Models
                 Id = adventure.Id,
                 ActivityName=adventure.ActivityName,
                 ActivityPrice=Math.Round(adventure.ActivityPrice,0),
-                ActivityRentalPrice=Math.Round(adventure.ActivityRentalPrice,0),
-
-                ActivityPic1=adventure.ActivityPic1
+                ActivityRentalPrice=adventure.ActivityRentalPrice,
+                ActivityDescription=adventure.ActivityDescription,
+                ActivityPic1=adventure.ActivityPic1,
+                ActivityPic2=adventure.ActivityPic2
 
             };
             return adventureVm;
