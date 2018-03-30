@@ -1,4 +1,4 @@
-﻿<br />
+﻿@model BookingDetailVM
 <br />
 <br />
 <br />
@@ -6,4 +6,68 @@
 <br />
 <br />
 <br />
-<h1>Booking Confirmed</h1>
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="bs-component">
+            <div class="jumbotron">
+                <h1>Booking Confirmed</h1>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr class="table-dark">
+                            <th scope="row">Name</th>
+                            <td>@Model.FullName</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">Email Address</th>
+                            <td>@Model.EmailAddress</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">Phone Number</th>
+                            <td>@Model.PhoneNumber</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">Resort</th>
+                            <td>@Model.HotelName</td>
+                        <tr class="table-active">
+                            <th scope="row">No of beds booked</th>
+                            <td>@Model.NoPplForHotel</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">Activity booked</th>
+                            <td>@Model.ActivitySelected</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">No for activity booked</th>
+                            <td>@Model.NoPplForActivity</td>
+                        </tr>
+
+                </table>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr class="table-info">
+                            <th scope="row">Hotel cost</th>
+                            <td>@Model.TotalCostHotel 	&euro;</td>
+                        </tr>
+                        <tr class="table-info">
+                            <th scope="row">Activity cost</th>
+                            <td>@Model.TotalCostActivity 	&euro;</td>
+                        </tr>
+                        <tr class="table-info">
+                            <th scope="row">Rental cost</th>
+                            <td>@Model.TotalCostRentEq 	&euro;</td>
+                        </tr>
+                        <tr class="table-info">
+                            <th scope="row">TRansport Service</th>
+                            <td>@Model.TotalCostTransport 	&euro;</td>
+                        </tr>
+                        <tr class="table-info">
+                            <th scope="row">Total amount</th>
+                            <td>@Model.TotalCostAll 	&euro;</td>
+                        </tr>
+</table>
+
+            </div>
+        </div>
+    </div>
+</div>

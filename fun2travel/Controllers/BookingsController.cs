@@ -26,23 +26,25 @@ namespace fun2travel.Controllers
             return View(repository.GetHotelByIdToBookingVM(id));
         }
         [HttpPost]
-        public IActionResult Booking(BookingDetailVM model)
+        public IActionResult Booking(BookingDetailVM bookingDetails)
         {
             if (!ModelState.IsValid)
             {
-                model = repository.GetHotelByIdToBookingVM(model.Id);
-                return View(model);
+                bookingDetails = repository.GetHotelByIdToBookingVM(bookingDetails.Id);
+                return View(bookingDetails);
             }
 
             // save booking
-            return RedirectToAction(nameof(BookingConfirmation));
+            bookingDetails = repository.GetbookingdetailsandCost(bookingDetails);
+            return View("BookingConfirmation", bookingDetails);
+            //return RedirectToAction(nameof(BookingConfirmation));
 
         }
         [HttpGet]
-        public IActionResult BookingConfirmation()
+        public IActionResult BookingConfirmation(BookingDetailVM bookingDetails)
         {
-
-            return View();
+            
+            return View(bookingDetails);
         }
     }
 }

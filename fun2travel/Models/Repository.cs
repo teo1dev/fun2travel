@@ -25,15 +25,15 @@ namespace fun2travel.Models
                  .Select(c => new HotelsVM
                  {
                      HotelName = c.HotelName,
-                     Id=c.Id,
-                     HotelPic1=c.HotelPic1,
-                     HotelPic2=c.HotelPic2,
-                     HotelPic3=c.HotelPic3
+                     Id = c.Id,
+                     HotelPic1 = c.HotelPic1,
+                     HotelPic2 = c.HotelPic2,
+                     HotelPic3 = c.HotelPic3
 
                  }).ToArray();
             return q;
         }
-        public Activity GetAdventureById(int id) 
+        public Activity GetAdventureById(int id)
         {
             return context.Activity
                 .Find(id);
@@ -44,22 +44,77 @@ namespace fun2travel.Models
         public AdventuresVM GetAdventureByIdToVM(int id)
         {
             Activity adventure = new Activity();
-          
+
             adventure = GetAdventureById(id);
             AdventuresVM adventureVm = new AdventuresVM
             {
                 Id = adventure.Id,
-                ActivityName=adventure.ActivityName,
-                ActivityPrice=Math.Round(adventure.ActivityPrice,0),
-                ActivityRentalPrice=adventure.ActivityRentalPrice,
-                ActivityDescription=adventure.ActivityDescription,
-                ActivityPic1=adventure.ActivityPic1,
-                ActivityPic2=adventure.ActivityPic2
+                ActivityName = adventure.ActivityName,
+                ActivityPrice = Math.Round(adventure.ActivityPrice, 0),
+                ActivityRentalPrice = adventure.ActivityRentalPrice,
+                ActivityDescription = adventure.ActivityDescription,
+                ActivityPic1 = adventure.ActivityPic1,
+                ActivityPic2 = adventure.ActivityPic2
 
             };
             return adventureVm;
         }
 
+        internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
+        {
+            var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
+            BookingDetailVM temp = new BookingDetailVM
+            {
+                ActivitySelected = context.Activity
+                .Where(a => a.Id == activityId)
+                .Select(c => new BookingDetailVM
+                {
+                    ActivitySelected = c.ActivityName
+
+                }).ToString()
+            };
+            var q = context.Activity
+                .Where(a => a.Id == activityId)
+                .Select(c => new BookingDetailVM
+                {
+                    PriceForRentEq = c.ActivityRentalPrice
+
+                }).FirstOrDefault();
+            bookingDetails.PriceForRentEq = q.PriceForRentEq;
+
+            q = context.Activity
+                .Where(a => a.Id == activityId)
+                .Select(c => new BookingDetailVM
+                {
+                    PriceForActivity = c.ActivityPrice
+
+                }).FirstOrDefault();
+            bookingDetails.PriceForActivity = q.PriceForActivity;
+
+            bookingDetails.TotalCostHotel = bookingDetails.NoPplForHotel * bookingDetails.BedPricePerNight;
+            if (bookingDetails.RentEquipmentSelected)
+            {
+                bookingDetails.TotalCostRentEq = bookingDetails.NoPplForActivity * (decimal)bookingDetails.PriceForRentEq;
+            }else
+                bookingDetails.TotalCostRentEq = 0;
+            if (bookingDetails.TransportServiceSelected)
+            {
+                bookingDetails.TotalCostTransport = bookingDetails.NoPplForHotel * bookingDetails.PriceForTransport;
+            } else
+                bookingDetails.TotalCostTransport = 0;
+
+            bookingDetails.TotalCostActivity = bookingDetails.NoPplForActivity * (decimal)bookingDetails.PriceForActivity;
+            bookingDetails.TotalCostAll =
+                bookingDetails.TotalCostHotel
+                + bookingDetails.TotalCostRentEq
+                + bookingDetails.TotalCostTransport
+                + bookingDetails.TotalCostActivity;
+            bookingDetails.TotalCostAll = Math.Round(bookingDetails.TotalCostAll, 0);
+            bookingDetails.TotalCostHotel = Math.Round(bookingDetails.TotalCostHotel, 0);
+            bookingDetails.TotalCostRentEq = Math.Round(bookingDetails.TotalCostRentEq, 0);
+            bookingDetails.TotalCostTransport = Math.Round(bookingDetails.TotalCostTransport, 0);
+            return bookingDetails;
+        }
 
         public AdventuresVM[] GetAllAdventures()
         {
@@ -69,8 +124,8 @@ namespace fun2travel.Models
                 {
                     ActivityName = c.ActivityName,
                     Id = c.Id,
-                    ActivityPic1=c.ActivityPic1,
-                    ActivityPic2=c.ActivityPic2
+                    ActivityPic1 = c.ActivityPic1,
+                    ActivityPic2 = c.ActivityPic2
 
                 }).ToArray();
             return a;
@@ -132,7 +187,7 @@ namespace fun2travel.Models
                     {
                         HotelId = item.HotelId,
                         HotelName = item.HotelName,
-                        BedPricePerNight = Math.Round(item.BedPricePerNight,0)
+                        BedPricePerNight = Math.Round(item.BedPricePerNight, 0)
 
                     });
                 }
@@ -142,19 +197,19 @@ namespace fun2travel.Models
             if (activityName != null && locationName == null)
             {
                 var q = from a in context.Activity
-                            join m in context.ActToHot
-                            on a.Id equals m.ActivityFk
-                            join h in context.Hotel
-                            on m.HotelFk equals h.Id
-                            where a.ActivityName == activityName
-                            select new { h.HotelName, h.Id, h.BedPricePerNight};
+                        join m in context.ActToHot
+                        on a.Id equals m.ActivityFk
+                        join h in context.Hotel
+                        on m.HotelFk equals h.Id
+                        where a.ActivityName == activityName
+                        select new { h.HotelName, h.Id, h.BedPricePerNight };
                 foreach (var item in q)
                 {
                     resultList.Add(new ResultVM
                     {
                         HotelId = item.Id,
                         HotelName = item.HotelName,
-                        BedPricePerNight = Math.Round(item.BedPricePerNight,0)
+                        BedPricePerNight = Math.Round(item.BedPricePerNight, 0)
 
                     });
 
@@ -169,14 +224,14 @@ namespace fun2travel.Models
                         join h in context.Hotel
                         on m.HotelFk equals h.Id
                         where a.ActivityName == activityName && h.HotelLocation == locationName
-                        select new { h.HotelName, h.Id, h.BedPricePerNight};
+                        select new { h.HotelName, h.Id, h.BedPricePerNight };
                 foreach (var item in q)
                 {
                     resultList.Add(new ResultVM
                     {
                         HotelId = item.Id,
                         HotelName = item.HotelName,
-                        BedPricePerNight = Math.Round(item.BedPricePerNight,0)
+                        BedPricePerNight = Math.Round(item.BedPricePerNight, 0)
 
                     });
 
@@ -202,10 +257,10 @@ namespace fun2travel.Models
                 Id = hotel.Id,
                 HotelName = hotel.HotelName,
                 HotelLocation = hotel.HotelLocation,
-                HotelAdress=hotel.HotelAdress,
-                BedPricePerNight = Math.Round(hotel.BedPricePerNight,0),
+                HotelAdress = hotel.HotelAdress,
+                BedPricePerNight = Math.Round(hotel.BedPricePerNight, 0),
                 HotelDescription = hotel.HotelDescription,
-                PriceForTransport = Math.Round(hotel.PriceForTransport,0),
+                PriceForTransport = Math.Round(hotel.PriceForTransport, 0),
                 TotalNrOfBeds = hotel.TotalNrOfBeds,
                 ActivityList = ActivityList,
                 HotelPic1 = hotel.HotelPic1,
@@ -240,15 +295,15 @@ namespace fun2travel.Models
             };
             return bookingVm;
         }
-        
+
         private List<Activity> GetactivitiesbyHotelId(int id)
         {
             var query = (from h in context.Hotel
-                        join m in context.ActToHot
-                        on id equals m.HotelFk
-                        join a in context.Activity
-                        on m.ActivityFk equals a.Id
-                        select new { a }).Distinct();
+                         join m in context.ActToHot
+                         on id equals m.HotelFk
+                         join a in context.Activity
+                         on m.ActivityFk equals a.Id
+                         select new { a }).Distinct();
 
             var list = new List<Activity>();
             foreach (var item in query)
@@ -257,7 +312,7 @@ namespace fun2travel.Models
                 {
                     ActivityName = item.a.ActivityName,
                     ActivityDescription = item.a.ActivityDescription,
-                    ActivityPrice = Math.Round(item.a.ActivityPrice,0),
+                    ActivityPrice = Math.Round(item.a.ActivityPrice, 0),
                     ActivityRentalPrice = item.a.ActivityRentalPrice,
                     EquipmentCanBeRented = item.a.EquipmentCanBeRented
 
@@ -279,7 +334,7 @@ namespace fun2travel.Models
             var list = new List<SelectListItem>();
             foreach (var item in query)
             {
-                list.Add( new SelectListItem
+                list.Add(new SelectListItem
                 {
                     Value = item.a.Id.ToString(),
                     Text = item.a.ActivityName

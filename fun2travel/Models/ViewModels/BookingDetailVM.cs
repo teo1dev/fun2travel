@@ -17,6 +17,8 @@ namespace fun2travel.Models.ViewModels
         public decimal BedPricePerNight { get; set; }
         public string HotelDescription { get; set; }
         public decimal PriceForTransport { get; set; }
+        public decimal? PriceForRentEq { get; set; }
+        public decimal? PriceForActivity { get; set; }
         public string HotelPic1 { get; set; }
         public string HotelPic2 { get; set; }
         public string HotelPic3 { get; set; }
@@ -38,7 +40,11 @@ namespace fun2travel.Models.ViewModels
         public bool RentEquipmentSelected { get; set; }
 
         public bool TransportServiceSelected { get; set; }
-
+        public decimal TotalCostAll { get; set; }
+        public decimal TotalCostHotel { get; set; }
+        public decimal TotalCostActivity { get; set; }
+        public decimal TotalCostRentEq { get; set; }
+        public decimal TotalCostTransport { get; set; }
         /// Booking Customer Info
 
         [Required]
