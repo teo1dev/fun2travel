@@ -75,5 +75,5 @@ $("#datetime2").on("change", function () {
     console.log("Ending date" + myDate, myDate.getTime());
 });
 $(function () {
-    $("#datetimetest").datepicker();
+    $(".datepicker").datepicker();
 });

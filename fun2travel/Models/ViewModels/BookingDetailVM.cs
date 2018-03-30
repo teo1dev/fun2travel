@@ -21,6 +21,7 @@ namespace fun2travel.Models.ViewModels
         public string HotelPic2 { get; set; }
         public string HotelPic3 { get; set; }
         public List<Activity> ActivityList { get; set; }
+        public List<SelectListItem> SelectionActivityList { get; set; }
 
         /// Variables from Form
 
