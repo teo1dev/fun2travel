@@ -1,5 +1,6 @@
 ﻿using fun2travel.Models.Entities;
 using fun2travel.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -221,7 +222,7 @@ namespace fun2travel.Models
             Hotel hotel = new Hotel();
             hotel = GetHotelById(id);
             var ActivityList = GetactivitiesbyHotelId(id);
-            //var ActivityOptionsList = GetActivitiesSelectListItem(id);
+            var SelectionActivityList = GetActivitiesSelectListItem(id);
             BookingDetailVM bookingVm = new BookingDetailVM
             {
                 Id = hotel.Id,
@@ -234,7 +235,8 @@ namespace fun2travel.Models
                 ActivityList = ActivityList,
                 HotelPic1 = hotel.HotelPic1,
                 HotelPic2 = hotel.HotelPic2,
-                HotelPic3 = hotel.HotelPic3
+                HotelPic3 = hotel.HotelPic3,
+                SelectionActivityList = SelectionActivityList
 
             };
             return bookingVm;
@@ -260,6 +262,28 @@ namespace fun2travel.Models
                     ActivityRentalPrice = item.a.ActivityRentalPrice,
                     EquipmentCanBeRented = item.a.EquipmentCanBeRented
 
+                });
+            }
+            return list;
+
+        }
+
+        private List<SelectListItem> GetActivitiesSelectListItem(int id)
+        {
+            var query = (from h in context.Hotel
+                         join m in context.ActToHot
+                         on id equals m.HotelFk
+                         join a in context.Activity
+                         on m.ActivityFk equals a.Id
+                         select new { a }).Distinct();
+
+            var list = new List<SelectListItem>();
+            foreach (var item in query)
+            {
+                list.Add( new SelectListItem
+                {
+                    Value = item.a.Id.ToString(),
+                    Text = item.a.ActivityName
                 });
             }
             return list;

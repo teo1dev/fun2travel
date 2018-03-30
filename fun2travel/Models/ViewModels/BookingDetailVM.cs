@@ -21,11 +21,16 @@ namespace fun2travel.Models.ViewModels
         public string HotelPic2 { get; set; }
         public string HotelPic3 { get; set; }
         public List<Activity> ActivityList { get; set; }
+        public List<SelectListItem> SelectionActivityList { get; set; }
 
         /// Variables from Form
 
-        public DateTime SelectedDateFrom { get; set; }
-        public DateTime SelectedDateTo { get; set; }
+        [Required(ErrorMessage = "Please choose a date.")]
+        public DateTime? SelectedDateFrom { get; set; } // Datetime set as null in bookingform for validation
+
+        [Required(ErrorMessage = "Please choose a date.")]
+        public DateTime? SelectedDateTo { get; set; }  // Datetime set as null in bookingform for validation
+
         public int NoPplForHotel { get; set; }
 
         public string ActivitySelected { get; set; }

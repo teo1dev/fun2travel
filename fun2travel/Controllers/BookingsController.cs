@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fun2travel.Models;
+using fun2travel.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -25,7 +26,20 @@ namespace fun2travel.Controllers
             return View(repository.GetHotelByIdToBookingVM(id));
         }
         [HttpPost]
-        public IActionResult Booking()
+        public IActionResult Booking(BookingDetailVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model = repository.GetHotelByIdToBookingVM(model.Id);
+                return View(model);
+            }
+
+            // save booking
+            return RedirectToAction(nameof(BookingConfirmation));
+
+        }
+        [HttpGet]
+        public IActionResult BookingConfirmation()
         {
 
             return View();
