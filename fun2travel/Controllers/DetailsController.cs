@@ -24,12 +24,12 @@ namespace fun2travel.Controllers
 
         public IActionResult AdventureDetails(int id)
         {
-            AdventuresVM adventureDetailVM = new AdventuresVM
-            {
-                Id = repository.GetAdventureById(id).Id,
+            //AdventuresVM adventureDetailVM = new AdventuresVM
+            //{
+            //    Id = repository.GetAdventureById(id)
 
-            };
-            return View(repository.GetAdventureById(id));
+            //};
+            return View(repository.GetAdventureByIdToVM(id));
         }
 
         private IActionResult View(Func<int, AdventuresVM> getAdventureById)

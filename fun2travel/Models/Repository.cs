@@ -34,14 +34,28 @@ namespace fun2travel.Models
         }
         public Activity GetAdventureById(int id) //TODO: fix this!!
         {
-            var temp = context.Activity
+            return context.Activity
                 .Find(id);
-            Activity temp2 = new Activity()
-            {
-                Id = temp.Id
-            };
-            return temp2;
+
         }
+
+
+        public AdventuresVM GetAdventureByIdToVM(int id)
+        {
+            Activity adventure = new Activity();
+            //adventure = GetAdventureById(id);
+            adventure = GetAdventureById(id);
+            //var ActivityOptionsList = GetActivitiesSelectListItem(id);
+            AdventuresVM adventureVm = new AdventuresVM
+            {
+                Id = adventure.Id,
+                ActivityName=adventure.ActivityName,
+                ActivityPic1=adventure.ActivityPic1
+
+            };
+            return adventureVm;
+        }
+
 
         public AdventuresVM[] GetAllAdventures()
         {
