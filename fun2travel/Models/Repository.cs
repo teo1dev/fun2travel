@@ -201,6 +201,7 @@ namespace fun2travel.Models
                 Id = hotel.Id,
                 HotelName = hotel.HotelName,
                 HotelLocation = hotel.HotelLocation,
+                HotelAdress=hotel.HotelAdress,
                 BedPricePerNight = Math.Round(hotel.BedPricePerNight,0),
                 HotelDescription = hotel.HotelDescription,
                 PriceForTransport = Math.Round(hotel.PriceForTransport,0),

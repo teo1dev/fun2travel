@@ -15,8 +15,10 @@
             </div>
             <div class="d-flex flex-column justify-content-around">
                 <img src="@Model.HotelPic2" class="detailsimage" />
-                
-                <a class="btn btn-primary" asp-action="Booking" asp-route-id="@Model.Id" role="button" style="margin-right:50px;width:50%">Book</a>
+                <iframe src="//www.google.com/maps/embed/v1/place?q=@Model.HotelAdress
+                            &zoom=17
+                            &key=AIzaSyA0yQYkFi3W71RjEzM96kC1W7GQcFZ9QdM"></iframe>
+                <a class="btn btn-primary" asp-controller="Bookings" asp-action="Booking" asp-route-id="@Model.Id" role="button" style="margin-right:50px;width:50%">Book</a>
             </div>
         </div>
         <br />

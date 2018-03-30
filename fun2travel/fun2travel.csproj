@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>e97b1635-0101-4fb6-9706-fd4a13ceb12f</UserSecretsId>
+    <ApplicationIcon>iconlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
