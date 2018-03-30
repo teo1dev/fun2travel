@@ -24,24 +24,13 @@
                     <td><small>Price per night:</small>@item.BedPricePerNight &euro;</td>
                     <td class="text-right">
                         <div class="">
-                            <a class="btn btn-primary" asp-action="Booking" asp-route-id="@item.HotelId" role="button" style="margin-right:50px;width:50%">Book</a>
+                            <a class="btn btn-primary" asp-action="Booking" asp-controller="Bookings" asp-route-id="@item.HotelId" role="button" style="margin-right:50px;width:50%">Book</a>
 
                         </div>
                     </td>
                 </tr>
                 }
 
-                @*<tr class="table-sm table-active">
-                    <td>Malmö</td>
-                    <td>Hotell 2</td>
-                    <td>Aktivitet 2</td>
-                    <td class="text-right">
-                        <div class="">
-                            <a class="btn btn-primary" asp-action="Booking" role="button" style="margin-right:50px;width:50%">Book</a>
-
-                        </div>
-                    </td>
-                </tr>*@
             </tbody>
         </table>
     </div>
