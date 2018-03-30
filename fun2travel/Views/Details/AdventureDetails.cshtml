@@ -4,19 +4,35 @@
         <div class="hotelsdetail"></div>
         <h2 class="display-3">@Model.ActivityName</h2>
         <div class="d-flex justify-content-around">
-            <div>
-                <p>@Model.ActivityDescription</p>
-                <p>@Model.ActivityPrice</p>
-                <p>Price for renting equipment €: @Model.ActivityRentalPrice</p>
+            <div class="card border-warning mb-3" style="max-width: 35rem;">
+                <div class="card-body">
+                    <p>@Model.ActivityDescription</p>
+                    <p>Price for Activity €: @Model.ActivityPrice</p>
+                    <p>Price for renting equipment €: @Model.ActivityRentalPrice</p>
+                </div>
             </div>
-            <img src="@Model.ActivityPic1" class="detailsimage" />
+            <div class="d-flex flex-column align-content-center">
+                <img src="@Model.ActivityPic1" class="detailsimage" />
+
+            </div>
         </div>
         <br />
         <br />
         <div class="d-flex justify-content-around">
             <img src="@Model.ActivityPic2" class="detailsimage" />
-         <p>Locations that offer @Model.ActivityName:</p>
-        
+
+            <div class="card border-warning mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">The following Locations are offerig @Model.ActivityName</h4>
+                    <ul>
+                        @foreach (var item in Model.HotelByActivity)
+                        {
+                            <li>@item.HotelName</li>
+                        }
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+

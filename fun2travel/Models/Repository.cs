@@ -44,17 +44,18 @@ namespace fun2travel.Models
         public AdventuresVM GetAdventureByIdToVM(int id)
         {
             Activity adventure = new Activity();
-
+            var hotelList = GetHotelByActivityId(id);
             adventure = GetAdventureById(id);
             AdventuresVM adventureVm = new AdventuresVM
             {
                 Id = adventure.Id,
-                ActivityName = adventure.ActivityName,
-                ActivityPrice = Math.Round(adventure.ActivityPrice, 0),
-                ActivityRentalPrice = adventure.ActivityRentalPrice,
-                ActivityDescription = adventure.ActivityDescription,
-                ActivityPic1 = adventure.ActivityPic1,
-                ActivityPic2 = adventure.ActivityPic2
+                ActivityName=adventure.ActivityName,
+                ActivityPrice=Math.Round(adventure.ActivityPrice,0),
+                ActivityRentalPrice=adventure.ActivityRentalPrice,
+                ActivityDescription=adventure.ActivityDescription,
+                ActivityPic1=adventure.ActivityPic1,
+                ActivityPic2=adventure.ActivityPic2,
+                HotelByActivity=hotelList
 
             };
             return adventureVm;
@@ -338,6 +339,29 @@ namespace fun2travel.Models
                 {
                     Value = item.a.Id.ToString(),
                     Text = item.a.ActivityName
+                });
+            }
+            return list;
+
+        }
+
+        private List<Hotel> GetHotelByActivityId(int id)
+        {
+            var query = (from h in context.Activity
+                         join m in context.ActToHot
+                         on id equals m.ActivityFk
+                         join a in context.Hotel
+                         on m.HotelFk equals a.Id
+                         select new { a }).Distinct();
+
+            var list = new List<Hotel>();
+            foreach (var item in query)
+            {
+                list.Add(new Hotel
+                {
+                    HotelName = item.a.HotelName,
+                   HotelLocation=item.a.HotelLocation
+
                 });
             }
             return list;

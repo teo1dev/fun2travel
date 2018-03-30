@@ -6,14 +6,14 @@
         <div class="d-flex justify-content-around">
             <div class="card border-warning mb-3" style="max-width: 35rem;">
                 <div class="card-body">
-                    <p>Location: @Model.HotelLocation</p> @*Lägg in liten googlemaps??*@
+                    <p>Location: @Model.HotelLocation</p>
                     <p>@Model.HotelDescription</p>
                     <p>Price per night €: @Model.BedPricePerNight</p>
                     <p>Price for transport €: @Model.PriceForTransport</p>
                     <p>Total number of beds: @Model.TotalNrOfBeds</p>
                 </div>
             </div>
-            <div class="d-flex flex-column justify-content-around">
+            <div class="d-flex flex-column align-content-center">
                 <img src="@Model.HotelPic2" class="detailsimage" />
                 <iframe src="//www.google.com/maps/embed/v1/place?q=@Model.HotelAdress
                             &zoom=17
