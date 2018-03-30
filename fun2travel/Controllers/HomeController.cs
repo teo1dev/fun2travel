@@ -37,11 +37,7 @@ namespace fun2travel.Controllers
             return View();
         }
 
-        public IActionResult Booking(int id)
-        {
-            
-            return View(repository.GetHotelByIdToVM(id));
-        }
+        
 
         public IActionResult Registration()
         {

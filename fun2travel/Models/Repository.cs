@@ -50,7 +50,7 @@ namespace fun2travel.Models
                 Id = adventure.Id,
                 ActivityName=adventure.ActivityName,
                 ActivityPrice=Math.Round(adventure.ActivityPrice,0),
-                ActivityRentalPrice=Math.Round(adventure.ActivityRentalPrice,0),
+                ActivityRentalPrice= adventure.ActivityRentalPrice,
 
                 ActivityPic1=adventure.ActivityPic1
 
@@ -213,8 +213,30 @@ namespace fun2travel.Models
             return hotelVm;
         }
 
-        /// Fix return type or something
+        public BookingDetailVM GetHotelByIdToBookingVM(int id)
+        {
+            Hotel hotel = new Hotel();
+            hotel = GetHotelById(id);
+            var ActivityList = GetactivitiesbyHotelId(id);
+            //var ActivityOptionsList = GetActivitiesSelectListItem(id);
+            BookingDetailVM bookingVm = new BookingDetailVM
+            {
+                Id = hotel.Id,
+                HotelName = hotel.HotelName,
+                HotelLocation = hotel.HotelLocation,
+                BedPricePerNight = Math.Round(hotel.BedPricePerNight, 0),
+                HotelDescription = hotel.HotelDescription,
+                PriceForTransport = Math.Round(hotel.PriceForTransport, 0),
+                TotalNrOfBeds = hotel.TotalNrOfBeds,
+                ActivityList = ActivityList,
+                HotelPic1 = hotel.HotelPic1,
+                HotelPic2 = hotel.HotelPic2,
+                HotelPic3 = hotel.HotelPic3
 
+            };
+            return bookingVm;
+        }
+        
         private List<Activity> GetactivitiesbyHotelId(int id)
         {
             var query = (from h in context.Hotel

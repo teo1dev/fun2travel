@@ -10,7 +10,7 @@ namespace fun2travel.Models.ViewModels
         public int Id { get; set; }
         public string ActivityName { get; set; }
         public decimal ActivityPrice { get; set; }
-        public decimal ActivityRentalPrice { get; set; }
+        public decimal? ActivityRentalPrice { get; set; }
         public bool EquipmentCanBeRented { get; set; }
         public string ActivityDescription { get; set; }
         public string ActivityPic1 { get; set; }
