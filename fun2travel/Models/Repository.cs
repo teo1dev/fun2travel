@@ -51,9 +51,10 @@ namespace fun2travel.Models
                 Id = adventure.Id,
                 ActivityName=adventure.ActivityName,
                 ActivityPrice=Math.Round(adventure.ActivityPrice,0),
-                ActivityRentalPrice= adventure.ActivityRentalPrice,
-
-                ActivityPic1=adventure.ActivityPic1
+                ActivityRentalPrice=adventure.ActivityRentalPrice,
+                ActivityDescription=adventure.ActivityDescription,
+                ActivityPic1=adventure.ActivityPic1,
+                ActivityPic2=adventure.ActivityPic2
 
             };
             return adventureVm;
@@ -201,6 +202,7 @@ namespace fun2travel.Models
                 Id = hotel.Id,
                 HotelName = hotel.HotelName,
                 HotelLocation = hotel.HotelLocation,
+                HotelAdress=hotel.HotelAdress,
                 BedPricePerNight = Math.Round(hotel.BedPricePerNight,0),
                 HotelDescription = hotel.HotelDescription,
                 PriceForTransport = Math.Round(hotel.PriceForTransport,0),

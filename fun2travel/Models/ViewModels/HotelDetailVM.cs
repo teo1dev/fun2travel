@@ -12,6 +12,7 @@ namespace fun2travel.Models.ViewModels
         public int Id { get; set; }
         public string HotelName { get; set; }
         public string HotelLocation { get; set; }
+        public string HotelAdress { get; set; }
         public int TotalNrOfBeds { get; set; }
         public decimal BedPricePerNight { get; set; }
         public string HotelDescription { get; set; }
