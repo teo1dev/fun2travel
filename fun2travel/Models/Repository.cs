@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -39,6 +40,27 @@ namespace fun2travel.Models
             return context.Activity
                 .Find(id);
 
+        }
+
+        internal void SendConfirmationEmail(BookingDetailVM bookingDetails)
+        {
+            MailMessage mailConfirmation = new MailMessage();
+            mailConfirmation.To.Add(bookingDetails.EmailAddress);
+            mailConfirmation.From = new MailAddress("funtotravel07@gmail.com");
+            mailConfirmation.Subject = "Booking Confirmation";
+            string Body = "<p>TEST</p>";
+            mailConfirmation.Body = Body;
+            mailConfirmation.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential
+            ("funtotravel07", "P@ssw0rd18");// Enter senders User name and password
+            smtp.EnableSsl = true;
+            smtp.Send(mailConfirmation);
+            /// Send email to confirm booking and write things to DB
         }
 
         public AdventuresVM GetAdventureByIdToVM(int id)

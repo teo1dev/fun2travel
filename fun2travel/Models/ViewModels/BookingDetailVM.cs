@@ -42,7 +42,7 @@ namespace fun2travel.Models.ViewModels
         public string ActivitySelectedId { get; set; } //  => Bdb
         public int NoPplForActivity { get; set; } //  => Bdb
         public bool RentEquipmentSelected { get; set; } //  => Bdb
-
+        public bool EquipmentCanBeRented { get; set; }
         public bool TransportServiceSelected { get; set; } //  => Bdb
         public decimal TotalCostAll { get; set; } //  => Bdb
         public decimal TotalCostHotel { get; set; } //  => Bdb

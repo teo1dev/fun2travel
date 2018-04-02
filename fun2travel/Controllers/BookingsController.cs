@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using fun2travel.Models;
 using fun2travel.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,6 +35,7 @@ namespace fun2travel.Controllers
                 return View(bookingDetails);
             }
 
+            repository.SendConfirmationEmail(bookingDetails);
             // write prel booking to DB, generate booking ID and send to BookingConfirmation action?
             bookingDetails = repository.GetbookingdetailsandCost(bookingDetails);
             repository.SavePrelBookingToDb(bookingDetails);
@@ -45,11 +47,12 @@ namespace fun2travel.Controllers
         {
             
             return View(bookingDetails);
+            //return View("BookingConfirmationSendEmail", bookingDetails);
         }
-        [HttpPost]
-        public IActionResult BookingConfirmation()
+        [HttpGet]
+        public IActionResult BookingConfirmationSendEmail(BookingDetailVM bookingDetails)
         {
-            /// Send email to confirm booking and write things to DB
+            
             return View();
         }
     }
