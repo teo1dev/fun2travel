@@ -17,12 +17,9 @@
                                     <input asp-for="HotelLocation" type="text" value="@Model.HotelLocation" style="visibility:hidden" />
                                     <input asp-for="PriceForTransport" type="text" value="@Model.PriceForTransport" style="visibility:hidden" />
                                     <input asp-for="BedPricePerNight" type="text" value="@Model.BedPricePerNight" style="visibility:hidden" />
-                                    
                                 </div>
-
                                 <div class="col-lg-4">
                                     <div class="form-group">
-
                                         <label class="control-label">Pers</label>
                                         <select asp-for="NoPplForHotel" id="NumberofPeopleRoom" class="form-control">
                                             <option value="1">1</option>
@@ -39,40 +36,28 @@
                                     </div>
                                 </div>
                             </div>
-
                             <legend>Pick Date</legend>
                             <div class="bs-component">
-
                                 <div class="row">
                                     <div class="col">
-
-
                                         <label for="SelectedDateFrom" class="col-md-2 control-label">Starting</label>
+                                        <br />
                                         <input type="date" name="SelectedDateFrom" id="date1" value="" />
                                         <span asp-validation-for="SelectedDateFrom" class="text-danger"></span>
-
                                     </div>
-
                                     <div class="col">
-
                                         <label for="SelectedDateTo" class="col-md-2 control-label">Ending</label>
+                                        <br />
                                         <input type="date" name="SelectedDateTo" value="" />
                                         <span asp-validation-for="SelectedDateTo" class="text-danger"></span>
-
                                     </div>
-
-
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="col-lg-8">
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">Activity</label>
-                                <select asp-for="ActivitySelected" asp-items="Model.SelectionActivityList" class="form-control">                                    
-                                </select>
-
+                                <select asp-for="ActivitySelected" asp-items="Model.SelectionActivityList" class="form-control"></select>
                             </div>
                             <div class="row">
                                 <div class="col-lg-4">
@@ -90,7 +75,6 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-4">
-
                                     <label class="control-label"># of ppl</label>
                                 </div>
                             </div>
@@ -122,46 +106,34 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label class="col-form-label" id="TotalHotelAmount"></label>
-
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputFullName">First Name</label>
                                         <input asp-for="FistName" type="text" class="form-control" placeholder="Full Name" id="inputFullName">
                                         <span asp-validation-for="FistName" class="text-danger"></span>
-
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputFullName">Surname</label>
                                         <input asp-for="LastName" type="text" class="form-control" placeholder="Full Name" id="inputFullName">
                                         <span asp-validation-for="LastName" class="text-danger"></span>
-
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
                                         <span asp-validation-for="EmailAddress" class="text-danger"></span>
-
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputDefault">Phone number</label>
                                         <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
                                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-
                                     </div>
                                     <div class="col-md-4">
                                         <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Book" />
                                     </div>
-
                                 </div>
-
-
-
                             </div>
                         </div>
-
-
                     </div>
-
                 </form>
             </div>
         </div>
