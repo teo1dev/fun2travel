@@ -77,6 +77,9 @@ namespace fun2travel.Controllers
             return View();
         }
 
-
+        public IActionResult Mail()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,74 @@
+﻿@model BookingDetailVM
+
+
+<img src="~/images/Logo.png" style="height:20%;width:20%" />
+
+<h1>Confirmation Mail</h1>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr class="table-dark">
+                <th scope="row">Hotel name:</th>
+                <td>@Model.HotelName, @Model.HotelLocation</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Hotel price:</th>
+                <td>@Model.BedPricePerNight &euro;</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Number of nights:</th>
+                <td>@Model.TotalNoNights</td>
+            <tr class="table-dark">
+                <th scope="row">Hotel name:</th>
+                <td>test</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Number of beds booked:</th>
+                <td>@Model.NoPplForHotel</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Hotel amount due:</th>
+                <td>@Model.TotalCostHotel &euro;</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Activity:</th>
+                <td>@Model.ActivitySelectedId</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">No of persons booked:</th>
+                <td>@Model.NoPplForActivity</td>
+            <tr class="table-dark">
+                <th scope="row">Total Activity amount due:</th>
+                <td>@Model.TotalCostActivity</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Hotel and Activities booked from:</th>
+                <td>@Model.SelectedDateFrom</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Hotel and Activities booked from:</th>
+                <td>@Model.SelectedDateTo</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Contact Information</th>
+                <td></td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">First Name:</th>
+                <td>@Model.FistName</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Surename:</th>
+                <td>@Model.LastName</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Email address:</th>
+                <td>@Model.EmailAddress</td>
+            </tr>
+            <tr class="table-dark">
+                <th scope="row">Phone number:</th>
+                <td>@Model.PhoneNumber</td>
+
+        </tbody>
+    </table>
+<br />

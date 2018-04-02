@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -39,6 +40,55 @@ namespace fun2travel.Models
             return context.Activity
                 .Find(id);
 
+        }
+
+        internal void SendConfirmationEmail(BookingDetailVM bookingDetails)
+        {
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("funtotravel07@gmail.com");
+            mail.To.Add(bookingDetails.EmailAddress);
+            bookingDetails.SelectedDateFrom = (DateTime)bookingDetails.SelectedDateFrom.Value.Date;
+            bookingDetails.SelectedDateTo = (DateTime)bookingDetails.SelectedDateTo.Value.Date;
+            mail.Subject = "Booking Confirmation";
+            mail.Body = @"<html><h3>Confirmation Mail</h3><strong>Hotel name:</strong>      
+                       <p>" + bookingDetails.HotelName + ", " + bookingDetails.HotelLocation +
+                       "</p><strong>Hotel price:</strong><p>" + bookingDetails.BedPricePerNight +
+                       " &euro;</p><strong>Number of nights:</strong><p> " + bookingDetails.TotalNoNights + "</p>" +
+                       " <strong>Number of beds booked:</strong> " +
+                       "<p> " + bookingDetails.NoPplForHotel + "</p>" +
+                       "<strong>Hotel amount due:</ strong > " +
+                       "<p> " + bookingDetails.TotalCostHotel + " &euro;</p>" +
+                       "<strong>Activity:</strong> " +
+                       "<p> " + bookingDetails.ActivitySelected + "</p>" +
+                       "<strong>No of persons booked:</strong> " +
+                       "<p> " + bookingDetails.NoPplForActivity + "</p>" +
+                       "<strong>Total Activity amount due:</strong> " +
+                       "<p> " + bookingDetails.TotalCostActivity + " &euro;</p>" +
+                       "<strong>Hotel and Activities booked from:</strong> " +
+                       "<p> " + bookingDetails.SelectedDateFrom + "</p>" +
+                       "<strong>Hotel and Activities booked from:</strong> " +
+                       "<p> " + bookingDetails.SelectedDateTo + "</p>" +
+                       "<strong>Total Amount due:</strong> " +
+                       "<p> " + bookingDetails.TotalCostAll + " &euro;</p>" +
+                       "<br /><br /><br /><h3>Contact Details</h3> " +
+                       "<p></p>" +
+                       "<strong>First Name:</strong> " +
+                       "<p> " + bookingDetails.FistName + "</p>" +
+                       "<strong>Surename:</strong> " +
+                       "<p> " + bookingDetails.LastName + "</p>" +
+                       "<strong>Email address:</strong> " +
+                       "<p> " + bookingDetails.EmailAddress + "</p>" +
+                       "<strong>Phone number:</strong> " +
+                       "<p> " + bookingDetails.PhoneNumber + "</p></html>";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential
+            ("funtotravel07@gmail.com", "P@ssw0rd18");// Enter senders User name and password
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
         }
 
         public AdventuresVM GetAdventureByIdToVM(int id)
@@ -394,6 +444,6 @@ namespace fun2travel.Models
 
         }
 
-        
+
     }
 }
