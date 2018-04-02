@@ -30,28 +30,7 @@ namespace fun2travel.Controllers
             return PartialView("_ResultBox", repository.FilterHotelandActivityPartialView(locationName, activityName));
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        
-
-        public IActionResult Registration()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Login()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
+     
 
         public IActionResult Error()
         {
