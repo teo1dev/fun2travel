@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace fun2travel.Models
@@ -49,22 +50,30 @@ namespace fun2travel.Models
             AdventuresVM adventureVm = new AdventuresVM
             {
                 Id = adventure.Id,
-                ActivityName=adventure.ActivityName,
-                ActivityPrice=Math.Round(adventure.ActivityPrice,0),
-                ActivityRentalPrice=adventure.ActivityRentalPrice,
-                ActivityDescription=adventure.ActivityDescription,
-                ActivityPic1=adventure.ActivityPic1,
-                ActivityPic2=adventure.ActivityPic2,
-                HotelByActivity=hotelList
+                ActivityName = adventure.ActivityName,
+                ActivityPrice = Math.Round(adventure.ActivityPrice, 0),
+                ActivityRentalPrice = adventure.ActivityRentalPrice,
+                ActivityDescription = adventure.ActivityDescription,
+                ActivityPic1 = adventure.ActivityPic1,
+                ActivityPic2 = adventure.ActivityPic2,
+                HotelByActivity = hotelList
 
             };
             return adventureVm;
         }
 
+        internal void SavePrelBookingToDb(BookingDetailVM bookingDetails)
+        {
+
+        }
+
         internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
         {
-            var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
 
+            bookingDetails.BookingId = Get8Digits(); //BookingID
+            bookingDetails.BookingTimeStamp = DateTime.Now; //Booking Timestamp
+
+            var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
             var querya = (from a in context.Activity
                           where a.Id == activityId
 
@@ -76,7 +85,7 @@ namespace fun2travel.Models
             {
                 bookingDetails.ActivitySelected = item.activityName;
             }
-            
+
             var q = context.Activity
                 .Where(a => a.Id == activityId)
                 .Select(c => new BookingDetailVM
@@ -99,12 +108,14 @@ namespace fun2travel.Models
             if (bookingDetails.RentEquipmentSelected)
             {
                 bookingDetails.TotalCostRentEq = bookingDetails.NoPplForActivity * (decimal)bookingDetails.PriceForRentEq;
-            }else
+            }
+            else
                 bookingDetails.TotalCostRentEq = 0;
             if (bookingDetails.TransportServiceSelected)
             {
                 bookingDetails.TotalCostTransport = bookingDetails.NoPplForHotel * bookingDetails.PriceForTransport;
-            } else
+            }
+            else
                 bookingDetails.TotalCostTransport = 0;
 
             bookingDetails.TotalCostActivity = bookingDetails.NoPplForActivity * (decimal)bookingDetails.PriceForActivity;
@@ -119,6 +130,15 @@ namespace fun2travel.Models
             bookingDetails.TotalCostTransport = Math.Round(bookingDetails.TotalCostTransport, 0);
             bookingDetails.TotalCostActivity = Math.Round(bookingDetails.TotalCostActivity, 0);
             return bookingDetails;
+        }
+
+        private string Get8Digits() // Generate Booking Id
+        {
+            var bytes = new byte[4];
+            var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(bytes);
+            uint random = BitConverter.ToUInt32(bytes, 0) % 100000000;
+            return String.Format("{0:D8}", random);
         }
 
         public AdventuresVM[] GetAllAdventures()
@@ -364,7 +384,7 @@ namespace fun2travel.Models
                 list.Add(new Hotel
                 {
                     HotelName = item.a.HotelName,
-                   HotelLocation=item.a.HotelLocation
+                    HotelLocation = item.a.HotelLocation
 
                 });
             }

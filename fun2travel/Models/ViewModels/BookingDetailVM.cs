@@ -34,6 +34,7 @@ namespace fun2travel.Models.ViewModels
         public DateTime? SelectedDateTo { get; set; }  // Datetime set as null in bookingform for validation
 
         public int NoPplForHotel { get; set; } //  => Bdb
+        public int TotalNoNights { get; set; } //  => Bdb
 
         public string ActivitySelected { get; set; }
         public string ActivitySelectedId { get; set; } //  => Bdb
@@ -49,7 +50,10 @@ namespace fun2travel.Models.ViewModels
         /// Booking Customer Info
 
         [Required]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid First Name")]
         public string FistName { get; set; }  //  => Bdb
+        [Required]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid First Name")]
         public string LastName { get; set; } //  => Bdb
 
         [Required(ErrorMessage = "Email is required.")]
@@ -61,6 +65,7 @@ namespace fun2travel.Models.ViewModels
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string PhoneNumber { get; set; } //  => Bdb
 
-
+        public string BookingId { get; set; }
+        public DateTime BookingTimeStamp { get; set; }
     }
 }
