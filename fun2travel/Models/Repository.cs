@@ -67,22 +67,27 @@ namespace fun2travel.Models
             {
                 BookingId = bookingDetails.BookingId,
                 TimeStamp = bookingDetails.BookingTimeStamp,
-                DateFrom= (DateTime)bookingDetails.SelectedDateFrom,
-                DateTo=(DateTime)bookingDetails.SelectedDateTo,
-                HotelName=bookingDetails.HotelName,
-                NoPplForHotel=bookingDetails.NoPplForHotel,
-                RentEquipment=bookingDetails.RentEquipmentSelected,
-                Transport=bookingDetails.TransportServiceSelected,
-                FirstName=bookingDetails.FistName,
-                LastName=bookingDetails.LastName,
-                BookingEmail=bookingDetails.EmailAddress,
-                BookingPhone=bookingDetails.PhoneNumber,
-                TotalCost=bookingDetails.TotalCostAll,
-                TotalCostHotel=bookingDetails.TotalCostHotel,
-                TotalCostActivity=bookingDetails.TotalCostActivity,
-                TotalCostRenting=bookingDetails.TotalCostRentEq,
-                TotalCostTransport=bookingDetails.TotalCostTransport
+                DateFrom = (DateTime)bookingDetails.SelectedDateFrom,
+                DateTo = (DateTime)bookingDetails.SelectedDateTo,
+                HotelName = bookingDetails.HotelName,
+                NoPplForHotel = bookingDetails.NoPplForHotel,
+                ActivityId = Convert.ToInt32(bookingDetails.ActivitySelectedId),
+                NoPplForActivity = bookingDetails.NoPplForActivity,
+                RentEquipment = bookingDetails.RentEquipmentSelected,
+                Transport = bookingDetails.TransportServiceSelected,
+                FirstName = bookingDetails.FistName,
+                LastName = bookingDetails.LastName,
+                BookingEmail = bookingDetails.EmailAddress,
+                BookingPhone = bookingDetails.PhoneNumber,
+                TotalCost = bookingDetails.TotalCostAll,
+                TotalCostHotel = bookingDetails.TotalCostHotel,
+                TotalCostActivity = bookingDetails.TotalCostActivity,
+                TotalCostRenting = bookingDetails.TotalCostRentEq,
+                TotalCostTransport = bookingDetails.TotalCostTransport,
+                TotalNoNights = bookingDetails.TotalNoNights
             };
+            context.Booking.Add(booking);
+            context.SaveChanges();
         }
 
         internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
@@ -95,6 +100,7 @@ namespace fun2travel.Models
             bookingDetails.TotalNoNights = ((DateTime)bookingDetails.SelectedDateTo - (DateTime)bookingDetails.SelectedDateFrom).Days; // Calc total number of nights booked
 
             var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
+            bookingDetails.ActivitySelectedId = bookingDetails.ActivitySelected;
             var querya = (from a in context.Activity
                           where a.Id == activityId
 
