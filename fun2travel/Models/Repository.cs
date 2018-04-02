@@ -117,6 +117,7 @@ namespace fun2travel.Models
             bookingDetails.TotalCostHotel = Math.Round(bookingDetails.TotalCostHotel, 0);
             bookingDetails.TotalCostRentEq = Math.Round(bookingDetails.TotalCostRentEq, 0);
             bookingDetails.TotalCostTransport = Math.Round(bookingDetails.TotalCostTransport, 0);
+            bookingDetails.TotalCostActivity = Math.Round(bookingDetails.TotalCostActivity, 0);
             return bookingDetails;
         }
 

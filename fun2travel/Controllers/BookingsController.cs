@@ -34,10 +34,9 @@ namespace fun2travel.Controllers
                 return View(bookingDetails);
             }
 
-            // save booking
+            // write prel booking to DB, generate booking ID and send to BookingConfirmation action?
             bookingDetails = repository.GetbookingdetailsandCost(bookingDetails);
             return View("BookingConfirmation", bookingDetails);
-            //return RedirectToAction(nameof(BookingConfirmation));
 
         }
         [HttpGet]
@@ -45,6 +44,12 @@ namespace fun2travel.Controllers
         {
             
             return View(bookingDetails);
+        }
+        [HttpPost]
+        public IActionResult BookingConfirmation()
+        {
+            /// Send email to confirm booking and write things to DB
+            return View();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace fun2travel.Models.ViewModels
 {
     public class BookingDetailVM
     {
-        public int Id { get; set; }
-        public string HotelName { get; set; }
+        public int Id { get; set; } //  => Bdb
+        public string HotelName { get; set; } 
         public string HotelLocation { get; set; }
         public int TotalNrOfBeds { get; set; }
         public decimal BedPricePerNight { get; set; }
@@ -27,37 +27,39 @@ namespace fun2travel.Models.ViewModels
 
         /// Variables from Form
 
-        [Required(ErrorMessage = "Please choose a date.")]
+        [Required(ErrorMessage = "Please choose a date.")] //  => Bdb
         public DateTime? SelectedDateFrom { get; set; } // Datetime set as null in bookingform for validation
 
-        [Required(ErrorMessage = "Please choose a date.")]
+        [Required(ErrorMessage = "Please choose a date.")] //  => Bdb
         public DateTime? SelectedDateTo { get; set; }  // Datetime set as null in bookingform for validation
 
-        public int NoPplForHotel { get; set; }
+        public int NoPplForHotel { get; set; } //  => Bdb
 
         public string ActivitySelected { get; set; }
-        public int NoPplForActivity { get; set; }
-        public bool RentEquipmentSelected { get; set; }
+        public string ActivitySelectedId { get; set; } //  => Bdb
+        public int NoPplForActivity { get; set; } //  => Bdb
+        public bool RentEquipmentSelected { get; set; } //  => Bdb
 
-        public bool TransportServiceSelected { get; set; }
-        public decimal TotalCostAll { get; set; }
-        public decimal TotalCostHotel { get; set; }
-        public decimal TotalCostActivity { get; set; }
-        public decimal TotalCostRentEq { get; set; }
-        public decimal TotalCostTransport { get; set; }
+        public bool TransportServiceSelected { get; set; } //  => Bdb
+        public decimal TotalCostAll { get; set; } //  => Bdb
+        public decimal TotalCostHotel { get; set; } //  => Bdb
+        public decimal TotalCostActivity { get; set; } //  => Bdb
+        public decimal TotalCostRentEq { get; set; } //  => Bdb
+        public decimal TotalCostTransport { get; set; } //  => Bdb
         /// Booking Customer Info
 
         [Required]
-        public string FullName { get; set; }
+        public string FistName { get; set; }  //  => Bdb
+        public string LastName { get; set; } //  => Bdb
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Invalid Email Address.")]
-        public string EmailAddress { get; set; }
+        public string EmailAddress { get; set; } //  => Bdb
 
         [Required(ErrorMessage = "Your must provide a PhoneNumber")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } //  => Bdb
 
 
     }
