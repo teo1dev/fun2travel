@@ -71,7 +71,10 @@ namespace fun2travel.Models
         {
 
             bookingDetails.BookingId = Get8Digits(); //BookingID
+
             bookingDetails.BookingTimeStamp = DateTime.Now; //Booking Timestamp
+
+            bookingDetails.TotalNoNights = ((DateTime)bookingDetails.SelectedDateTo - (DateTime)bookingDetails.SelectedDateFrom).Days; // Calc total number of nights booked
 
             var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
             var querya = (from a in context.Activity
