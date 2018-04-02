@@ -63,7 +63,26 @@ namespace fun2travel.Models
 
         internal void SavePrelBookingToDb(BookingDetailVM bookingDetails)
         {
-            //BookingDetailVM booking=new BookingDetailVM
+            Booking booking = new Booking
+            {
+                BookingId = bookingDetails.BookingId,
+                TimeStamp = bookingDetails.BookingTimeStamp,
+                DateFrom= (DateTime)bookingDetails.SelectedDateFrom,
+                DateTo=(DateTime)bookingDetails.SelectedDateTo,
+                HotelName=bookingDetails.HotelName,
+                NoPplForHotel=bookingDetails.NoPplForHotel,
+                RentEquipment=bookingDetails.RentEquipmentSelected,
+                Transport=bookingDetails.TransportServiceSelected,
+                FirstName=bookingDetails.FistName,
+                LastName=bookingDetails.LastName,
+                BookingEmail=bookingDetails.EmailAddress,
+                BookingPhone=bookingDetails.PhoneNumber,
+                TotalCost=bookingDetails.TotalCostAll,
+                TotalCostHotel=bookingDetails.TotalCostHotel,
+                TotalCostActivity=bookingDetails.TotalCostActivity,
+                TotalCostRenting=bookingDetails.TotalCostRentEq,
+                TotalCostTransport=bookingDetails.TotalCostTransport
+            };
         }
 
         internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
@@ -394,6 +413,6 @@ namespace fun2travel.Models
 
         }
 
-        
+
     }
 }
