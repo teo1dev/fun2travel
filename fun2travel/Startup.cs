@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using fun2travel.Models;
 using fun2travel.Models.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace fun2travel
             services.AddDbContext<FunToTravelContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
             services.AddTransient<Repository>();
             services.AddMvc();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie
+                (O => O.LoginPath = "/Account/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +46,7 @@ namespace fun2travel
             }
 
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
