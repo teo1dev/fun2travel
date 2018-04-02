@@ -4,21 +4,25 @@
         <div class="hotelsdetail"></div>
         <h2 class="display-3">@Model.HotelName</h2>
         <div class="d-flex justify-content-around">
-            <div class="card border-warning mb-3" style="max-width: 35rem;">
+            <div class="card border-warning mb-3" style="max-width: 35rem; height:100%;">
                 <div class="card-body">
                     <p>Location: @Model.HotelLocation</p>
                     <p>@Model.HotelDescription</p>
                     <p>Price per night €: @Model.BedPricePerNight</p>
                     <p>Price for transport €: @Model.PriceForTransport</p>
                     <p>Total number of beds: @Model.TotalNrOfBeds</p>
+                    <a class="btn btn-outline-primary btn-lg btn-block" asp-controller="Bookings" asp-action="Booking" asp-route-id="@Model.Id" role="button" style="margin-right:50px;width:50%">Book</a>
+
                 </div>
             </div>
             <div class="d-flex flex-column align-content-center">
-                <img src="@Model.HotelPic2" class="detailsimage" />
-                <iframe src="//www.google.com/maps/embed/v1/place?q=@Model.HotelAdress
+                
+                    <img src="@Model.HotelPic2" class="detailsimage" />
+                    <iframe src="//www.google.com/maps/embed/v1/place?q=@Model.HotelAdress
                             &zoom=17
-                            &key=AIzaSyA0yQYkFi3W71RjEzM96kC1W7GQcFZ9QdM"></iframe>
-                <a class="btn btn-primary" asp-controller="Bookings" asp-action="Booking" asp-route-id="@Model.Id" role="button" style="margin-right:50px;width:50%">Book</a>
+                            &key=AIzaSyA0yQYkFi3W71RjEzM96kC1W7GQcFZ9QdM" height="100%"></iframe>
+              
+           
             </div>
         </div>
         <br />
