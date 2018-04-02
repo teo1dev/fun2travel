@@ -28,9 +28,11 @@ namespace fun2travel.Models.ViewModels
         /// Variables from Form
 
         [Required(ErrorMessage = "Please choose a date.")] //  => Bdb
+        [CalendarValidatorStart]
         public DateTime? SelectedDateFrom { get; set; } // Datetime set as null in bookingform for validation
 
         [Required(ErrorMessage = "Please choose a date.")] //  => Bdb
+        [CalendarValidatorEnd]
         public DateTime? SelectedDateTo { get; set; }  // Datetime set as null in bookingform for validation
 
         public int NoPplForHotel { get; set; } //  => Bdb
@@ -67,5 +69,7 @@ namespace fun2travel.Models.ViewModels
 
         public string BookingId { get; set; }
         public DateTime BookingTimeStamp { get; set; }
+
+        
     }
 }
