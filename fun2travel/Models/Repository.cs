@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -42,27 +41,6 @@ namespace fun2travel.Models
 
         }
 
-        internal void SendConfirmationEmail(BookingDetailVM bookingDetails)
-        {
-            MailMessage mailConfirmation = new MailMessage();
-            mailConfirmation.To.Add(bookingDetails.EmailAddress);
-            mailConfirmation.From = new MailAddress("funtotravel07@gmail.com");
-            mailConfirmation.Subject = "Booking Confirmation";
-            string Body = "<p>TEST</p>";
-            mailConfirmation.Body = Body;
-            mailConfirmation.IsBodyHtml = true;
-
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential
-            ("funtotravel07", "P@ssw0rd18");// Enter senders User name and password
-            smtp.EnableSsl = true;
-            smtp.Send(mailConfirmation);
-            /// Send email to confirm booking and write things to DB
-        }
-
         public AdventuresVM GetAdventureByIdToVM(int id)
         {
             Activity adventure = new Activity();
@@ -85,31 +63,7 @@ namespace fun2travel.Models
 
         internal void SavePrelBookingToDb(BookingDetailVM bookingDetails)
         {
-            Booking booking = new Booking
-            {
-                BookingId = bookingDetails.BookingId,
-                TimeStamp = bookingDetails.BookingTimeStamp,
-                DateFrom = (DateTime)bookingDetails.SelectedDateFrom,
-                DateTo = (DateTime)bookingDetails.SelectedDateTo,
-                HotelName = bookingDetails.HotelName,
-                NoPplForHotel = bookingDetails.NoPplForHotel,
-                ActivityId = Convert.ToInt32(bookingDetails.ActivitySelectedId),
-                NoPplForActivity = bookingDetails.NoPplForActivity,
-                RentEquipment = bookingDetails.RentEquipmentSelected,
-                Transport = bookingDetails.TransportServiceSelected,
-                FirstName = bookingDetails.FistName,
-                LastName = bookingDetails.LastName,
-                BookingEmail = bookingDetails.EmailAddress,
-                BookingPhone = bookingDetails.PhoneNumber,
-                TotalCost = bookingDetails.TotalCostAll,
-                TotalCostHotel = bookingDetails.TotalCostHotel,
-                TotalCostActivity = bookingDetails.TotalCostActivity,
-                TotalCostRenting = bookingDetails.TotalCostRentEq,
-                TotalCostTransport = bookingDetails.TotalCostTransport,
-                TotalNoNights = bookingDetails.TotalNoNights
-            };
-            context.Booking.Add(booking);
-            context.SaveChanges();
+            //BookingDetailVM booking=new BookingDetailVM
         }
 
         internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
@@ -122,7 +76,6 @@ namespace fun2travel.Models
             bookingDetails.TotalNoNights = ((DateTime)bookingDetails.SelectedDateTo - (DateTime)bookingDetails.SelectedDateFrom).Days; // Calc total number of nights booked
 
             var activityId = Convert.ToInt32(bookingDetails.ActivitySelected);
-            bookingDetails.ActivitySelectedId = bookingDetails.ActivitySelected;
             var querya = (from a in context.Activity
                           where a.Id == activityId
 
@@ -441,6 +394,6 @@ namespace fun2travel.Models
 
         }
 
-
+        
     }
 }
