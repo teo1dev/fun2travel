@@ -8,6 +8,7 @@ namespace fun2travel.Models.Entities
     {
         public virtual DbSet<Activity> Activity { get; set; }
         public virtual DbSet<ActToHot> ActToHot { get; set; }
+        public virtual DbSet<Booking> Booking { get; set; }
         public virtual DbSet<Hotel> Hotel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -54,6 +55,35 @@ namespace fun2travel.Models.Entities
                     .WithMany(p => p.ActToHot)
                     .HasForeignKey(d => d.HotelFk)
                     .HasConstraintName("FK_HotelToTable");
+            });
+
+            modelBuilder.Entity<Booking>(entity =>
+            {
+                entity.Property(e => e.BookingEmail).IsRequired();
+
+                entity.Property(e => e.BookingId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.BookingPhone)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.DateFrom).HasColumnType("datetime");
+
+                entity.Property(e => e.DateTo).HasColumnType("datetime");
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.HotelName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Hotel>(entity =>
