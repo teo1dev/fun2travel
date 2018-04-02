@@ -1,147 +1,133 @@
 ﻿@model BookingDetailVM
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="bs-component">
-            <div class="jumbotron">
-                <form asp-controller="Bookings" asp-action="Booking" class="form-group">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="bs-component">
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputDefault">Hotel Name</label>
-                                    <input type="text" class="form-control" placeholder="@Model.HotelName" id="inputHotel">
-                                    <div id="HotelPrice" style="visibility:hidden">@Model.BedPricePerNight</div>
-                                    <div id="TransportPrice" style="visibility:hidden">@Model.PriceForTransport</div>
-                                    <input asp-for="HotelName" type="text" value="@Model.HotelName" style="visibility:hidden" />
-                                    <input asp-for="HotelLocation" type="text" value="@Model.HotelLocation" style="visibility:hidden" />
-                                    <input asp-for="PriceForTransport" type="text" value="@Model.PriceForTransport" style="visibility:hidden" />
-                                    <input asp-for="BedPricePerNight" type="text" value="@Model.BedPricePerNight" style="visibility:hidden" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="control-label">Pers</label>
-                                        <select asp-for="NoPplForHotel" id="NumberofPeopleRoom" class="form-control">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <legend>Pick Date</legend>
-                            <div class="bs-component">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="SelectedDateFrom" class="col-md-2 control-label">Starting</label>
-                                        <br />
-                                        <input type="date" name="SelectedDateFrom" id="date1" value="" />
-                                        <span asp-validation-for="SelectedDateFrom" class="text-danger"></span>
-                                    </div>
-                                    <div class="col">
-                                        <label for="SelectedDateTo" class="col-md-2 control-label">Ending</label>
-                                        <br />
-                                        <input type="date" name="SelectedDateTo" value="" />
-                                        <span asp-validation-for="SelectedDateTo" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputDefault">Activity</label>
-                                <select asp-for="ActivitySelected" asp-items="Model.SelectionActivityList" class="form-control"></select>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <select asp-for="NoPplForActivity" id="NumberofPeopleActivity" class="form-control">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label class="control-label"># of ppl</label>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-4">
-                                    @if (true)
-                                    {
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input asp-for="RentEquipmentSelected" type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Equpment</label>
-                                            </div>
-                                        </div>
 
-                                    }
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Transport service</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="">
-                                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceFood" value="">
-                                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="">
-                                </div>
-                            </div>
+<div class="bs-component">
+    <div class="jumbotron">
+        <form asp-controller="Bookings" asp-action="Booking" class="form-group">
+            <div class="row">
+
+                <div class="form-group">
+                    <label class="col-form-label" for="inputDefault">Booking for: </label>
+                    <span class="label label-success" style="font-size:30px">@Model.HotelName</span>
+                    <div id="HotelPrice" style="display:none">@Model.BedPricePerNight</div>
+                    <div id="TransportPrice" style="display:none">@Model.PriceForTransport</div>
+                    <input asp-for="HotelName" type="text" value="@Model.HotelName" style="display:none" />
+                    <input asp-for="HotelLocation" type="text" value="@Model.HotelLocation" style="display:none" />
+                    <input asp-for="PriceForTransport" type="text" value="@Model.PriceForTransport" style="display:none" />
+                    <input asp-for="BedPricePerNight" type="text" value="@Model.BedPricePerNight" style="display:none" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-around">
+
+                    <div class="form-group">
+                        <label class="control-label">Choose number of persons</label>
+                        <select asp-for="NoPplForHotel" id="NumberofPeopleRoom" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <label>Total Room Price: €</label>
+                        <label class="col-form-label" id="TotalHotelAmount"></label>
+                    </div>
+                    <div>
+                        <div class="col">
+                            <label for="SelectedDateFrom" class="col-md-2 control-label">Starting</label>
                             <br />
+                            <input type="date" name="SelectedDateFrom" id="date1" value="" />
+                            <span asp-validation-for="SelectedDateFrom" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label for="SelectedDateTo" class="col-md-2 control-label">Ending</label>
                             <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label class="col-form-label" id="TotalHotelAmount"></label>
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputFullName">First Name</label>
-                                        <input asp-for="FistName" type="text" class="form-control" placeholder="Full Name" id="inputFullName">
-                                        <span asp-validation-for="FistName" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputFullName">Surname</label>
-                                        <input asp-for="LastName" type="text" class="form-control" placeholder="Full Name" id="inputFullName">
-                                        <span asp-validation-for="LastName" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputDefault">Phone number</label>
-                                        <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
-                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Book" />
-                                    </div>
-                                </div>
-                            </div>
+                            <input type="date" name="SelectedDateTo" value="" />
+                            <span asp-validation-for="SelectedDateTo" class="text-danger"></span>
+
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="col-form-label" for="inputDefault">Activity</label>
+                    <select asp-for="ActivitySelected" asp-items="Model.SelectionActivityList" class="form-control"></select>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <select asp-for="NoPplForActivity" id="NumberofPeopleActivity" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="control-label"># of ppl</label>
+                    </div>
+                </div>
+                <br />
+                <div class="row col-lg-8">
+                        <div class="custom-control custom-checkbox d-flex justify-content-around">
+                            <input asp-for="RentEquipmentSelected" type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Equipment</label>
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="">
+                        </div>
+
+                        <div class="custom-control custom-checkbox d-flex justify-content-around">
+                            <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
+                            <label class="custom-control-label" for="customCheck3">Transport service</label>
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="">
+                        </div>
+                </div>
+                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceFood" value="" style="display:none">
+               
+                <div class="row">
+                    <div class="col-lg-12">
+                        
+
+                        <div class="form-group">
+                            <label class="col-form-label">Contact Details</label>
+                            <div class="d-flex justify-content-around">
+                            <input asp-for="FistName" type="text" class="form-control" placeholder="First Name" id="inputFullName">
+                            <span asp-validation-for="FistName" class="text-danger"></span>
+                            <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" id="inputFullName">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email&#64example.com">
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="inputDefault">Phone number</label>
+                            <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Book" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+
 
 

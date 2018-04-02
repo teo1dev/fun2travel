@@ -42,6 +42,11 @@ $('#customCheck3').click(function () {
     }
 })
 
+$(document).ready(function () {
+    var hotelCost = $('#HotelPrice').html();
+    $('#TotalHotelAmount').html(hotelCost);
+
+});
 $('#NumberofPeopleRoom').on('change', function () {
     var hotelCost = $('#HotelPrice').html();
     var noPpl = $('#NumberofPeopleRoom').val();
@@ -49,10 +54,11 @@ $('#NumberofPeopleRoom').on('change', function () {
 
     $('#TotalHotelAmount').html(totalHotelCost);
 })
-function validate() {
-    var startDate = document.getElementById('date1').value;
-    if (!isValidDate(birthday)) {
-        alert("you did not enter a valid startdate");
-        return false;
-    }
-}
+
+//$('#NumberofPeopleRoom').on('load', function () {
+//    var hotelCost = $('#HotelPrice').html();
+//    var noPpl = $('#NumberofPeopleRoom').val();
+//    var totalHotelCost = hotelCost * noPpl;
+
+//    $('#TotalHotelAmount').html(totalHotelCost);
+//})
