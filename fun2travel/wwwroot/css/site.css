@@ -44,6 +44,17 @@ a.btn .btn-primary {
     background-color: #CF2803;
     border-color: #CF2803;
 }
+
+/*div.card-header {
+    border-color: #CF2803;
+    border: 1px solid;
+    color: #CF2803;
+}
+div.card-body {
+    border-color: #CF2803;
+    border: 1px solid;
+    color: #CF2803;
+}*/
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
@@ -90,11 +101,12 @@ a.btn .btn-primary {
         left: 0;
         top: 0;
         background-size: cover;
-        min-height: 300px;
+        min-height: 1200px;
         width: 100%;
         opacity: 0.15;
         background-image: url("../images/bg.jpg");
         z-index: -1;
+        background-color:aqua;
     }
 
     .jumbotron .hotelsdetail {

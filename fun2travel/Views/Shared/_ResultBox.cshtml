@@ -15,18 +15,18 @@
         <div class="bs-component">
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr class="table-sm table-dark">
                         <th scope="col">Hotel Name</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Price per night</th>
                         <th scope="col" class="text-right"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr class="table-sm table-active">
+                        <tr class="table-sm table-dark">
                             <td>@item.HotelName</td>
-                            <td><small>Price per night:</small>@item.BedPricePerNight &euro;</td>
+                            <td>@item.BedPricePerNight &euro;</td>
                             <td class="text-right">
                                 <div class="">
                                     <a class="btn btn-primary" asp-action="Booking" asp-controller="Bookings" asp-route-id="@item.HotelId" role="button" style="margin-right:50px;width:50%">Book</a>
