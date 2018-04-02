@@ -35,8 +35,8 @@ namespace fun2travel.Controllers
             }
 
             // write prel booking to DB, generate booking ID and send to BookingConfirmation action?
-            repository.SavePrelBookingToDb(bookingDetails);
             bookingDetails = repository.GetbookingdetailsandCost(bookingDetails);
+            repository.SavePrelBookingToDb(bookingDetails);
             return View("BookingConfirmation", bookingDetails);
 
         }
