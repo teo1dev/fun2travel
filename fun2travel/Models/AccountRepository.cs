@@ -62,4 +62,3 @@ namespace fun2travel.Models
         //}
     }
 }
-}
