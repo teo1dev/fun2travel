@@ -41,7 +41,6 @@ namespace fun2travel.Models
 
         }
 
-
         public AdventuresVM GetAdventureByIdToVM(int id)
         {
             Activity adventure = new Activity();
@@ -64,7 +63,7 @@ namespace fun2travel.Models
 
         internal void SavePrelBookingToDb(BookingDetailVM bookingDetails)
         {
-
+            BookingDetailVM booking=new BookingDetailVM
         }
 
         internal BookingDetailVM GetbookingdetailsandCost(BookingDetailVM bookingDetails)
@@ -394,5 +393,7 @@ namespace fun2travel.Models
             return list;
 
         }
+
+        
     }
 }
