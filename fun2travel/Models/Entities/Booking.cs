@@ -20,10 +20,11 @@ namespace fun2travel.Models.Entities
         public string LastName { get; set; }
         public string BookingEmail { get; set; }
         public string BookingPhone { get; set; }
-        public int TotalCost { get; set; }
-        public int TotalCostHotel { get; set; }
-        public int TotalCostActivity { get; set; }
-        public int TotalCostRenting { get; set; }
-        public int TotalCostTransport { get; set; }
+        public decimal TotalCost { get; set; }
+        public decimal TotalCostHotel { get; set; }
+        public decimal TotalCostActivity { get; set; }
+        public decimal TotalCostRenting { get; set; }
+        public decimal TotalCostTransport { get; set; }
+        public int TotalNoNights { get; set; }
     }
 }

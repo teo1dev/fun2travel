@@ -84,6 +84,16 @@ namespace fun2travel.Models.Entities
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.Property(e => e.TotalCost).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.TotalCostActivity).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.TotalCostHotel).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.TotalCostRenting).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.TotalCostTransport).HasColumnType("decimal(18, 0)");
             });
 
             modelBuilder.Entity<Hotel>(entity =>
