@@ -7,6 +7,8 @@ using fun2travel.Models.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,10 +28,18 @@ namespace fun2travel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FunToTravelContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
+            services.AddIdentity<IdentityUser, IdentityRole>(o =>
+            {
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 8;
+            })
+            .AddEntityFrameworkStores<IdentityDbContext>()
+            .AddDefaultTokenProviders();
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie
+            //    (O => O.LoginPath = "/Account/Login");
+            //services.AddDbContext<FunToTravelContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
             services.AddTransient<Repository>();
             services.AddMvc();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie
-                (O => O.LoginPath = "/Account/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

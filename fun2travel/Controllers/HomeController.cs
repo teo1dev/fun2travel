@@ -13,12 +13,20 @@ namespace fun2travel.Controllers
     {
         private readonly Repository repository;
 
+        //private readonly AccountRepository createDB;
+
+        //public HomeController(AccountRepository createDB)
+        //{
+        //    this.createDB = createDB;
+        //}
+
         public HomeController(Repository repository)
         {
             this.repository = repository;
         }
         public IActionResult Index()
         {
+           
             return View(repository.AllHotelandActivitytoVM());
         }
 

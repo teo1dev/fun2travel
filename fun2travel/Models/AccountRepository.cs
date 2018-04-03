@@ -56,9 +56,9 @@ namespace fun2travel.Models
             signInManager.SignOutAsync();
         }
 
-        //public void CreateDB() //görs första gången för att skapa DB tabeller
-        //{
-        //    identityContext.Database.EnsureCreated();
-        //}
+        public void CreateDB() //görs första gången för att skapa DB tabeller
+        {
+            identityContext.Database.EnsureCreated();
+        }
     }
 }

@@ -69,5 +69,12 @@ namespace fun2travel.Controllers
             repository.logOut();
             return RedirectToAction(nameof(AccountController.LoginUser), "Account");
         }
+
+        public IActionResult CreateUser()
+        {
+            repository.CreateDB();
+            return View();
+        }
+
     }
 }
