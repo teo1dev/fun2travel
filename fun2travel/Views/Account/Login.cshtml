@@ -1,11 +1,15 @@
 ﻿@model LoginVM
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<!DOCTYPE html>
+@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+@*<!DOCTYPE html>
 <html>
 <head>
     <title></title>
 </head>
-<body>
+<body>*@
+    <br />
+    <br />
+    <br />
+    <br />
     <h1>Login</h1>
     <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
         <label asp-for="Username"></label>
@@ -18,5 +22,8 @@
         <br />
         <input type="submit" value="Login" />
     </form>
-</body>
-</html>
+
+    <label>Not a member? <a asp-controller="Account" asp-action="RegisterNewUser">Register</a></label>
+
+@*</body>
+</html>*@
