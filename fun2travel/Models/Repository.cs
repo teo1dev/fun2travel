@@ -114,9 +114,10 @@ namespace fun2travel.Models
                 HotelByActivity = hotelList
 
             };
+            adventureVm.ActivityRentalPrice = Math.Round((decimal)adventureVm.ActivityRentalPrice, 0);
             return adventureVm;
         }
-
+        
         internal void SavePrelBookingToDb(BookingDetailVM b)
         {
             var activityId = Convert.ToInt32(b.ActivitySelectedId);
