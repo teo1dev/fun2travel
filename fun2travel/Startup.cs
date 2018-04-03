@@ -28,16 +28,16 @@ namespace fun2travel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FunToTravelContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
+            services.AddDbContext<IdentityDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
             services.AddIdentity<IdentityUser, IdentityRole>(o =>
             {
                 o.Password.RequireNonAlphanumeric = false;
-                o.Password.RequiredLength = 8;
+                o.Password.RequiredLength = 6;
             })
             .AddEntityFrameworkStores<IdentityDbContext>()
             .AddDefaultTokenProviders();
-            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie
-            //    (O => O.LoginPath = "/Account/Login");
-            //services.AddDbContext<FunToTravelContext>(o => o.UseSqlServer(Configuration.GetConnectionString("fun2travel")));
+            services.ConfigureApplicationCookie(o => o.LoginPath = "/LogIn");
+            services.AddTransient<AccountRepository>();
             services.AddTransient<Repository>();
             services.AddMvc();
         }
@@ -57,6 +57,7 @@ namespace fun2travel
 
             app.UseStaticFiles();
             app.UseAuthentication();
+            //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -20,29 +20,37 @@ namespace fun2travel.Controllers
             this.repository = repository;
 
         }
-        // GET: /<controller>/
-        [Route("/Members/Login")]
-        [AllowAnonymous]
-        public IActionResult Login()
+
+        [HttpGet]
+        [Route("Members")]
+        public IActionResult Index()
         {
-            return View();
+            return View(new LoggedInUserVM { UserName = User.Identity.Name });
         }
 
+        //// GET: /<controller>/
+        //[Route("/Members/Login")]
+        //[AllowAnonymous]
+        //public IActionResult Login()
+        //{
+        //    return View();
+        //}
 
-        //sätt [Authorize] på de sidor som bara skall nås när man är inloggad.
 
-        //för att se vilken användare som är inloggad:
-        [Authorize]
-        [Route("/members")]
-        public async Task<IActionResult> MembersAsync()
-        {
-            string userName = await repository.GetUserNameAsync(HttpContext);
-            var tmp = new LoggedInUserVM
-            {
-                UserName = userName
-            };
+        ////sätt [Authorize] på de sidor som bara skall nås när man är inloggad.
 
-            return View(tmp);
-        }
+        ////för att se vilken användare som är inloggad:
+        //[Authorize]
+        //[Route("/members")]
+        //public async Task<IActionResult> MembersAsync()
+        //{
+        //    string userName = await repository.GetUserNameAsync(HttpContext);
+        //    var tmp = new LoggedInUserVM
+        //    {
+        //        UserName = userName
+        //    };
+
+        //    return View(tmp);
+        //}
     }
 }
