@@ -276,40 +276,55 @@ namespace fun2travel.Models
 
         }
 
-        //internal List<AdminVM> AllBookings()
-        //{
+        internal List<Booking> AllBookings()
+        {
 
-        //    var queryB = (from B in context.Booking
-        //                  select new
-        //                  {
-        //                      B.BookingId,
-        //                      B.TimeStamp,
-        //                      B.DateFrom,
-        //                      B.DateTo,
-        //                      B.HotelName,
-        //                      B.NoPplForHotel,
-        //                      B.ActivityId,
-        //                      B.NoPplForActivity,
-        //                      B.RentEquipment,
-        //                      B.Transport,
-        //                      B.FirstName,
-        //                      B.LastName,
-        //                      B.BookingEmail,
-        //                      B.BookingPhone,
-        //                      B.TotalCost,
-        //                      B.TotalNoNights
-        //                  }).Distinct();
-        //    var bookingslist = new List<AdminVM>();
-        //    foreach (var item in queryB)
-        //    {
-        //        bookingslist.Add(new AdminVM
-        //        {
-        //            BookingId = item.BookingId,
-
-        //        });
-        //    }
-        //    return bookingslist;
-        //}
+            var queryB = (from B in context.Booking
+                          select new
+                          {
+                              B.BookingId,
+                              B.TimeStamp,
+                              B.DateFrom,
+                              B.DateTo,
+                              B.HotelName,
+                              B.NoPplForHotel,
+                              B.ActivityId,
+                              B.NoPplForActivity,
+                              B.RentEquipment,
+                              B.Transport,
+                              B.FirstName,
+                              B.LastName,
+                              B.BookingEmail,
+                              B.BookingPhone,
+                              B.TotalCost,
+                              B.TotalNoNights
+                          }).Distinct();
+            var bookingslist = new List<Booking>();
+            foreach (var item in queryB)
+            {
+                bookingslist.Add(new Booking
+                {
+                    BookingId = item.BookingId,
+                    ActivityId = item.ActivityId,
+                    BookingEmail = item.BookingEmail,
+                    BookingPhone = item.BookingPhone,
+                    DateFrom = item.DateFrom,
+                    DateTo = item.DateTo,
+                    FirstName = item.FirstName,
+                    HotelName = item.HotelName,
+                    LastName = item.LastName,
+                    NoPplForActivity = item.NoPplForActivity,
+                    NoPplForHotel= item.NoPplForHotel,
+                    TimeStamp = item.TimeStamp,
+                    RentEquipment = item.RentEquipment,
+                    TotalCost = item.TotalCost,
+                    Transport = item.Transport,
+                    TotalNoNights = item.TotalNoNights                 
+                    
+                });
+            }
+            return bookingslist;
+        }
 
         internal List<ResultVM> FilterHotelandActivityPartialView(string locationName, string activityName)
         {

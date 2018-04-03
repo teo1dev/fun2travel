@@ -13,19 +13,26 @@ namespace fun2travel.Controllers
 {
     public class MembersController : Controller
     {
-        private readonly AccountRepository repository;
+        private readonly AccountRepository accrepository;
 
-        public MembersController(AccountRepository repository)
+        public MembersController(AccountRepository accrepository)
+        {
+            this.accrepository = accrepository;
+        }
+        private readonly Repository repository;
+
+        public MembersController(Repository repository)
         {
             this.repository = repository;
-
         }
 
         [HttpGet]
         [Route("Members")]
         public IActionResult Index()
         {
-            return View(new LoggedInUserVM { UserName = User.Identity.Name });
+            AdminVM admin = new AdminVM { UserName = User.Identity.Name };
+            admin.Bookings = repository.AllBookings();
+            return View(admin);
         }
 
         //// GET: /<controller>/

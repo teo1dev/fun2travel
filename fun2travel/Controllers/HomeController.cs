@@ -12,14 +12,7 @@ namespace fun2travel.Controllers
     public class HomeController : Controller
     {
         private readonly Repository repository;
-
-        //private readonly AccountRepository createDB;
-
-        //public HomeController(AccountRepository createDB)
-        //{
-        //    this.createDB = createDB;
-        //}
-
+        
         public HomeController(Repository repository)
         {
             this.repository = repository;
