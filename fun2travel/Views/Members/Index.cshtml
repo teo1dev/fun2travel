@@ -1,86 +1,95 @@
 ﻿@model AdminVM
-<div class="row">
+
+@*<div class="row">
     <div class="col-lg-12">
 
         <div class="bs-component">
-            <div class="jumbotron">
-                <div class="img"></div>
-                <h1 class="display-3">Logged in As @Model.UserName</h1>
-                <p class="lead">These are the bookings right now:</p>
-                <hr class="my-4">
+                <div class="img"></div>*@
+<div class="jumbotron">
+    <h4>Logged in as: @Model.UserName</h4>
+    <hr class="my-4">
 
-                <div class="d-flex justify-content-center">
-                    !!Table of bookings with delete button!!
+    <p class="lead">These are the bookings right now:</p>
+    <hr class="my-4">
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>BookingId</td>
-                                <td>TimeStamp</td>
-                                <td>DateFrom</td>
-                                <td>DateTo</td>
-                                <td>HotelName</td>
-                                <td>NoPplForHotel</td>
-                                <td>ActivityId</td>
-                                <td>NoPplForActivity</td>
-                                <td>RentEquipment</td>
-                                <td>Transport</td>
-                                <td>FirstName</td>
-                                <td>LastName</td>
-                                <td>BookingEmail</td>
-                                <td>BookingPhone</td>
-                                <td>TotalCost</td>
-                                <td>TotalNoNights</td>
-                                <td>Delete Booking</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach item in Model.Bookings(
+    @*<div class="d-flex justify-content-center">*@
 
-                                <tr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>BookingId</td>
+                <td>TimeStamp</td>
+                <td>DateFrom</td>
+                <td>DateTo</td>
+                <td>HotelName</td>
+                <td>NoPplForHotel</td>
+                <td>ActivityId</td>
+                <td>NoPplForActivity</td>
+                <td>RentEquipment</td>
+                <td>Transport</td>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>BookingEmail</td>
+                <td>BookingPhone</td>
+                <td>TotalCost</td>
+                <td>TotalNoNights</td>
+                <td>Delete Booking</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Bookings)
+            {
+                <tr class="table-info">
+                    <td> @item.BookingId </td>
 
-< td > @Model.BookingId </ td >
+                    <td> @item.TimeStamp </td>
 
-< td > @Model.TimeStamp </ td >
+                    <td> @item.DateFrom </td>
 
-< td > @Model.DateFrom </ td >
+                    <td> @item.DateTo </td>
 
-< td > @Model.DateTo </ td >
+                    <td> @item.HotelName </td>
 
-< td > @Model.HotelName </ td >
+                    <td> @item.NoPplForHotel </td>
 
-< td > @Model.NoPplForHotel </ td >
+                    <td> @item.ActivityId </td>
 
-< td > @Model.ActivityId </ td >
+                    <td> @item.NoPplForActivity </td>
 
-< td > @Model.NoPplForActivity </ td >
+                    <td> @item.RentEquipment </td>
 
-< td > @Model.RentEquipment </ td >
+                    <td> @item.Transport </td>
 
-< td > @Model.Transport </ td >
+                    <td> @item.FirstName </td>
 
-< td > @Model.FirstName </ td >
+                    <td> @item.LastName </td>
 
-< td > @Model.LastName </ td >
+                    <td> @item.BookingEmail </td>
 
-< td > @Model.BookingEmail </ td >
+                    <td> @item.BookingPhone </td>
 
-< td > @Model.BookingPhone </ td >
+                    <td> @item.TotalCost </td>
 
-< td > @Model.TotalCost </ td >
+                    <td> @item.TotalNoNights </td>
 
-< td > @Model.TotalNoNights </ td >
+                    <td>
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
 
-< td > X </ td >
+                    </td>
 
-</ tr >
+                </tr>
 
-)
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            }
+
+
+
+
+        </tbody>
+    </table>
+</div>
+@*</div>*@
+            @*</div>
         </div>
     </div>
-</div>
+</div>*@

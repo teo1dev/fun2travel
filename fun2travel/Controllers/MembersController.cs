@@ -13,12 +13,12 @@ namespace fun2travel.Controllers
 {
     public class MembersController : Controller
     {
-        private readonly AccountRepository accrepository;
+        //private readonly AccountRepository accrepository;
 
-        public MembersController(AccountRepository accrepository)
-        {
-            this.accrepository = accrepository;
-        }
+        //public MembersController(AccountRepository accrepository)
+        //{
+        //    this.accrepository = accrepository;
+        //}
         private readonly Repository repository;
 
         public MembersController(Repository repository)
