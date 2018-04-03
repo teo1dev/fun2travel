@@ -49,6 +49,12 @@ namespace fun2travel.Controllers
             //return View(bookingDetails);            
             return View("BookingConfirmationSendEmail", bookingDetails);
         }
-        
+        [HttpGet]
+        public IActionResult BookingConfirmationSendEmail()
+        {
+
+            return View();           
+            
+        }
     }
 }
