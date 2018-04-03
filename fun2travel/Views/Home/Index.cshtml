@@ -5,7 +5,7 @@
         <div class="bs-component">
             <div class="jumbotron">
                 <div class="img"></div>
-                <h1 class="display-3">Welcome to your next adventure!!</h1>
+                <h1 class="display-3">Welcome to your next adventure!</h1>
                 <p class="lead">Adventure travel is more than a vacation. It’s a chance to get to know your world better by putting yourself on a first-name basis with the people, places, and things that make it worth exploring. </p>
                 <p class="lead">We offer a selection of adventure activities and traveling destinations that you can choose from below.</p>
                 <hr class="my-4">
@@ -14,32 +14,32 @@
 
                     <div class="bs-component">
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="margin:20px">
-                            <button type="button" class="btn btn-primary btn-lg">Location</button>
+                            @*<button type="button" class="btn btn-primary btn-lg"></button>*@
                             <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     @foreach (var item in Model)
-                        {
-                            @if (item.HotelLocation != null)
-                {
-                    <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.HotelLocation</a>
-    }
-            }
+                                    {
+                                        @if (item.HotelLocation != null)
+                                        {
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.HotelLocation</a>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="margin:20px">
-                            <button type="button" class="btn btn-primary btn-lg">Activity</button>
+                            @*<button type="button" class="btn btn-primary btn-lg">Activity</button>*@
                             <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     @foreach (var item in Model)
-                        {
-                            @if (item.ActivityName != null)
-                {
-                    <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.ActivityName</a>
-    }
-            }
+                                    {
+                                        @if (item.ActivityName != null)
+                                        {
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.ActivityName</a>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
