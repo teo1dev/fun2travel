@@ -1,9 +1,86 @@
-﻿@model LoggedInUserVM
+﻿@model AdminVM
+<div class="row">
+    <div class="col-lg-12">
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<p>Welcome member - you are logged in as: @Model.UserName</p>
+        <div class="bs-component">
+            <div class="jumbotron">
+                <div class="img"></div>
+                <h1 class="display-3">Logged in As @Model.UserName</h1>
+                <p class="lead">These are the bookings right now:</p>
+                <hr class="my-4">
+
+                <div class="d-flex justify-content-center">
+                    !!Table of bookings with delete button!!
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>BookingId</td>
+                                <td>TimeStamp</td>
+                                <td>DateFrom</td>
+                                <td>DateTo</td>
+                                <td>HotelName</td>
+                                <td>NoPplForHotel</td>
+                                <td>ActivityId</td>
+                                <td>NoPplForActivity</td>
+                                <td>RentEquipment</td>
+                                <td>Transport</td>
+                                <td>FirstName</td>
+                                <td>LastName</td>
+                                <td>BookingEmail</td>
+                                <td>BookingPhone</td>
+                                <td>TotalCost</td>
+                                <td>TotalNoNights</td>
+                                <td>Delete Booking</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach item in Model.Bookings(
+
+                                <tr>
+
+< td > @Model.BookingId </ td >
+
+< td > @Model.TimeStamp </ td >
+
+< td > @Model.DateFrom </ td >
+
+< td > @Model.DateTo </ td >
+
+< td > @Model.HotelName </ td >
+
+< td > @Model.NoPplForHotel </ td >
+
+< td > @Model.ActivityId </ td >
+
+< td > @Model.NoPplForActivity </ td >
+
+< td > @Model.RentEquipment </ td >
+
+< td > @Model.Transport </ td >
+
+< td > @Model.FirstName </ td >
+
+< td > @Model.LastName </ td >
+
+< td > @Model.BookingEmail </ td >
+
+< td > @Model.BookingPhone </ td >
+
+< td > @Model.TotalCost </ td >
+
+< td > @Model.TotalNoNights </ td >
+
+< td > X </ td >
+
+</ tr >
+
+)
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
