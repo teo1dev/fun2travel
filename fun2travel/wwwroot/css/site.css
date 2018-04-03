@@ -1,8 +1,24 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family:Calibri;
+    font-size:1rem;
 }
 
+.h1, h2, h3, h4{
+    font-family:Rubik;
+}
+p, li{
+    font-family: Calibri;
+    font-size: 1rem;
+    color: #FFFCF7;
+}
+
+#btnGroupDrop1 {
+    font-family: Calibri;
+    font-size: 2rem;
+    color: #FFFCF7;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -11,6 +27,19 @@
 }
 
 .display-3, lead, nav-item {
+    color: #FFFCF7;
+    font-family: Rubik;
+}
+
+.lead {
+    font-family: Calibri;
+    font-size: 1.5rem;
+    color: #FFFCF7;
+}
+
+.card-title {
+    font-family: Calibri;
+    font-size: 1.5rem;
     color: #FFFCF7;
 }
 
@@ -82,6 +111,7 @@ div.card-body {
 .jumbotron {
     position: relative;
     background-color: transparent !important;
+    padding:4rem 1rem;
 }
 
     .jumbotron .img {
