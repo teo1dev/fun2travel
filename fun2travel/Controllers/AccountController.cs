@@ -77,16 +77,16 @@ namespace fun2travel.Controllers
         [Route("createrole")]
         public IActionResult CreateRole()
         {
-            var admin = repository.FinduserbyidAsync("58152560-7220-49c5-9d41-de393d1f6f44");
+            //var admin = repository.FinduserbyidAsync("58152560-7220-49c5-9d41-de393d1f6f44");
             return View();
         }
 
         [HttpGet]
         //[Route("")]
         [Route("login")]
-        public IActionResult Login(string returnUrl)
+        public async Task<IActionResult> Login(string returnUrl)
         {
-
+            //await repository.CreateRoleAsync("jerryteodor");
             var model = new LoginVM { ReturnUrl = returnUrl };
             return View(model);
         }
