@@ -243,6 +243,41 @@ namespace fun2travel.Models
 
         }
 
+        //internal List<AdminVM> AllBookings()
+        //{
+
+        //    var queryB = (from B in context.Booking
+        //                  select new
+        //                  {
+        //                      B.BookingId,
+        //                      B.TimeStamp,
+        //                      B.DateFrom,
+        //                      B.DateTo,
+        //                      B.HotelName,
+        //                      B.NoPplForHotel,
+        //                      B.ActivityId,
+        //                      B.NoPplForActivity,
+        //                      B.RentEquipment,
+        //                      B.Transport,
+        //                      B.FirstName,
+        //                      B.LastName,
+        //                      B.BookingEmail,
+        //                      B.BookingPhone,
+        //                      B.TotalCost,
+        //                      B.TotalNoNights
+        //                  }).Distinct();
+        //    var bookingslist = new List<AdminVM>();
+        //    foreach (var item in queryB)
+        //    {
+        //        bookingslist.Add(new AdminVM
+        //        {
+        //            BookingId = item.BookingId,
+
+        //        });
+        //    }
+        //    return bookingslist;
+        //}
+
         internal List<ResultVM> FilterHotelandActivityPartialView(string locationName, string activityName)
         {
             List<ResultVM> resultList = new List<ResultVM>();

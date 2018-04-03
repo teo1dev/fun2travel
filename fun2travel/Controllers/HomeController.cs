@@ -38,7 +38,10 @@ namespace fun2travel.Controllers
             return PartialView("_ResultBox", repository.FilterHotelandActivityPartialView(locationName, activityName));
         }
 
-     
+     //public IActionResult AdminLoggedIn()
+     //   {
+     //       return View(repository.AllBookings);
+     //   }
 
         public IActionResult Error()
         {
