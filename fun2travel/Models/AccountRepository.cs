@@ -47,32 +47,33 @@ namespace fun2travel.Models
             //return true;
         }
 
-        internal async Task CreateRoleAsync(IdentityUser user)
+        internal async Task CreateRoleAsync(string userName)
         {
-            var result = await roleManager.CreateAsync(new IdentityRole(roleNameUser));
-            if (result.Succeeded)
-            {
-                await userManager.AddToRoleAsync(user, roleNameUser);
-            }
+            var user = await userManager.FindByNameAsync(userName);
+            //var result = await roleManager.CreateAsync(new IdentityRole(roleNameAdmin));
+            //if (result.Succeeded)
+            //{
+                await userManager.AddToRoleAsync(user, roleNameAdmin);
+            //}
         }
 
-        internal async Task<object> FinduserbyidAsync(string v)
-        {
-            IdentityUser user = await userManager.FindByIdAsync(v);
-            await CreateRoleAsync(user);
-            return true;
-        }
+        //internal async Task<object> FinduserbyidAsync(string v)
+        //{
+        //    IdentityUser user = await userManager.FindByIdAsync(v);
+        //    await CreateRoleAsync(user);
+        //    return true;
+        //}
 
         internal async Task<string> CheckUserRoleByIdAsync(LoginVM viewModel)
         {            
             IdentityUser model = await userManager.FindByNameAsync(viewModel.Username);
-            var admin = userManager.IsInRoleAsync(model, roleNameAdmin);
-            var user = userManager.IsInRoleAsync(model, roleNameUser);
-            if (await admin)
+            var admin = await userManager.IsInRoleAsync(model, roleNameAdmin);
+            var user = await userManager.IsInRoleAsync(model, roleNameUser);
+            if (admin)
             {
                 return "Admin";
             }
-            else if (await user)
+            else if (user)
             {
                 return "User";
             }else            
