@@ -1,6 +1,7 @@
 ﻿using fun2travel.Models;
 using fun2travel.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace fun2travel.Controllers
 {
     public class AccountController : Controller
     {
+
         AccountRepository repository;
         public AccountController(AccountRepository repository)
         {
@@ -72,9 +74,19 @@ namespace fun2travel.Controllers
 
         [HttpGet]
         //[Route("")]
+        [Route("createrole")]
+        public IActionResult CreateRole()
+        {
+            var admin = repository.FinduserbyidAsync("58152560-7220-49c5-9d41-de393d1f6f44");
+            return View();
+        }
+
+        [HttpGet]
+        //[Route("")]
         [Route("login")]
         public IActionResult Login(string returnUrl)
         {
+
             var model = new LoginVM { ReturnUrl = returnUrl };
             return View(model);
         }
@@ -96,7 +108,20 @@ namespace fun2travel.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(MembersController.Index), "members");
+            {
+                var userRole = repository.CheckUserRoleByIdAsync(viewModel);
+                if (userRole.Result == "Admin")
+                {
+                    return RedirectToAction(nameof(MembersController.Index), "members");
+                }
+                else if(userRole.Result == "User")
+                {
+                    return RedirectToAction(nameof(HomeController.Index));
+                }
+                else
+                    return RedirectToAction(nameof(HomeController.Index));
+
+            }
             else
                 return Redirect(viewModel.ReturnUrl);
         }

@@ -19,12 +19,12 @@
                                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     @foreach (var item in Model)
-                        {
-                            @if (item.HotelLocation != null)
-                {
-                    <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.HotelLocation</a>
-    }
-            }
+                                    {
+                                        @if (item.HotelLocation != null)
+                                        {
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.HotelLocation</a>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -34,12 +34,12 @@
                                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     @foreach (var item in Model)
-                        {
-                            @if (item.ActivityName != null)
-                {
-                    <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.ActivityName</a>
-    }
-            }
+                                    {
+                                        @if (item.ActivityName != null)
+                                        {
+                                            <a class="dropdown-item" onclick="DropDownAjaxCall('@item.HotelLocation','@item.ActivityName')">@item.ActivityName</a>
+                                        }
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -49,3 +49,4 @@
         </div>
     </div>
 </div>
+<a asp-controller="Account" asp-action="CreateRole" class="btn btn-outline-primary btn-lg btn-block">Createrole</a>

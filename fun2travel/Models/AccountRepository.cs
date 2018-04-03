@@ -14,6 +14,9 @@ namespace fun2travel.Models
 {
     public class AccountRepository
     {
+        const string roleNameAdmin = "Admin";
+        const string roleNameUser = "User";
+
         UserManager<IdentityUser> userManager;
         SignInManager<IdentityUser> signInManager;
         RoleManager<IdentityRole> roleManager;
@@ -42,6 +45,38 @@ namespace fun2travel.Models
             var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
             return loginResult.Succeeded;
             //return true;
+        }
+
+        internal async Task CreateRoleAsync(IdentityUser user)
+        {
+            var result = await roleManager.CreateAsync(new IdentityRole(roleNameUser));
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(user, roleNameUser);
+            }
+        }
+
+        internal async Task<object> FinduserbyidAsync(string v)
+        {
+            IdentityUser user = await userManager.FindByIdAsync(v);
+            await CreateRoleAsync(user);
+            return true;
+        }
+
+        internal async Task<string> CheckUserRoleByIdAsync(LoginVM viewModel)
+        {            
+            IdentityUser model = await userManager.FindByNameAsync(viewModel.Username);
+            var admin = userManager.IsInRoleAsync(model, roleNameAdmin);
+            var user = userManager.IsInRoleAsync(model, roleNameUser);
+            if (await admin)
+            {
+                return "Admin";
+            }
+            else if (await user)
+            {
+                return "User";
+            }else            
+            return "No user found";
         }
 
         //public async Task<string> GetUserNameAsync(HttpContext httpContext)
