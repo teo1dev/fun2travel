@@ -44,34 +44,34 @@ namespace fun2travel.Models
             //return true;
         }
 
-        public async Task<string> GetUserNameAsync(HttpContext httpContext)
-        {
-            string userId = userManager.GetUserId(httpContext.User);
-            IdentityUser user = await userManager.FindByIdAsync(userId);
-            return user.UserName;
-        }
+        //public async Task<string> GetUserNameAsync(HttpContext httpContext)
+        //{
+        //    string userId = userManager.GetUserId(httpContext.User);
+        //    IdentityUser user = await userManager.FindByIdAsync(userId);
+        //    return user.UserName;
+        //}
 
-        public async Task<bool> CreateUserAsync(AccountRegisterNewUserVM userInput)
-        {
-            IdentityUser user = new IdentityUser(userInput.UserName);
-            var result = await userManager.CreateAsync(user, userInput.Password);
-            return result.Succeeded;
-        }
+        //public async Task<bool> CreateUserAsync(AccountRegisterNewUserVM userInput)
+        //{
+        //    IdentityUser user = new IdentityUser(userInput.UserName);
+        //    var result = await userManager.CreateAsync(user, userInput.Password);
+        //    return result.Succeeded;
+        //}
 
-        public async Task<bool> LoginUserAsync(LoginVM model)
-        {
-            var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
-            return result.Succeeded;
-        }
+        //public async Task<bool> LoginUserAsync(LoginVM model)
+        //{
+        //    var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
+        //    return result.Succeeded;
+        //}
 
-        internal void logOut()
-        {
-            signInManager.SignOutAsync();
-        }
+        //internal void logOut()
+        //{
+        //    signInManager.SignOutAsync();
+        //}
 
-        public void CreateDB() //görs första gången för att skapa DB tabeller
-        {
-            identityContext.Database.EnsureCreated();
-        }
+        //public void CreateDB() //görs första gången för att skapa DB tabeller
+        //{
+        //    identityContext.Database.EnsureCreated();
+        //}
     }
 }

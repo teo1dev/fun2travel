@@ -25,23 +25,13 @@ namespace fun2travel.Controllers
 
         public IActionResult SelectHotelandActivity(string locationName, string activityName)
         {
-            //var partialView = new ResultVM();
-            //partialView = repository.FilterHotelandActivityPartialView(locationName, activityName);
-            //return View(repository.FilterHotelandActivityPartialView(locationName, activityName));
             return PartialView("_ResultBox", repository.FilterHotelandActivityPartialView(locationName, activityName));
         }
-
-     //public IActionResult AdminLoggedIn()
-     //   {
-     //       return View(repository.AllBookings);
-     //   }
 
         public IActionResult Error()
         {
             return base.View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
 
         [HttpGet]
         public IActionResult Hotels()
