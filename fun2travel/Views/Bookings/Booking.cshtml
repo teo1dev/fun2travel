@@ -82,7 +82,7 @@
                 <div class="row col-lg-8">
                     <div class="custom-control custom-checkbox d-flex justify-content-around">
                         <input asp-for="RentEquipmentSelected" type="checkbox" class="custom-control-input" id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1">Equipment</label>
+                        <label class="custom-control-label" for="customCheck1">Rent Equipment</label>
                         <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="">
                     </div>
 
@@ -101,26 +101,32 @@
                             <label class="col-form-label">Contact Details</label>
                             <div class="d-flex justify-content-around">
                                 <input asp-for="FistName" type="text" class="form-control" placeholder="First Name" id="inputFullName">
-                                <span asp-validation-for="FistName" class="text-danger"></span>
+                                @*<span asp-validation-for="FistName" class="text-danger"></span>*@
                                 <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" id="inputFullName">
+                               @* <span asp-validation-for="LastName" class="text-danger"></span>*@
+                            </div>
+                            <div class="d-flex justify-content-around">
+                                <span asp-validation-for="FistName" class="text-danger"></span>
                                 <span asp-validation-for="LastName" class="text-danger"></span>
+
+                            </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email&#64example.com">
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label" for="inputDefault">Phone number</label>
+                                <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Book" />
                             </div>
                         </div>
-                        <div class="form-group">
-
-                            <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email&#64example.com">
-                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label" for="inputDefault">Phone number</label>
-                            <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Book" />
-                        </div>
-                    </div>
                 </div>
             </div>
         </form>

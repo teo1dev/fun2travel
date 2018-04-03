@@ -51,11 +51,11 @@ namespace fun2travel.Models.ViewModels
         public decimal TotalCostTransport { get; set; } //  => Bdb
         /// Booking Customer Info
 
-        [Required]
+        [Required(ErrorMessage = "Please write your first name here.")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid First Name")]
         public string FistName { get; set; }  //  => Bdb
-        [Required]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid First Name")]
+        [Required(ErrorMessage = "Please write your surename here.")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid Surename")]
         public string LastName { get; set; } //  => Bdb
 
         [Required(ErrorMessage = "Email is required.")]

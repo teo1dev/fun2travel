@@ -27,7 +27,7 @@ $('#customCheck3').click(function () {
 
         var TransportPrice = $('#TransportPrice').html();
         var noPpl = $('#NumberofPeopleRoom').val();
-        var totAmount = "                 "+ TransportPrice * noPpl +"   € ";
+        var totAmount = "Total cost for transport for " + noPpl+ " people:  "+ TransportPrice * noPpl +"   € ";
 
         $('#staticPriceTransport').val(totAmount);
 
