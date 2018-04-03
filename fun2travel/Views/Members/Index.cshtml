@@ -1,10 +1,7 @@
 ﻿@model AdminVM
-
-
 <div class="jumbotron">
     <h4>Logged in as: @Model.UserName</h4>
     <hr class="my-4">
-
     <p class="lead">These are the bookings right now:</p>
     <hr class="my-4">
 
@@ -35,50 +32,26 @@
             {
                 <tr class="table-info">
                     <td> @item.BookingId </td>
-
                     <td> @item.TimeStamp </td>
-
                     <td> @item.DateFrom </td>
-
                     <td> @item.DateTo </td>
-
                     <td> @item.HotelName </td>
-
                     <td> @item.NoPplForHotel </td>
-
                     <td> @item.ActivityId </td>
-
                     <td> @item.NoPplForActivity </td>
-
                     <td> @item.RentEquipment </td>
-
                     <td> @item.Transport </td>
-
                     <td> @item.FirstName </td>
-
                     <td> @item.LastName </td>
-
                     <td> @item.BookingEmail </td>
-
                     <td> @item.BookingPhone </td>
-
                     <td> @item.TotalCost </td>
-
                     <td> @item.TotalNoNights </td>
-
                     <td>
                         <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
-
                     </td>
-
                 </tr>
-
-
             }
-
-
-
-
         </tbody>
     </table>
 </div>
