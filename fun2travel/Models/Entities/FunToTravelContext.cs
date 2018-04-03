@@ -16,7 +16,7 @@ namespace fun2travel.Models.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("fun2travel");
+                optionsBuilder.UseSqlServer(@"Data Source=fun2travel.database.windows.net;Initial Catalog=fun2travel;Integrated Security=False;User ID=jerryteodor;Password=P@ssw0rd;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
 
@@ -24,6 +24,8 @@ namespace fun2travel.Models.Entities
         {
             modelBuilder.Entity<Activity>(entity =>
             {
+                entity.ToTable("Activity", "f2t");
+
                 entity.Property(e => e.ActivityDescription).IsRequired();
 
                 entity.Property(e => e.ActivityName)
@@ -45,6 +47,8 @@ namespace fun2travel.Models.Entities
 
             modelBuilder.Entity<ActToHot>(entity =>
             {
+                entity.ToTable("ActToHot", "f2t");
+
                 entity.HasOne(d => d.ActivityFkNavigation)
                     .WithMany(p => p.ActToHot)
                     .HasForeignKey(d => d.ActivityFk)
@@ -59,6 +63,8 @@ namespace fun2travel.Models.Entities
 
             modelBuilder.Entity<Booking>(entity =>
             {
+                entity.ToTable("Booking", "f2t");
+
                 entity.Property(e => e.BookingEmail).IsRequired();
 
                 entity.Property(e => e.BookingId)
@@ -98,6 +104,8 @@ namespace fun2travel.Models.Entities
 
             modelBuilder.Entity<Hotel>(entity =>
             {
+                entity.ToTable("Hotel", "f2t");
+
                 entity.Property(e => e.BedPricePerNight).HasColumnType("money");
 
                 entity.Property(e => e.HotelAdress).IsRequired();
