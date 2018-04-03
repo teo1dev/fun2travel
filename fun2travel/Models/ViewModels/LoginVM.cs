@@ -8,11 +8,22 @@ namespace fun2travel.Models.ViewModels
 {
     public class LoginVM
     {
+        //[Required]
+        //[DataType(DataType.EmailAddress)]
+        //public string UserName { get; set; }
+        //[Required]
+        //[DataType(DataType.Password)]
+        //public string Password { get; set; }
+
+        //public string ReturnUrl { get; set; }
+
         [Required]
-        [DataType(DataType.EmailAddress)]
-        public string UserName { get; set; }
+        public string Username { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public string ReturnUrl { get; set; }
     }
 }

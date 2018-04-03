@@ -31,6 +31,19 @@ namespace fun2travel.Models
             this.identityContext = identityContext;
         }
 
+        public async Task<bool> TryLoginAsync(LoginVM viewModel)
+        {
+            // Create DB schema (first time)
+            //var createSchemaResult = await identityContext.Database.EnsureCreatedAsync();
+
+            // Create a hard coded user (first time)
+            //var createResult = await userManager.CreateAsync(new IdentityUser("jerryteodor"),"P@ssw0rd");
+
+            var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
+            return loginResult.Succeeded;
+            //return true;
+        }
+
         public async Task<string> GetUserNameAsync(HttpContext httpContext)
         {
             string userId = userManager.GetUserId(httpContext.User);
@@ -47,7 +60,7 @@ namespace fun2travel.Models
 
         public async Task<bool> LoginUserAsync(LoginVM model)
         {
-            var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+            var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
             return result.Succeeded;
         }
 
