@@ -1,0 +1,21 @@
+﻿@model AccountRegisterNewUserVM
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<form asp-controller="Account" asp-action="RegisterNewUser">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName" />
+    <span asp-validation-for="Username"></span>
+    <br />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+    <br />
+    <input type="submit" value="Login" />
+</form>
+
