@@ -1,8 +1,9 @@
 ﻿@model BookingDetailVM
 <div class="bs-component">
     <div class="jumbotron d-flex justify-content-center">
+        <div class="col-lg-6">
         <form asp-controller="Bookings" asp-action="Booking" class="form-group">
-            <div class="row col-lg-12">
+            <div class="row d-flex justify-content-center">
                 <div class="form-group">
                     <label class="col-form-label" for="inputDefault">Booking for: </label>
                     <span class="label label-success" style="font-size:30px">@Model.HotelName</span>
@@ -29,9 +30,10 @@
                         <span asp-validation-for="SelectedDateTo" class="text-danger"></span>
                     </div>
                 </div>
+                <br />
                 <div class="form-group row col-lg-12 d-flex justify-content-between">
-               
-                    <label class="control-label">Choose number of persons</label>
+                    <label class="control-label">Persons or Beds</label>
+                    <br />
                     <div>
                         <select asp-for="NoPplForHotel" id="NumberofPeopleRoom" class="form-control">
                             <option value="1">1</option>
@@ -46,11 +48,8 @@
                             <option value="10">10</option>
                         </select>
                     </div>
-                    <label class="control-label">Total Room Price per night: €</label>
-                    <label class="col-form-label" id="TotalHotelAmount"></label>
                 </div>
             </div>
-
             <div class="col-lg-12">
                 <div class="d-flex justify-content-between">
                     <div class="form-group">
@@ -74,22 +73,37 @@
                         </div>
                 </div>
                 <br />
-                <div class="row col-lg-8">
+                <div class="row col-lg-12">
                     <div class="custom-control custom-checkbox d-flex justify-content-around">
                         <input asp-for="RentEquipmentSelected" type="checkbox" class="custom-control-input" id="customCheck1">
                         <label class="custom-control-label" for="customCheck1">Rent Equipment</label>
                     </div>
+                    </div>
                     <br />
-                    <div class="custom-control custom-checkbox d-flex justify-content-around">
+                    <div class="custom-control custom-checkbox">
                         <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
                         <label class="custom-control-label" for="customCheck3">Transport service</label>
                         <br />
-                        <br />
-                        <br />
-                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="" style="color:#fffcf7">
-                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
-                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
-                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
+                        <div class="d-flex justify-content-around align-items-center">
+                            <div>
+                                <label>Price for Equipment:</label>
+                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="" style="color:#fffcf7">
+                            </div>
+                            <div>
+                                <label>Price for Transport:</label>
+                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
+                            </div>
+                            <div>
+                                <label>Price for Hotel:</label>
+                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
+                            </div>
+                            <div>
+                                <label>Total Price:</label>
+                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
+                            </div>
+                        </div>
+                        <label class="control-label">Total Room Price per night: €</label>
+                        <label class="col-form-label" id="TotalHotelAmount"></label>
                     </div>
                 </div>
                 <br />
@@ -125,4 +139,5 @@
             </div>
         </form>
     </div>
+        </div>
 </div>
