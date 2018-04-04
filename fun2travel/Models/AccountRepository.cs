@@ -44,17 +44,28 @@ namespace fun2travel.Models
 
             var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
             return loginResult.Succeeded;
-            //return true;
+        }
+
+        public async Task<bool> TryRegisterAsync(AccountRegisterNewUserVM model)
+        {
+
+            // Create a user
+            var createResult = await userManager.CreateAsync(new IdentityUser(model.UserName), model.Password);
+            if (createResult.Succeeded)
+            {
+                await CreateRoleAsync(model.UserName);
+            }
+            return createResult.Succeeded;
+
         }
 
         internal async Task CreateRoleAsync(string userName)
         {
             var user = await userManager.FindByNameAsync(userName);
-            //var result = await roleManager.CreateAsync(new IdentityRole(roleNameAdmin));
-            //if (result.Succeeded)
-            //{
-                await userManager.AddToRoleAsync(user, roleNameAdmin);
-            //}
+            //IdentityRole role = new IdentityRole();
+            //role.Name = roleNameUser;
+            //await roleManager.CreateAsync(role);
+            await userManager.AddToRoleAsync(user, roleNameUser);
         }
 
         //internal async Task<object> FinduserbyidAsync(string v)
@@ -65,7 +76,7 @@ namespace fun2travel.Models
         //}
 
         internal async Task<string> CheckUserRoleByIdAsync(LoginVM viewModel)
-        {            
+        {
             IdentityUser model = await userManager.FindByNameAsync(viewModel.Username);
             var admin = await userManager.IsInRoleAsync(model, roleNameAdmin);
             var user = await userManager.IsInRoleAsync(model, roleNameUser);
@@ -76,8 +87,9 @@ namespace fun2travel.Models
             else if (user)
             {
                 return "User";
-            }else            
-            return "No user found";
+            }
+            else
+                return "No user found";
         }
 
         //public async Task<string> GetUserNameAsync(HttpContext httpContext)

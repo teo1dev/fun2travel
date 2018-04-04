@@ -11,16 +11,36 @@
     });
 }
 
-//$('#customCheck1').click(function () {
-//    if (this.checked) {
-//        var eqRentPrice = $('#ActivityList').val();
-//        var noPpl = $('#NumberofPeopleActivity').val();
-//        var totAmount = eqRentPrice * noPpl;
-//        $('#staticPriceEquipment').val("Total price for" + noPpl + "persons:" + totAmount + "€");
-//    } else {
-//        $('#staticPriceEquipment').val("");
-//    }
-//})
+$('#ActivityList').on('change', function () {
+    var activitySelected = $('#ActivityList').val();
+    var activityPrice = 0;
+    if (activitySelected === 1) {
+        activityPrice = 50;
+    } else if (activitySelected === "2") {
+        activityPrice = 60;
+    } else if (activitySelected === "3") {
+        activityPrice = 10;
+    } else if (activitySelected === "4") {
+        activityPrice = 40;
+    } else if (activitySelected === "5") {
+        activityPrice = 50;
+    } else if (activitySelected === "6") {
+        activityPrice = 0;
+    } else if (activitySelected === "7") {
+        activityPrice = 10;
+    } else if (activitySelected === "8") {
+        activityPrice = 50;
+    } else if (activitySelected === "9") {
+        activityPrice = 250;
+    } else if (activitySelected === "10") {
+        activityPrice = 300;
+    } else if (activitySelected === "11") {
+        activityPrice = 0;
+    } else if (activitySelected === "12") {
+        activityPrice = 500;
+    }
+
+})
 
 $('#customCheck3').click(function () {
     if (this.checked) {

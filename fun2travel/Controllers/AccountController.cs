@@ -72,13 +72,31 @@ namespace fun2travel.Controllers
         //    return RedirectToAction(nameof(AccountController.LoginUser), "Account");
         //}
         [HttpGet]
-        //[Route("")]
-        [Route("registeruser")]
-        public async Task<IActionResult> RegisterNewUser()
+        public IActionResult RegisterNewUser()
         {
             //await repository.CreateRoleAsync("jerryteodor");
             var model = new AccountRegisterNewUserVM();
             return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> RegisterNewUser(AccountRegisterNewUserVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            // Check if credentials is valid (and set auth cookie)
+            if (!await repository.TryRegisterAsync(model))
+            {
+                // Show login error
+                ModelState.AddModelError(nameof(AccountRegisterNewUserVM.UserName), "Invalid credentials");
+                return View(model);
+            }
+
+            // Redirect user
+            if (string.IsNullOrWhiteSpace(model.ReturnUrl))
+                return RedirectToAction(nameof(MembersController.IndexUserRegistred), "members");
+            else
+                return Redirect(model.ReturnUrl);
         }
 
         [HttpGet]
@@ -86,7 +104,6 @@ namespace fun2travel.Controllers
         [Route("createrole")]
         public IActionResult CreateRole()
         {
-            //var admin = repository.FinduserbyidAsync("58152560-7220-49c5-9d41-de393d1f6f44");
             return View();
         }
 
@@ -95,7 +112,6 @@ namespace fun2travel.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(string returnUrl)
         {
-            //await repository.CreateRoleAsync("jerryteodor");
             var model = new LoginVM { ReturnUrl = returnUrl };
             return View(model);
         }
@@ -121,14 +137,14 @@ namespace fun2travel.Controllers
                 var userRole = repository.CheckUserRoleByIdAsync(viewModel);
                 if (userRole.Result == "Admin")
                 {
-                    return RedirectToAction(nameof(MembersController.Index), "members");
+                    return RedirectToAction(nameof(MembersController.Index), "Members");
                 }
                 else if(userRole.Result == "User")
                 {
-                    return RedirectToAction(nameof(HomeController.Index));
+                    return RedirectToAction(nameof(MembersController.IndexUser),"Members");
                 }
                 else
-                    return RedirectToAction(nameof(HomeController.Index));
+                    return RedirectToAction(nameof(HomeController.Index),"Home");
 
             }
             else

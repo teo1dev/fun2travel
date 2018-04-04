@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace fun2travel.Models.ViewModels
 {
-    public class LoggedInUserVM
+    public class UserVM
     {
         public string UserName { get; set; }
 
