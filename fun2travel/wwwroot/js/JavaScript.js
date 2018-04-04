@@ -1,5 +1,12 @@
 ﻿var activityPrice = 0;
 var activityRentPrice = 0;
+var totalHotelCost = 0;
+var noPplAct = 0;
+var noPplRoom = $('#NumberofPeopleRoom').val();
+var hotelCost = $('#HotelPrice').html();
+var difference = 0;
+totalHotelCost = 0;
+var TransportPrice = $('#TransportPrice').html();
 
 function DropDownAjaxCall(LocationName, ActivityName) {
     $.ajax({
@@ -15,7 +22,7 @@ function DropDownAjaxCall(LocationName, ActivityName) {
 }
 //DONE
 $('#NumberofPeopleActivity').on('change', function () {
-    var noPplAct = $('#NumberofPeopleActivity').val();
+    noPplAct = $('#NumberofPeopleActivity').val();
     var totEqAmount = "";
     if ($('#customCheck1').is(':checked')) {
         totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + activityPrice * noPplAct + activityRentPrice * noPplAct + "    € ";
@@ -69,7 +76,7 @@ $('#ActivityList').on('change', function () {
         activityRentPrice = 300;
     }
     var totEqAmount = "";
-    var noPplAct = $('#NumberofPeopleActivity').val();
+    noPplAct = $('#NumberofPeopleActivity').val();
     if ($('#customCheck1').is(':checked')) {
         totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + (activityPrice * noPplAct + activityRentPrice * noPplAct) + "    € ";
     }
@@ -118,7 +125,7 @@ window.onload = function () {
         activityPrice = 500;
         activityRentPrice = 300;
     }
-    var noPplAct = $('#NumberofPeopleActivity').val();
+    noPplAct = $('#NumberofPeopleActivity').val();
     var totEqAmount = "Total cost for Activity for " + noPplAct + " person:  " + activityPrice * noPplAct + "    € ";
     $('#staticPriceEquipment').val(totEqAmount);
 
@@ -126,7 +133,7 @@ window.onload = function () {
 //DONE
 $('#customCheck1').click(function () {
     if (this.checked) {
-        var noPplAct = $('#NumberofPeopleActivity').val();
+        noPplAct = $('#NumberofPeopleActivity').val();
         var totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + (activityPrice * noPplAct + activityRentPrice * noPplAct) + "    € ";
 
         $('#staticPriceEquipment').val(totEqAmount);
@@ -139,9 +146,9 @@ $('#customCheck1').click(function () {
 $('#customCheck3').click(function () {
     if (this.checked) {
 
-        var TransportPrice = $('#TransportPrice').html();
-        var noPpl = $('#NumberofPeopleRoom').val();
-        var totAmount = "Total cost for transport for " + noPpl + " people:  " + TransportPrice * noPpl + "   € ";
+        TransportPrice = $('#TransportPrice').html();
+        noPplRoom = $('#NumberofPeopleRoom').val();
+        var totAmount = "Total cost for transport for " + noPplRoom + " people:  " + TransportPrice * noPplRoom + "   € ";
 
         $('#staticPriceTransport').val(totAmount);
 
@@ -151,7 +158,7 @@ $('#customCheck3').click(function () {
 })
 
 $('#NumberofPeopleActivity').on('change', function () {
-    var noPplAct = $('#NumberofPeopleActivity').val();
+    noPplAct = $('#NumberofPeopleActivity').val();
     var totEqAmount = "";
     if ($('#customCheck1').is(':checked')) {
         totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + activityPrice * noPplAct + activityRentPrice * noPplAct + "    € ";
@@ -164,20 +171,30 @@ $('#NumberofPeopleActivity').on('change', function () {
 $('#NumberofPeopleRoom').on('change', function () {
     $('#customCheck3').prop('checked', false);
     $('#staticPriceTransport').val('');
+    noPplRoom = $('#NumberofPeopleRoom').val();
+
+    totalHotelCost = hotelCost * noPplRoom * difference;
+    var totalHotelCostString = "Total cost hotel:"+ totalHotelCost+ " E";
+    $('#staticPriceHotel').val(totalHotelCost);
+    var totalAllCost = totalHotelCost + (activityPrice * noPplAct) + (activityRentPrice * noPplAct) + (TransportPrice * noPplRoom);
+    var totalAllCostString = "Total Price:" + totalAllCost + " E";
+    $('#staticPriceAll').val(totalAllCost);
 })
+
 // DONE
 $(document).ready(function () {
-    var hotelCost = $('#HotelPrice').html();
+    hotelCost = $('#HotelPrice').html();
     $('#TotalHotelAmount').html(hotelCost);
 
 });
 // DONE
 $('#NumberofPeopleRoom').on('change', function () {
-    var hotelCost = $('#HotelPrice').html();
+    hotelCost = $('#HotelPrice').html();
     var noPpl = $('#NumberofPeopleRoom').val();
-    var totalHotelCost = hotelCost * noPpl;
+    totalHotelCost = hotelCost * noPpl;
 
     $('#TotalHotelAmount').html(totalHotelCost);
+    
 })
 
 //$('document').ready(function () {
@@ -199,7 +216,7 @@ $('#date2').change(function () {
     var parts2 = v2.split('-');
     var date1 = new Date(parts1[0], parts1[1], parts1[2]);
     var date2 = new Date(parts2[0], parts2[1], parts2[2]);
-    var difference = date2 - date1;
+    difference = date2 - date1;
     difference = parseInt(difference / 86400000);
     alert(difference);
 })
