@@ -71,6 +71,15 @@ namespace fun2travel.Controllers
         //    repository.logOut();
         //    return RedirectToAction(nameof(AccountController.LoginUser), "Account");
         //}
+        [HttpGet]
+        //[Route("")]
+        [Route("registeruser")]
+        public async Task<IActionResult> RegisterNewUser()
+        {
+            //await repository.CreateRoleAsync("jerryteodor");
+            var model = new AccountRegisterNewUserVM();
+            return View(model);
+        }
 
         [HttpGet]
         //[Route("")]
