@@ -18,6 +18,15 @@ p, li{
     font-size: 1rem;
     color: #FFFCF7;
 }
+.col-form-label {
+    font-family: Rubik;
+    color: #FFFCF7;
+}
+
+.label, .control-label, .custom-control-label, .form-control-plaintext {
+    font-family: Rubik;
+    color: #FFFCF7;
+}
 
 #btnGroupDrop1 {
     font-family: Calibri;
