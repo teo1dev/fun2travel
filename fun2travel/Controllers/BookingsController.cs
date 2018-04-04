@@ -56,5 +56,11 @@ namespace fun2travel.Controllers
             return View();           
             
         }
+
+        [HttpPost]
+        public IActionResult DeleteBooking(int BookingId)
+        {
+            return View();
+        }
     }
 }
