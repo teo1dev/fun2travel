@@ -47,7 +47,7 @@
                         <div class="col">
                             <label for="SelectedDateTo" class="col-md-2 control-label">Ending</label>
                             <br />
-                            <input type="date" name="SelectedDateTo" value="" />
+                            <input type="date" name="SelectedDateTo" id="date2" value="" />
                             <span asp-validation-for="SelectedDateTo" class="text-danger"></span>
 
                         </div>
@@ -90,6 +90,8 @@
                         <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
                         <label class="custom-control-label" for="customCheck3">Transport service</label>
                         <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
                     </div>
                 </div>
                 <br />
