@@ -97,6 +97,22 @@ namespace fun2travel.Models
             smtp.Send(mail);
         }
 
+        internal void DeleteBooking(int id)
+        {
+            Booking bookingToDelete = new Booking();
+            bookingToDelete = GetBookingById(id);
+            context.Booking.Remove(bookingToDelete);
+            context.SaveChanges();
+
+        }
+
+        private Booking GetBookingById(int id)
+        {
+            Booking booking = new Booking();
+            
+            return context.Booking.Find(id);
+        }
+
         public AdventuresVM GetAdventureByIdToVM(int id)
         {
             Activity adventure = new Activity();
@@ -298,7 +314,8 @@ namespace fun2travel.Models
                               B.BookingEmail,
                               B.BookingPhone,
                               B.TotalCost,
-                              B.TotalNoNights
+                              B.TotalNoNights,
+                              B.Id
                           }).Distinct();
             var bookingslist = new List<Booking>();
             foreach (var item in queryB)
@@ -320,7 +337,8 @@ namespace fun2travel.Models
                     RentEquipment = item.RentEquipment,
                     TotalCost = item.TotalCost,
                     Transport = item.Transport,
-                    TotalNoNights = item.TotalNoNights                 
+                    TotalNoNights = item.TotalNoNights,
+                    Id=item.Id
                     
                 });
             }

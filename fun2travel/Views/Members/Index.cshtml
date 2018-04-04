@@ -1,9 +1,14 @@
 ﻿@model AdminVM
-<div class="jumbotron">
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="override">
     <h4>Logged in as: @Model.UserName</h4>
-    <hr class="my-4">
+
     <p class="lead">These are the bookings right now:</p>
-    <hr class="my-4">
+
 
     <table class="table table-hover">
         <thead>
@@ -48,7 +53,7 @@
                     <td> @item.TotalCost </td>
                     <td> @item.TotalNoNights </td>
                     <td>
-                        <a asp-controller="Booking" asp-action="DeleteBooking" asp-route-id="@item.Id" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
+                        <a asp-controller="Bookings" asp-action="DeleteBooking" asp-route-id="@item.Id" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
                     </td>
                 </tr>
             }
