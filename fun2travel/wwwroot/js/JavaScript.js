@@ -214,6 +214,16 @@ $('#date2').change(function () {
     UpdateSummary();
 })
 
+
+$(document).ready(function () {
+    $(".dropdown-item").click(function () {
+        $("#partialResultView").slideToggle(300);
+    });
+    $(".dropdown-item").click(function () {
+        $("#partialResultView").slideToggle(300);
+    });
+});
+
 function UpdateSummary() {
 
     $('#staticPriceEquipment').val(totActCost);
