@@ -5,8 +5,9 @@ var noPplAct = 0;
 var noPplRoom = $('#NumberofPeopleRoom').val();
 var hotelCost = $('#HotelPrice').html();
 var difference = 0;
-totalHotelCost = 0;
+var totalHotelCost = 0;
 var TransportPrice = $('#TransportPrice').html();
+var totActCost = 0;
 
 function DropDownAjaxCall(LocationName, ActivityName) {
     $.ajax({
@@ -23,13 +24,13 @@ function DropDownAjaxCall(LocationName, ActivityName) {
 //DONE
 $('#NumberofPeopleActivity').on('change', function () {
     noPplAct = $('#NumberofPeopleActivity').val();
-    var totEqAmount = "";
-    if ($('#customCheck1').is(':checked')) {
-        totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + activityPrice * noPplAct + activityRentPrice * noPplAct + "    € ";
-    }
-    totEqAmount = "Total cost for Activity for " + noPplAct + " people:  " + activityPrice * noPplAct + "    € ";
 
-    $('#staticPriceEquipment').val(totEqAmount);
+    if ($('#customCheck1').is(':checked')) {
+        totActCost = (activityPrice * noPplAct) + (activityRentPrice * noPplAct);
+    }
+    totActCost = (activityPrice * noPplAct);
+
+    UpdateSummary();
 })
 // DONE
 $('#ActivityList').on('change', function () {
@@ -75,14 +76,13 @@ $('#ActivityList').on('change', function () {
         activityPrice = 500;
         activityRentPrice = 300;
     }
-    var totEqAmount = "";
     noPplAct = $('#NumberofPeopleActivity').val();
     if ($('#customCheck1').is(':checked')) {
-        totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + (activityPrice * noPplAct + activityRentPrice * noPplAct) + "    € ";
+        totActCost = (activityPrice * noPplAct) + (activityRentPrice * noPplAct);
     }
-    totEqAmount = "Total cost for Activity for " + noPplAct + " people:  " + activityPrice * noPplAct + "    € ";
+    totActCost = activityPrice * noPplAct;
 
-    $('#staticPriceEquipment').val(totEqAmount);
+    UpdateSummary();
 })
 //done
 window.onload = function () {
@@ -126,86 +126,79 @@ window.onload = function () {
         activityRentPrice = 300;
     }
     noPplAct = $('#NumberofPeopleActivity').val();
-    var totEqAmount = "Total cost for Activity for " + noPplAct + " person:  " + activityPrice * noPplAct + "    € ";
-    $('#staticPriceEquipment').val(totEqAmount);
-
+    var totActCost = (activityPrice * noPplAct);
+    UpdateSummary();
 }
 //DONE
 $('#customCheck1').click(function () {
     if (this.checked) {
         noPplAct = $('#NumberofPeopleActivity').val();
-        var totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + (activityPrice * noPplAct + activityRentPrice * noPplAct) + "    € ";
+        totActCost = activityPrice * noPplAct + activityRentPrice * noPplAct;
 
-        $('#staticPriceEquipment').val(totEqAmount);
-
+        
     } else {
-        $('#staticPriceEquipment').val("");
+        totActCost = activityPrice * noPplAct;
+        
     }
+    UpdateSummary();
 })
 // DONE
 $('#customCheck3').click(function () {
     if (this.checked) {
 
         TransportPrice = $('#TransportPrice').html();
+        TransportPrice = parseInt(TransportPrice);
         noPplRoom = $('#NumberofPeopleRoom').val();
-        var totAmount = "Total cost for transport for " + noPplRoom + " people:  " + TransportPrice * noPplRoom + "   € ";
+        TransportPrice = TransportPrice * noPplRoom;
 
-        $('#staticPriceTransport').val(totAmount);
 
     } else {
-        $('#staticPriceTransport').val("");
+        TransportPrice = 0;
+        
     }
+    UpdateSummary();
 })
 
 $('#NumberofPeopleActivity').on('change', function () {
     noPplAct = $('#NumberofPeopleActivity').val();
-    var totEqAmount = "";
     if ($('#customCheck1').is(':checked')) {
-        totEqAmount = "Total cost for Activity and renting for " + noPplAct + " people:  " + activityPrice * noPplAct + activityRentPrice * noPplAct + "    € ";
+        totActCost = (activityPrice * noPplAct) + (activityRentPrice * noPplAct);
     }
-    totEqAmount = "Total cost for Activity for " + noPplAct + " people:  " + activityPrice * noPplAct + "    € ";
+    totActCost = activityPrice * noPplAct;
 
-    $('#staticPriceEquipment').val(totEqAmount);
+    UpdateSummary();
 })
 // DONE
 $('#NumberofPeopleRoom').on('change', function () {
     $('#customCheck3').prop('checked', false);
-    $('#staticPriceTransport').val('');
+
     noPplRoom = $('#NumberofPeopleRoom').val();
 
-    totalHotelCost = hotelCost * noPplRoom * difference;
-    var totalHotelCostString = "Total cost hotel:"+ totalHotelCost+ " E";
-    $('#staticPriceHotel').val(totalHotelCost);
-    var totalAllCost = totalHotelCost + (activityPrice * noPplAct) + (activityRentPrice * noPplAct) + (TransportPrice * noPplRoom);
-    var totalAllCostString = "Total Price:" + totalAllCost + " E";
-    $('#staticPriceAll').val(totalAllCost);
+    UpdateSummary();
 })
 
 // DONE
 $(document).ready(function () {
     hotelCost = $('#HotelPrice').html();
-    $('#TotalHotelAmount').html(hotelCost);
+    hotelCost = parseInt(hotelCost);
 
+    UpdateSummary();
 });
 // DONE
 $('#NumberofPeopleRoom').on('change', function () {
     hotelCost = $('#HotelPrice').html();
+    hotelCost = parseInt(hotelCost);
     var noPpl = $('#NumberofPeopleRoom').val();
     totalHotelCost = hotelCost * noPpl;
 
-    $('#TotalHotelAmount').html(totalHotelCost);
-    
+
+    UpdateSummary();
 })
 
-//$('document').ready(function () {
-//    var end = $('#date1').val();
 
-//    alert(end);
-//})
 $('#date1').change(function () {
     var end = $('#date1').val();
-
-   // alert(end);
+    
 })
 $('#date2').change(function () {
     var end = $('#date2').val();
@@ -218,7 +211,7 @@ $('#date2').change(function () {
     var date2 = new Date(parts2[0], parts2[1], parts2[2]);
     difference = date2 - date1;
     difference = parseInt(difference / 86400000);
-    alert(difference);
+    UpdateSummary();
 })
 
 
@@ -230,3 +223,16 @@ $(document).ready(function () {
         $("#partialResultView").slideToggle(300);
     });
 });
+
+function UpdateSummary() {
+
+    $('#staticPriceEquipment').val(totActCost);
+    var trpCostTotal = TransportPrice * noPplRoom;
+    $('#staticPriceTransport').val(trpCostTotal);
+    totalHotelCost = hotelCost * noPplRoom * difference;
+
+    $('#staticPriceHotel').val(totalHotelCost);
+    var totalAllCost = totalHotelCost + totActCost + (TransportPrice * noPplRoom);
+
+    $('#staticPriceAll').val(totalAllCost);
+}

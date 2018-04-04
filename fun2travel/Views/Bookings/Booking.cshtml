@@ -74,21 +74,24 @@
                         </div>
                 </div>
                 <br />
-                @*<div class="row col-lg-12">*@
-                <div class="custom-control custom-checkbox">
-                    <input asp-for="RentEquipmentSelected" type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Rent Equipment</label>
+                <div class="row col-lg-8">
+                    <div class="custom-control custom-checkbox d-flex justify-content-around">
+                        <input asp-for="RentEquipmentSelected" type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Rent Equipment</label>
+                    </div>
+                    <br />
+                    <div class="custom-control custom-checkbox d-flex justify-content-around">
+                        <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
+                        <label class="custom-control-label" for="customCheck3">Transport service</label>
+                        <br />
+                        <br />
+                        <br />
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="" style="color:#fffcf7">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
+                    </div>
                 </div>
-                <br />
-                <div class="custom-control custom-checkbox">
-                    <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
-                    <label class="custom-control-label" for="customCheck3">Transport service</label>
-                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="">
-                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
-                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
-                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
-                </div>
-                @*</div>*@
                 <br />
                 <hr />
                 <div class="row">
