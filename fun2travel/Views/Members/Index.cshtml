@@ -48,7 +48,7 @@
                     <td> @item.TotalCost </td>
                     <td> @item.TotalNoNights </td>
                     <td>
-                        <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
+                        <a asp-controller="Booking" asp-action="DeleteBooking" asp-route-id="@item.Id" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
                     </td>
                 </tr>
             }
