@@ -203,3 +203,13 @@ $('#date2').change(function () {
     difference = parseInt(difference / 86400000);
     alert(difference);
 })
+
+
+$(document).ready(function () {
+    $(".dropdown-item").click(function () {
+        $("#partialResultView").slideToggle(300);
+    });
+    $(".dropdown-item").click(function () {
+        $("#partialResultView").slideToggle(300);
+    });
+});
