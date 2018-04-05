@@ -151,5 +151,13 @@ namespace fun2travel.Controllers
                 return Redirect(viewModel.ReturnUrl);
         }
 
+        [HttpGet]
+        //[Route("")]
+        public IActionResult Logout()
+        {
+            repository.LogOut();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
     }
 }

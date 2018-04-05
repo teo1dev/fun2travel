@@ -112,10 +112,10 @@ namespace fun2travel.Models
         //    return result.Succeeded;
         //}
 
-        //internal void logOut()
-        //{
-        //    signInManager.SignOutAsync();
-        //}
+        internal void LogOut()
+        {
+            signInManager.SignOutAsync();
+        }
 
         //public void CreateDB() //görs första gången för att skapa DB tabeller
         //{
