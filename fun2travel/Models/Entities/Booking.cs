@@ -27,5 +27,6 @@ namespace fun2travel.Models.Entities
         public decimal TotalCostTransport { get; set; }
         public int TotalNoNights { get; set; }
         public string ActivityName { get; set; }
+        public bool? IsEdited { get; set; }
     }
 }
