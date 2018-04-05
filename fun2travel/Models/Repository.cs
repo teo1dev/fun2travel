@@ -315,7 +315,8 @@ namespace fun2travel.Models
                               B.BookingPhone,
                               B.TotalCost,
                               B.TotalNoNights,
-                              B.Id
+                              B.Id,
+                              B.ActivityName
                           }).Distinct();
             var bookingslist = new List<Booking>();
             foreach (var item in queryB)
@@ -338,7 +339,8 @@ namespace fun2travel.Models
                     TotalCost = item.TotalCost,
                     Transport = item.Transport,
                     TotalNoNights = item.TotalNoNights,
-                    Id=item.Id
+                    Id=item.Id,
+                    ActivityName = item.ActivityName
                     
                 });
             }
