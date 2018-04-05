@@ -6,6 +6,7 @@ using fun2travel.Models;
 using fun2travel.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
+using fun2travel.Models.Entities;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,13 @@ namespace fun2travel.Controllers
             this.repository = repository;
         }
         // GET: /<controller>/
+        [HttpGet]
+        public IActionResult EditBooking(int id)
+        {
+            BookingVM booking = new BookingVM();
+            booking = repository.GetHotelByIdToEditBookingVM(id);
+            return View(booking);
+        }
         [HttpGet]
         public IActionResult Booking(int id)
         {

@@ -35,6 +35,41 @@ namespace fun2travel.Models
                  }).ToArray();
             return q;
         }
+
+        internal BookingVM GetHotelByIdToEditBookingVM(int id)
+        {
+            BookingVM booking = new BookingVM();
+
+            var result = context.Booking.Find(id);
+
+            booking.ActivityId = result.ActivityId;
+            booking.ActivityName = result.ActivityName;
+            booking.BookingEmail = result.BookingEmail;
+            booking.BookingId = result.BookingId;
+            booking.BookingPhone = result.BookingPhone;
+            booking.DateFrom = result.DateFrom;
+            booking.DateTo = result.DateTo;
+            booking.FirstName = result.FirstName;
+            booking.HotelName = result.HotelName;
+            booking.Id = result.Id;
+            booking.LastName = result.LastName;
+            booking.NoPplForActivity = result.NoPplForActivity;
+            booking.NoPplForHotel = result.NoPplForHotel;
+            booking.RentEquipment = result.RentEquipment;
+            booking.TimeStamp = result.TimeStamp;
+            booking.TotalCost = result.TotalCost;
+            booking.TotalCostActivity = result.TotalCostActivity;
+            booking.TotalCostHotel = result.TotalCostHotel;
+            booking.TotalCostRenting = result.TotalCostRenting;
+            booking.TotalCostTransport = result.TotalCostTransport;
+            booking.TotalNoNights = result.TotalNoNights;
+            booking.Transport = result.Transport;
+
+            return booking;
+                
+            
+        }
+
         public Activity GetAdventureById(int id)
         {
             return context.Activity
@@ -95,6 +130,60 @@ namespace fun2travel.Models
                 EnableSsl = true
             };
             smtp.Send(mail);
+        }
+
+        internal List<Booking> getBookingByUserName(string userName)
+        {
+            var queryB = (from B in context.Booking
+                          where B.BookingEmail == userName
+                          select new
+                          {                              
+                              B.BookingId,
+                              B.TimeStamp,
+                              B.DateFrom,
+                              B.DateTo,
+                              B.HotelName,
+                              B.NoPplForHotel,
+                              B.ActivityId,
+                              B.NoPplForActivity,
+                              B.RentEquipment,
+                              B.Transport,
+                              B.FirstName,
+                              B.LastName,
+                              B.BookingEmail,
+                              B.BookingPhone,
+                              B.TotalCost,
+                              B.TotalNoNights,
+                              B.Id,
+                              B.ActivityName
+                          }).Distinct();
+            var bookingslist = new List<Booking>();
+            foreach (var item in queryB)
+            {
+                bookingslist.Add(new Booking
+                {
+                    BookingId = item.BookingId,
+                    ActivityId = item.ActivityId,
+                    BookingEmail = item.BookingEmail,
+                    BookingPhone = item.BookingPhone,
+                    DateFrom = item.DateFrom,
+                    DateTo = item.DateTo,
+                    FirstName = item.FirstName,
+                    HotelName = item.HotelName,
+                    LastName = item.LastName,
+                    NoPplForActivity = item.NoPplForActivity,
+                    NoPplForHotel = item.NoPplForHotel,
+                    TimeStamp = item.TimeStamp,
+                    RentEquipment = item.RentEquipment,
+                    TotalCost = item.TotalCost,
+                    Transport = item.Transport,
+                    TotalNoNights = item.TotalNoNights,
+                    Id = item.Id,
+                    ActivityName = item.ActivityName
+
+                });
+            }
+            return bookingslist;
         }
 
         internal void DeleteBooking(int id)
