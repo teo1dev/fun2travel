@@ -11,7 +11,7 @@ namespace fun2travel.Models
         protected override ValidationResult
                 IsValid(object value, ValidationContext validationContext)
         {
-            var model = (ViewModels.BookingDetailVM)validationContext.ObjectInstance;
+            var model = (ViewModels.BookingVM)validationContext.ObjectInstance;
             DateTime _bookingDateStart = Convert.ToDateTime(model.SelectedDateFrom);
             DateTime _bookingDateEnd = Convert.ToDateTime(model.SelectedDateTo);
 
