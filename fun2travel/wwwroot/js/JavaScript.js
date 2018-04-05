@@ -135,10 +135,10 @@ $('#customCheck1').click(function () {
         noPplAct = $('#NumberofPeopleActivity').val();
         totActCost = activityPrice * noPplAct + activityRentPrice * noPplAct;
 
-        
+
     } else {
         totActCost = activityPrice * noPplAct;
-        
+
     }
     UpdateSummary();
 })
@@ -154,7 +154,7 @@ $('#customCheck3').click(function () {
 
     } else {
         TransportPrice = 0;
-        
+
     }
     UpdateSummary();
 })
@@ -198,7 +198,7 @@ $('#NumberofPeopleRoom').on('change', function () {
 
 $('#date1').change(function () {
     var end = $('#date1').val();
-    
+
 })
 $('#date2').change(function () {
     var end = $('#date2').val();
@@ -235,4 +235,23 @@ function UpdateSummary() {
     var totalAllCost = totalHotelCost + totActCost + (TransportPrice * noPplRoom);
 
     $('#staticPriceAll').val(totalAllCost);
+}
+
+// Confirm-cancel delete row in admin page
+function ConfirmMessage(Id) {
+    var confirmText = "Are you sure you want to delete this booking?";
+    var c = confirm(confirmText);
+    if (c === true)
+    {
+
+        $.ajax({
+            url: "/Bookings/DeleteBooking",
+            type: "GET",
+            data: { "Id": Id },
+            success: function (result) {
+
+            }
+
+        });
+    }
 }
