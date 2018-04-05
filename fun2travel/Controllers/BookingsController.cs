@@ -21,13 +21,7 @@ namespace fun2travel.Controllers
             this.repository = repository;
         }
         // GET: /<controller>/
-        [HttpGet]
-        public IActionResult EditBooking(int id)
-        {
-            BookingVM booking = new BookingVM();
-            booking = repository.GetHotelByIdToEditBookingVM(id);
-            return View(booking);
-        }
+        
         [HttpGet]
         public IActionResult Booking(int id)
         {
@@ -70,6 +64,28 @@ namespace fun2travel.Controllers
         {
             repository.DeleteBooking(Id);
             return RedirectToAction(nameof(MembersController.Index),"Members");
+        }
+        [HttpGet]
+        public IActionResult EditBooking(int id)
+        {
+            BookingVM booking = new BookingVM();
+            booking = repository.GetHotelByIdToEditBookingVM(id);
+            return View(booking);
+        }
+        [HttpPost]
+        public IActionResult EditBooking(BookingVM bookingDetails)
+        {
+            if (!ModelState.IsValid)
+            {
+                bookingDetails = repository.GetHotelByIdToEditBookingVM(bookingDetails.Id);
+                return View(bookingDetails);
+            }
+
+            // write prel booking to DB, generate booking ID and send to BookingConfirmation action?
+            repository.UpdateBooking(bookingDetails);
+
+            return RedirectToAction(nameof(MembersController.IndexUser), "Members");
+
         }
     }
 }

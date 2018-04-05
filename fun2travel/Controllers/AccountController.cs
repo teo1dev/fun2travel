@@ -43,7 +43,7 @@ namespace fun2travel.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(model.ReturnUrl))
-                return RedirectToAction(nameof(MembersController.IndexUserRegistred), "members");
+                return RedirectToAction(nameof(MembersController.IndexUser), "members");
             else
                 return Redirect(model.ReturnUrl);
         }
@@ -57,7 +57,7 @@ namespace fun2travel.Controllers
 
         [HttpGet]
         [Route("login")]
-        public async Task<IActionResult> Login(string returnUrl)
+        public IActionResult Login(string returnUrl)
         {
             var model = new LoginVM { ReturnUrl = returnUrl };
             return View(model);

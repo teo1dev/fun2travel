@@ -92,6 +92,11 @@ namespace fun2travel.Models
 
         }
 
+        internal void UpdateBooking(BookingVM bookingDetails)
+        {
+            throw new NotImplementedException();
+        }
+
         public Activity GetAdventureById(int id)
         {
             return context.Activity
