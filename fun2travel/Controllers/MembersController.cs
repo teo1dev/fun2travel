@@ -42,7 +42,8 @@ namespace fun2travel.Controllers
         [Authorize(Roles = "User")]
         public IActionResult IndexUser()
         {
-            UserVM user = new UserVM { UserName = User.Identity.Name };            
+            UserVM user = new UserVM { UserName = User.Identity.Name };
+            //user.Bookings = repository.getBookingByUserName(user.UserName);
             return View(user);
         }
         //// GET: /<controller>/
