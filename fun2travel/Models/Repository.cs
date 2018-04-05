@@ -92,9 +92,34 @@ namespace fun2travel.Models
 
         }
 
-        internal void UpdateBooking(BookingVM bookingDetails)
+        internal void UpdateBooking(BookingVM b)
         {
-            throw new NotImplementedException();
+            var r = context.Booking.Where(c => c.Id == b.Id)
+                .SingleOrDefault();
+
+            r.ActivityId = b.ActivityId;
+            r.ActivityName = b.ActivityName;
+            r.BookingEmail = b.BookingEmail;
+            r.BookingId = b.BookingId;
+            r.BookingPhone = b.BookingPhone;
+            r.DateFrom = b.DateFrom;
+            r.DateTo = b.DateTo;
+            r.FirstName = b.FirstName;
+            r.HotelName = b.HotelName;
+            r.IsEdited = true;
+            r.LastName = b.LastName;
+            r.NoPplForActivity = b.NoPplForActivity;
+            r.NoPplForHotel = b.NoPplForHotel;
+            r.RentEquipment = b.RentEquipment;
+            r.TimeStamp = b.TimeStamp;
+            r.TotalCost = b.TotalCost;
+            r.TotalCostActivity = b.TotalCostActivity;
+            r.TotalCostHotel = b.TotalCostHotel;
+            r.TotalCostRenting = b.TotalCostRenting;
+            r.TotalCostTransport = b.TotalCostTransport;
+            r.TotalNoNights = b.TotalNoNights;
+            r.Transport = b.Transport;
+            context.SaveChanges();
         }
 
         public Activity GetAdventureById(int id)
