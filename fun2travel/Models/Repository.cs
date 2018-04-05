@@ -38,6 +38,7 @@ namespace fun2travel.Models
 
         internal BookingVM GetHotelByIdToEditBookingVM(int id)
         {
+
             BookingVM booking = new BookingVM();
 
             var result = context.Booking.Find(id);
@@ -65,9 +66,30 @@ namespace fun2travel.Models
             booking.TotalNoNights = result.TotalNoNights;
             booking.Transport = result.Transport;
 
+            Hotel hotel = new Hotel();
+
+            hotel = context.Hotel.Where(h => h.HotelName == booking.HotelName)
+                .Select(c => new Hotel
+                {
+                    Id = c.Id,
+                    TotalNrOfBeds = c.TotalNrOfBeds,
+                    HotelLocation = c.HotelLocation,
+                    BedPricePerNight = Math.Round(c.BedPricePerNight, 0)
+
+                }).FirstOrDefault();
+
+            booking.TotalNrOfBeds = hotel.TotalNrOfBeds;
+            booking.HotelLocation = hotel.HotelLocation;
+            booking.BedPricePerNight = hotel.BedPricePerNight;
+
+            var ActivityList = GetactivitiesbyHotelId(hotel.Id);
+            var SelectionActivityList = GetActivitiesSelectListItem(hotel.Id);
+
+            booking.ActivityList = ActivityList;
+            booking.SelectionActivityList = SelectionActivityList;
             return booking;
-                
-            
+
+
         }
 
         public Activity GetAdventureById(int id)
@@ -137,7 +159,7 @@ namespace fun2travel.Models
             var queryB = (from B in context.Booking
                           where B.BookingEmail == userName
                           select new
-                          {                              
+                          {
                               B.BookingId,
                               B.TimeStamp,
                               B.DateFrom,
@@ -198,7 +220,7 @@ namespace fun2travel.Models
         private Booking GetBookingById(int id)
         {
             Booking booking = new Booking();
-            
+
             return context.Booking.Find(id);
         }
 
@@ -222,7 +244,7 @@ namespace fun2travel.Models
             adventureVm.ActivityRentalPrice = Math.Round((decimal)adventureVm.ActivityRentalPrice, 0);
             return adventureVm;
         }
-        
+
         internal void SavePrelBookingToDb(BookingDetailVM b)
         {
             var activityId = Convert.ToInt32(b.ActivitySelectedId);
@@ -422,15 +444,15 @@ namespace fun2travel.Models
                     HotelName = item.HotelName,
                     LastName = item.LastName,
                     NoPplForActivity = item.NoPplForActivity,
-                    NoPplForHotel= item.NoPplForHotel,
+                    NoPplForHotel = item.NoPplForHotel,
                     TimeStamp = item.TimeStamp,
                     RentEquipment = item.RentEquipment,
                     TotalCost = item.TotalCost,
                     Transport = item.Transport,
                     TotalNoNights = item.TotalNoNights,
-                    Id=item.Id,
+                    Id = item.Id,
                     ActivityName = item.ActivityName
-                    
+
                 });
             }
             return bookingslist;
