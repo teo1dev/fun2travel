@@ -28,6 +28,7 @@ namespace fun2travel.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         //[Route("Members")]
         public IActionResult Index()
         {
@@ -38,6 +39,7 @@ namespace fun2travel.Controllers
 
         [HttpGet]
         //[Route("Members")]
+        [Authorize(Roles = "User")]
         public IActionResult IndexUser()
         {
             UserVM user = new UserVM { UserName = User.Identity.Name };            

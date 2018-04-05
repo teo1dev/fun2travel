@@ -62,9 +62,9 @@ namespace fun2travel.Models
         internal async Task CreateRoleAsync(string userName)
         {
             var user = await userManager.FindByNameAsync(userName);
-            //IdentityRole role = new IdentityRole();
-            //role.Name = roleNameUser;
-            //await roleManager.CreateAsync(role);
+            IdentityRole role = new IdentityRole();
+            role.Name = roleNameUser;
+            await roleManager.CreateAsync(role);
             await userManager.AddToRoleAsync(user, roleNameUser);
         }
 
