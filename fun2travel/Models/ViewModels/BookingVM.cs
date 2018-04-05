@@ -42,11 +42,11 @@ namespace fun2travel.Models.ViewModels
         public List<Activity> ActivityList { get; set; }
         public List<SelectListItem> SelectionActivityList { get; set; }
         [Required(ErrorMessage = "Please choose a date.")] //  => Bdb
-        [CalendarValidatorStart]
+        [CalendarValidatorStartEdit]
         public DateTime? SelectedDateFrom { get; set; } // Datetime set as null in bookingform for validation
 
         [Required(ErrorMessage = "Please choose a date.")] //  => Bdb
-        [CalendarValidatorEnd]
+        [CalendarValidatorEndEdit]
         public DateTime? SelectedDateTo { get; set; }  // Datetime set as null in bookingform for validation
 
         
