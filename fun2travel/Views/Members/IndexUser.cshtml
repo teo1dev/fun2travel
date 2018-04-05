@@ -1,7 +1,57 @@
 ﻿@model UserVM
-
-
-
-
-<br /><br /><br /><br />
-<p>Welcome @Model.UserName</p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="override">
+    <h4>Welcome @Model.UserName</h4>
+    <p class="lead">These are your bookings:</p>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <td>BookingId</td>
+                <td>DateFrom</td>
+                <td>DateTo</td>
+                <td>HotelName</td>
+                <td>NoPplForHotel</td>
+                <td>Activity</td>
+                <td>NoPplForActivity</td>
+                <td>RentEquipment</td>
+                <td>Transport</td>
+                <td>FirstName</td>
+                <td>LastName</td>
+                <td>BookingEmail</td>
+                <td>BookingPhone</td>
+                <td>TotalCost</td>
+                <td>TotalNoNights</td>
+                <td>Edit Booking</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Bookings)
+            {
+                <tr class="table-dark">
+                    <td> @item.BookingId </td>
+                    <td> @item.DateFrom </td>
+                    <td> @item.DateTo </td>
+                    <td> @item.HotelName </td>
+                    <td> @item.NoPplForHotel </td>
+                    <td> @item.ActivityId </td> @*Här ska Aktivitetsnamnet in*@
+                    <td> @item.NoPplForActivity </td>
+                    <td> @item.RentEquipment </td>
+                    <td> @item.Transport </td>
+                    <td> @item.FirstName </td>
+                    <td> @item.LastName </td>
+                    <td> @item.BookingEmail</td>
+                    <td> @item.BookingPhone </td>
+                    <td> @item.TotalCost </td>
+                    <td> @item.TotalNoNights </td>
+                    <td>
+                        <a asp-controller="Bookings" asp-action="EditBooking" asp-route-id="@item.Id" class="btn btn-outline-primary btn-lg btn-block">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
