@@ -1,4 +1,5 @@
 ﻿@model BookingDetailVM
+<br/>
 <div class="bs-component">
     <div class="jumbotron d-flex justify-content-center">
         <div class="col-lg-6">
@@ -82,28 +83,28 @@
                     <br />
                     <div class="custom-control custom-checkbox">
                         <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
-                        <label class="custom-control-label" for="customCheck3">Transport service</label>
+                        <label class="custom-control-label" for="customCheck3">Transport service, € 35</label>
                         <br />
-                        <div class="d-flex justify-content-around align-items-center">
+                        <div class="d-flex justify-content-around align-items-end" style="width:120%;">
                             <div>
-                                <label>Price for Equipment:</label>
+                                <label>Price, Equipment €:</label>
                                 <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="" style="color:#fffcf7">
                             </div>
-                            <div>
-                                <label>Price for Transport:</label>
+                            @*<div>
+                                <label>Price, Transport €:</label>
                                 <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
-                            </div>
+                            </div>*@
                             <div>
-                                <label>Price for Hotel:</label>
+                                <label>Price, Hotel €:</label>
                                 <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
                             </div>
                             <div>
-                                <label>Total Price:</label>
+                                <label>Total Price €:</label>
                                 <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
                             </div>
                         </div>
-                        <label class="control-label">Hotel room price per night: @Model.BedPricePerNight €</label>
-                        <label class="col-form-label" id="TotalHotelAmount"></label>
+                        @*<label class="control-label">Hotel room price per night: @Model.BedPricePerNight €</label>
+                        <label class="col-form-label" id="TotalHotelAmount"></label>*@
                     </div>
                 </div>
                 <br />
