@@ -84,60 +84,64 @@
                         <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
                         <label class="custom-control-label" for="customCheck3">Transport service</label>
                         <br />
-                        <div class="d-flex justify-content-around align-items-center">
-                            <div>
-                                <label>Price for Equipment:</label>
-                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="" style="color:#fffcf7">
+                        <div class="custom-control custom-checkbox">
+                            <input asp-for="TransportServiceSelected" type="checkbox" class="custom-control-input" id="customCheck3">
+                            <label class="custom-control-label" for="customCheck3">Transport service, € 35</label>
+                            <br />
+                            <div class="d-flex justify-content-around align-items-end" style="width:120%;">
+                                <div>
+                                    <label>Price, Equipment €:</label>
+                                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceEquipment" value="" style="color:#fffcf7">
+                                </div>
+                                @*<div>
+                                        <label>Price, Transport €:</label>
+                                        <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
+                                    </div>*@
+                                <div>
+                                    <label>Price, Hotel €:</label>
+                                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
+                                </div>
+                                <div>
+                                    <label>Total Price €:</label>
+                                    <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
+                                </div>
                             </div>
-                            <div>
-                                <label>Price for Transport:</label>
-                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceTransport" value="" style="color:#fffcf7">
-                            </div>
-                            <div>
-                                <label>Price for Hotel:</label>
-                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceHotel" value="" style="color:#fffcf7">
-                            </div>
-                            <div>
-                                <label>Total Price:</label>
-                                <input type="text" readonly="" class="form-control-plaintext" id="staticPriceAll" value="" style="color:#fffcf7">
-                            </div>
-                        </div>
-                        <label class="control-label">Hotel room price per night: @Model.BedPricePerNight €</label>
-                        <label class="col-form-label" id="TotalHotelAmount"></label>
-                    </div>
-                </div>
-                <br />
-                <hr />
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label class="col-form-label">Contact Details</label>
-                            <div class="d-flex justify-content-around">
-                                <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name" id="inputFullName">
-                                <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" id="inputFullName">
-                            </div>
-                            <div class="d-flex justify-content-around">
-                                <span asp-validation-for="FirstName" class="text-danger"></span>
-                                <span asp-validation-for="LastName" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email&#64example.com">
-                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label" for="inputDefault">Phone number</label>
-                            <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Save Changes" />
+                            @*<label class="control-label">Hotel room price per night: @Model.BedPricePerNight €</label>
+                                <label class="col-form-label" id="TotalHotelAmount"></label>*@
                         </div>
                     </div>
+                    <br />
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="col-form-label">Contact Details</label>
+                                <div class="d-flex justify-content-around">
+                                    <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name" id="inputFullName">
+                                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" id="inputFullName">
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="EmailAddress" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email&#64example.com">
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label" for="inputDefault">Phone number</label>
+                                <input asp-for="PhoneNumber" type="tel" class="form-control" placeholder="+" id="inputPhone">
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Save Changes" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </form>
         </div>
-        </form>
     </div>
-</div>
 </div>
