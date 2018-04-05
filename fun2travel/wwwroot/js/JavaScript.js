@@ -1,4 +1,6 @@
-﻿var activityPrice = 0;
+﻿//import { win32 } from "path";
+
+var activityPrice = 0;
 var activityRentPrice = 0;
 var totalHotelCost = 0;
 var noPplAct = 0;
@@ -246,11 +248,10 @@ function ConfirmMessage(Id) {
     {
 
         $.ajax({
-            url: "/Bookings/DeleteBooking",
-            type: "GET",
-            data: { "Id": Id },
+            url: "/Bookings/DeleteBooking/"+Id,
+            type: "POST",
             success: function (result) {
-
+                location.reload()
             }
 
         });

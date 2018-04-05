@@ -59,11 +59,11 @@ namespace fun2travel.Controllers
             
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult DeleteBooking(int Id)
         {
             repository.DeleteBooking(Id);
-            return RedirectToAction(nameof(MembersController.Index),"Members");
+            return Ok();
         }
         [HttpGet]
         public IActionResult EditBooking(int id)
