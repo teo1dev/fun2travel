@@ -80,7 +80,7 @@ namespace fun2travel.Models
 
             booking.TotalNrOfBeds = hotel.TotalNrOfBeds;
             booking.HotelLocation = hotel.HotelLocation;
-            booking.BedPricePerNight = hotel.BedPricePerNight;
+            booking.BedPricePerNight = Math.Round(hotel.BedPricePerNight,0);
 
             var ActivityList = GetactivitiesbyHotelId(hotel.Id);
             var SelectionActivityList = GetActivitiesSelectListItem(hotel.Id);

@@ -6,7 +6,8 @@ var noPplRoom = $('#NumberofPeopleRoom').val();
 var hotelCost = $('#HotelPrice').html();
 var difference = 0;
 var totalHotelCost = 0;
-var TransportPrice = $('#TransportPrice').html();
+//var TransportPrice = $('#TransportPrice').html();
+var TransportPrice = 0;
 var totActCost = 0;
 
 function DropDownAjaxCall(LocationName, ActivityName) {
@@ -227,12 +228,12 @@ $(document).ready(function () {
 function UpdateSummary() {
 
     $('#staticPriceEquipment').val(totActCost);
-    var trpCostTotal = TransportPrice * noPplRoom;
+    var trpCostTotal = TransportPrice;
     $('#staticPriceTransport').val(trpCostTotal);
     totalHotelCost = hotelCost * noPplRoom * difference;
 
     $('#staticPriceHotel').val(totalHotelCost);
-    var totalAllCost = totalHotelCost + totActCost + (TransportPrice * noPplRoom);
+    var totalAllCost = totalHotelCost + totActCost + (TransportPrice);
 
     $('#staticPriceAll').val(totalAllCost);
 }
