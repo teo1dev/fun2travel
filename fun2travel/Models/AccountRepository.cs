@@ -34,6 +34,10 @@ namespace fun2travel.Models
             this.identityContext = identityContext;
         }
 
+        public AccountRepository()
+        {
+        }
+
         public async Task<bool> TryLoginAsync(LoginVM viewModel)
         {
             // Create DB schema (first time)
@@ -74,7 +78,7 @@ namespace fun2travel.Models
         //    await CreateRoleAsync(user);
         //    return true;
         //}
-
+        
         internal async Task<string> CheckUserRoleByIdAsync(LoginVM viewModel)
         {
             IdentityUser model = await userManager.FindByNameAsync(viewModel.Username);
@@ -91,7 +95,12 @@ namespace fun2travel.Models
             else
                 return "No user found";
         }
-
+      
+        internal void LogOut()
+        {
+            signInManager.SignOutAsync();
+        }
+        }
         //public async Task<string> GetUserNameAsync(HttpContext httpContext)
         //{
         //    string userId = userManager.GetUserId(httpContext.User);
@@ -112,14 +121,10 @@ namespace fun2travel.Models
         //    return result.Succeeded;
         //}
 
-        internal void LogOut()
-        {
-            signInManager.SignOutAsync();
-        }
 
         //public void CreateDB() //görs första gången för att skapa DB tabeller
         //{
         //    identityContext.Database.EnsureCreated();
         //}
     }
-}
+

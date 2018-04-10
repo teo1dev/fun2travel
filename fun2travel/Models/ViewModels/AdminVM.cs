@@ -12,6 +12,8 @@ namespace fun2travel.Models.ViewModels
 
         public List<Booking> Bookings { get; set; }
         public Dictionary<int,string> ActivityDictionary { get; set; }
+        public string ReturnUrl { get; set; }
+
 
     }
 }

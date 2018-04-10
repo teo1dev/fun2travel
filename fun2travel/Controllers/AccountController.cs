@@ -12,14 +12,12 @@ namespace fun2travel.Controllers
 {
     public class AccountController : Controller
     {
-
         AccountRepository repository;
         public AccountController(AccountRepository repository)
         {
             this.repository = repository;
-
         }
-        
+
         [HttpGet]
         public IActionResult RegisterNewUser()
         {

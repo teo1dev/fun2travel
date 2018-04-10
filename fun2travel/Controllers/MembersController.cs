@@ -13,22 +13,38 @@ namespace fun2travel.Controllers
 {
     public class MembersController : Controller
     {
-        
-        private readonly Repository repository;
 
+        private readonly Repository repository;
         public MembersController(Repository repository)
         {
             this.repository = repository;
         }
 
+
         [HttpGet]
         public IActionResult IndexUserRegistred()
-        {            
+        {
             return View();
         }
 
+        //public async Task<IActionResult> MyPageAsync(LoginVM viewModel)
+        //{
+        //    AccountRepository accountRepository = new AccountRepository();
+        //    var userRole = await accountRepository.CheckUserRoleByIdAsync(viewModel);
+        //    if (userRole == "Admin")
+        //    {
+        //        return RedirectToAction(nameof(MembersController.Index), "Members");
+        //    }
+        //    else if (userRole == "User")
+        //    {
+        //        return RedirectToAction(nameof(MembersController.IndexUser), "Members");
+        //    }
+        //    else
+        //        return RedirectToAction(nameof(HomeController.Index), "Home");
+        //}
+
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         //[Route("Members")]
         public IActionResult Index()
         {
