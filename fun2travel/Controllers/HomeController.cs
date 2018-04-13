@@ -12,14 +12,16 @@ namespace fun2travel.Controllers
     public class HomeController : Controller
     {
         private readonly Repository repository;
-        
-        public HomeController(Repository repository)
+        private readonly AccountRepository accrep;
+
+        public HomeController(Repository repository, AccountRepository accrep)
         {
             this.repository = repository;
+            this.accrep = accrep;
         }
         public IActionResult Index()
         {
-           
+            //accrep.CreateDB();
             return View(repository.AllHotelandActivitytoVM());
         }
 

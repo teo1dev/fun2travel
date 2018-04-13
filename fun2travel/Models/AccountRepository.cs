@@ -26,7 +26,7 @@ namespace fun2travel.Models
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-        IdentityDbContext identityContext)
+            IdentityDbContext identityContext)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -34,18 +34,18 @@ namespace fun2travel.Models
             this.identityContext = identityContext;
         }
 
-        public AccountRepository()
-        {
-        }
+        //public AccountRepository()
+        //{
+        //}
 
         public async Task<bool> TryLoginAsync(LoginVM viewModel)
         {
             // Create DB schema (first time)
             //var createSchemaResult = await identityContext.Database.EnsureCreatedAsync();
 
-            // Create a hard coded user (first time)
-            //var createResult = await userManager.CreateAsync(new IdentityUser("jerryteodor"),"P@ssw0rd");
-
+            ////Create a hard coded user(first time)
+            //var createResult = await userManager.CreateAsync(new IdentityUser("InsertAdminName"), "InsertPassword");
+            //await roleManager.CreateAsync(new IdentityRole("Admin")); //Then, copy ID from AspNetRoles and ID from AspNetUsers to AspNetUserRoles roleId and UserId
             var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
             return loginResult.Succeeded;
         }
@@ -78,7 +78,7 @@ namespace fun2travel.Models
         //    await CreateRoleAsync(user);
         //    return true;
         //}
-        
+
         internal async Task<string> CheckUserRoleByIdAsync(LoginVM viewModel)
         {
             IdentityUser model = await userManager.FindByNameAsync(viewModel.Username);
@@ -95,12 +95,12 @@ namespace fun2travel.Models
             else
                 return "No user found";
         }
-      
+
         internal void LogOut()
         {
             signInManager.SignOutAsync();
         }
-        }
+
         //public async Task<string> GetUserNameAsync(HttpContext httpContext)
         //{
         //    string userId = userManager.GetUserId(httpContext.User);
@@ -127,4 +127,5 @@ namespace fun2travel.Models
         //    identityContext.Database.EnsureCreated();
         //}
     }
+}
 

@@ -36,7 +36,8 @@ namespace fun2travel
             })
             .AddEntityFrameworkStores<IdentityDbContext>()
             .AddDefaultTokenProviders();
-            services.ConfigureApplicationCookie(o => o.LoginPath = "/LogIn");
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(o => o.LoginPath = "/Account/Login");
             services.AddTransient<AccountRepository>();
             services.AddTransient<Repository>();
             services.AddMvc();
@@ -64,6 +65,7 @@ namespace fun2travel
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
