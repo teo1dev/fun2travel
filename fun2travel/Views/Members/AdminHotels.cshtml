@@ -1,0 +1,37 @@
+﻿@model HotelDetailVM[]
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="override">
+    
+    <p class="lead">Current hotels on offer right now:</p>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <td>HotelName</td>
+                <td>HotelLocation</td>
+                <td>HotelAdress</td>
+                <td>TotalNrOfBeds</td>
+                <td>BedPricePerNight</td>
+                <td>Edit Hotel</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="table-dark">
+                    <td> @item.HotelName </td>
+                    <td> @item.HotelLocation </td>
+                    <td> @item.HotelAdress </td>
+                    <td> @item.TotalNrOfBeds </td>
+                    <td> @item.BedPricePerNight </td>
+                    <td>
+                        <a @*asp-controller="Bookings" asp-action="EditHotel" asp-route-id="@item.Id" *@ onclick="ConfirmMessage(@item.Id)" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

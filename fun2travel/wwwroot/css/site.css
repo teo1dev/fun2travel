@@ -185,3 +185,12 @@ div.card-body {
     max-width: 30rem !important;
     max-height: 20rem;
 }
+
+.gridDisplay {
+    justify-content: center;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+    justify-items: center;
+}

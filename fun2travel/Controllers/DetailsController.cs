@@ -32,10 +32,10 @@ namespace fun2travel.Controllers
             return View(repository.GetAdventureByIdToVM(id));
         }
 
-        private IActionResult View(Func<int, AdventuresVM> getAdventureById)
-        {
-            throw new NotImplementedException();
-        }
+        //private IActionResult View(Func<int, AdventuresVM> getAdventureById)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         [HttpGet]
         public IActionResult HotelDetail(int id)
