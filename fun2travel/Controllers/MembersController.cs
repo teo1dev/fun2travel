@@ -62,6 +62,13 @@ namespace fun2travel.Controllers
             user.Bookings = repository.getBookingByUserName(user.UserName);
             return View(user);
         }
+
+        [HttpGet]
+        public IActionResult ManageHotels()
+        {
+            return View(repository.GetAllHotelNames());
+        }
+
         //// GET: /<controller>/
         //[Route("/Members/Login")]
         //[AllowAnonymous]

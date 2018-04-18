@@ -42,5 +42,18 @@ namespace fun2travel.Controllers
         {
             return View(repository.GetHotelByIdToVM(id));
         }
+
+        [HttpPost]
+        public IActionResult DeleteHotel(int Id)
+        {
+            repository.DeleteHotel(Id);
+            return Ok();
+        }
+
+        public IActionResult AddHotel()
+        {
+            return RedirectToAction(nameof(AddHotel),"Members");
+        }
+
     }
 }

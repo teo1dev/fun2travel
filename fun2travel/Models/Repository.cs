@@ -28,6 +28,9 @@ namespace fun2travel.Models
                  {
                      HotelName = c.HotelName,
                      Id = c.Id,
+                     HotelLocation=c.HotelLocation,
+                     HotelAdress=c.HotelAdress,
+                     TotalNrOfBeds=c.TotalNrOfBeds,
                      HotelPic1 = c.HotelPic1,
                      HotelPic2 = c.HotelPic2,
                      HotelPic3 = c.HotelPic3
@@ -90,6 +93,33 @@ namespace fun2travel.Models
             return booking;
 
 
+        }
+
+        internal void DeleteHotel(int id)
+        {
+            Hotel hotelToDelete = new Hotel();
+            hotelToDelete = GetHotelById(id);
+            context.Hotel.Remove(hotelToDelete);
+            context.SaveChanges();
+        }
+
+        internal void AddHotelToDb(AddHotelVM addHotel)
+        {
+            Hotel hotel = new Hotel
+            {
+                HotelName=addHotel.HotelName,
+                HotelLocation=addHotel.HotelLocation,
+                HotelAdress=addHotel.HotelAdress,
+                HotelDescription=addHotel.HotelDescription,
+                HotelPic1=addHotel.HotelPic1,
+                HotelPic2=addHotel.HotelPic2,
+                HotelPic3=addHotel.HotelPic3,
+                BedPricePerNight=addHotel.BedPricePerNight,
+                TotalNrOfBeds=addHotel.TotalNrOfBeds,
+                PriceForTransport=addHotel.PriceForTransport
+            };
+            context.Hotel.Add(hotel);
+            context.SaveChanges();
         }
 
         internal void UpdateBooking(BookingVM b)
