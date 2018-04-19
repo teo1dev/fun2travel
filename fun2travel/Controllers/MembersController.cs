@@ -69,6 +69,28 @@ namespace fun2travel.Controllers
             return View(repository.GetAllHotelNames());
         }
 
+
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult AddHotel(AddHotelVM addHotelVM)
+        {
+            repository.AddHotelToDb(addHotelVM);
+            return RedirectToAction(nameof(MembersController.ManageHotels), "Members");
+        }
+        [Authorize]
+        [HttpGet]
+        public IActionResult AddHotel()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteHotel(int Id)
+        {
+            repository.DeleteHotel(Id);
+            return RedirectToAction(nameof(ManageHotels)); //TODO: fixa redirect to managehotel
+        }
         //// GET: /<controller>/
         //[Route("/Members/Login")]
         //[AllowAnonymous]

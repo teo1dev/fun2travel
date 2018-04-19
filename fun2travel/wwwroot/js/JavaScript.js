@@ -257,3 +257,19 @@ function ConfirmMessage(Id) {
         });
     }
 }
+
+function ConfirmDeleteHotel(Id) {
+    var confirmText = "Are you sure you want to delete this hotel?";
+    var c = confirm(confirmText);
+    if (c === true) {
+
+        $.ajax({
+            url: "/Members/DeleteHotel/" + Id,
+            type: "POST",
+            success: function (result) {
+                location.reload()
+            }
+
+        });
+    }
+}

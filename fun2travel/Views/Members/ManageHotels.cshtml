@@ -7,7 +7,7 @@
 <div class="override">
 
     <p class="lead">HOTELS:</p>
-    <a asp-controller="Details" asp-action="AddHotel"class="btn btn-outline-primary btn-lg btn-block">Add Hotel</a>
+    <a asp-controller="Members" asp-action="AddHotel"class="btn btn-outline-primary btn-lg btn-block">Add Hotel</a>
     <table class="table table-dark">
         <thead>
             <tr>
@@ -30,7 +30,7 @@
                     <td> @item.TotalNrOfBeds </td>
                     <td> @item.BedPricePerNight </td>
                     <td>
-                        <a asp-controller="Bookings" asp-action="DeleteHotel" asp-route-id="@item.Id" onclick="ConfirmMessage(@item.Id)" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
+                        <a asp-controller="Members" asp-action="ManageHotels" asp-route-id="@item.Id" onclick="ConfirmDeleteHotel(@item.Id)" class="btn btn-outline-primary btn-lg btn-block">Delete</a>
                     </td>
                 </tr>
             }

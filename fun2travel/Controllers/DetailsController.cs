@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using fun2travel.Models;
 using fun2travel.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fun2travel.Controllers
@@ -42,18 +43,5 @@ namespace fun2travel.Controllers
         {
             return View(repository.GetHotelByIdToVM(id));
         }
-
-        [HttpPost]
-        public IActionResult DeleteHotel(int Id)
-        {
-            repository.DeleteHotel(Id);
-            return Ok();
-        }
-
-        public IActionResult AddHotel()
-        {
-            return RedirectToAction(nameof(AddHotel),"Members");
-        }
-
     }
 }
