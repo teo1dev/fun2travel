@@ -719,6 +719,18 @@ namespace fun2travel.Models
 
         }
 
+        // method to list activities in addhotel
+        internal List<Activity> GetAllActivities()
+        {
+            var a = context.Activity
+                 .Where(b => b.ActivityName != "")
+                 .Select(c => new Activity
+                 {
+                     ActivityName = c.ActivityName
+                 }).ToList();
+            return a;
+        }
 
+        //TODO: Method to add selected activites to new hotel and join hotel and activites in act2hot
     }
 }

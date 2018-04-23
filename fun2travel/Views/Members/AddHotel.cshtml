@@ -15,33 +15,53 @@
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Hotel Description text</span>
-                        
+
                         </div>
                         <textarea asp-for="HotelDescription" class="form-control" aria-label="With textarea"></textarea>
                     </div>
 
-                    
-                    <div class="form-group">
 
-                        <input asp-for="TotalNrOfBeds" type="number" placeholder="Number of beds or rooms" />
-                        <input asp-for="BedPricePerNight" type="number" placeholder="Average cost per night, per person, per room" />
-                        <input asp-for="PriceForTransport" type="number" placeholder="Cost for transport" />
+                    <div class="form-group row d-flex justify-content-center">
+                        <div>
+                            <label asp-for="TotalNrOfBeds" class="col-form-label">Total nr of beds</label>
+                            <br />
+                            <input asp-for="TotalNrOfBeds" type="number" placeholder="Number of beds or rooms" />
                         </div>
-                        <div class="form-group">
-
-                            <input asp-for="HotelPic1" type="text" placeholder="url to picture 1" />
-                            <input asp-for="HotelPic2" type="text" placeholder="url to picture 2" />
-                            <input asp-for="HotelPic3" type="text" placeholder="url to picture 3" />
+                        <div>
+                            <label asp-for="BedPricePerNight" class="col-form-label">Price per night</label>
+                            <br />
+                            <input asp-for="BedPricePerNight" type="number" placeholder="Average cost per night, per person, per room" />
+                        </div>
+                        <div>
+                            <label asp-for="PriceForTransport" class="col-form-label">Price for transport</label>
+                            <br />
+                            <input asp-for="PriceForTransport" type="number" placeholder="Cost for transport" />
                         </div>
                     </div>
+                    <div class="form-group">
+
+                        <input asp-for="HotelPic1" type="text" placeholder="url to picture 1" />
+                        <input asp-for="HotelPic2" type="text" placeholder="url to picture 2" />
+                        <input asp-for="HotelPic3" type="text" placeholder="url to picture 3" />
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="ADD" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleSelect2">Select Activities, use ctrl for multiple choices</label>
+                    <select multiple="" class="form-control" id="exampleSelect2">
+                        @foreach (var item in Model.Activities)
+                        {
+                            <option>@item.ActivityName</option>
+
+                        }
+                    </select>
                 </div>
             </form>
 
         </div>
 
-        //list of activities to asociate with hotel
         @*<div class="col-lg-12">
                 <div class="d-flex justify-content-between">
                     <div class="form-group">

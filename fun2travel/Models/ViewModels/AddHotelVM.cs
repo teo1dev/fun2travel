@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fun2travel.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,9 @@ namespace fun2travel.Models.ViewModels
         public string HotelPic1 { get; set; }
         public string HotelPic2 { get; set; }
         public string HotelPic3 { get; set; }
+
+        //public string ActivityName { get; set; }
+        public List<Activity> Activities { get; set; }
 
     }
 }
