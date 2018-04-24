@@ -726,9 +726,22 @@ namespace fun2travel.Models
                  .Where(b => b.ActivityName != "")
                  .Select(c => new Activity
                  {
-                     ActivityName = c.ActivityName
+                     ActivityName = c.ActivityName,
+                     Id=c.Id
                  }).ToList();
             return a;
+        }
+
+        internal List<Hotel> ShowHotelNames()
+        {
+            var h = context.Hotel
+                .Where(b => b.HotelName != "")
+                .Select(c => new Hotel
+                {
+                    HotelName = c.HotelName,
+                    Id = c.Id
+                }).ToList();
+            return h;
         }
 
         //TODO: Method to add selected activites to new hotel and join hotel and activites in act2hot

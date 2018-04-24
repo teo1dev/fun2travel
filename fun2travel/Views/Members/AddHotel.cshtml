@@ -45,18 +45,18 @@
                         <input asp-for="HotelPic3" type="text" placeholder="url to picture 3" />
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="ADD" />
-                </div>
                 <div class="form-group">
                     <label for="exampleSelect2">Select Activities, use ctrl for multiple choices</label>
-                    <select multiple="" class="form-control" id="exampleSelect2">
+                    <select multiple="multiple" class="form-control" id="exampleSelect2">
                         @foreach (var item in Model.Activities)
                         {
-                            <option>@item.ActivityName</option>
+                            <option value="@item.Id">@item.ActivityName</option>
 
                         }
                     </select>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="ADD" />
                 </div>
             </form>
 

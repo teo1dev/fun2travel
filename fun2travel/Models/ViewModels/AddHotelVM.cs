@@ -1,4 +1,5 @@
 ﻿using fun2travel.Models.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace fun2travel.Models.ViewModels
 
         //public string ActivityName { get; set; }
         public List<Activity> Activities { get; set; }
+
+        //public MultiSelectList Acts { get; set; } //kolla länken https://www.codeproject.com/Articles/1063846/Step-By-Step-Implementation-of-MultiSelectList-In step 3
+
+
 
     }
 }
